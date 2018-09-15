@@ -52,17 +52,25 @@ function setPageTitle(title) {
 // Print content
 // ========================================
 
-function printWindow(src) {
+function printWindow(obj) {
     var window = document.createElement('div')
     window.classList.add('window')
-    window.style.backgroundImage = `url(${src})`
+    if (obj.options) {
+        if (obj.options.parallax) {
+            window.classList.add('parallax')
+        }
+    }
+    window.style.backgroundImage = `url(${obj.data})`
     appDiv.appendChild(window)
 }
 
-function printText(src) {
+function printText(obj) {
     var text = document.createElement('div')
     text.classList.add('text')
-    text.innerHTML = src
+    if (obj.options) {
+        text.style.textAlign = obj.options.align
+    }
+    text.innerHTML = obj.data
     appDiv.appendChild(text)
 }
 
@@ -73,7 +81,7 @@ function printContent(content) {
     }
     content.forEach(function (obj) {
         if (functionHash.hasOwnProperty(obj.type)) {
-            functionHash[obj.type](obj.src)
+            functionHash[obj.type](obj)
         }
     })
 }

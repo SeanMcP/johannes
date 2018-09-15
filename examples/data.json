@@ -5,11 +5,39 @@
     "content": [
         {
             "type": "window",
-            "src": "https://placebear.com/g/1200/400"
+            "data": "https://placebear.com/g/1200/400",
+            "options": {
+                "parallax": true
+            }
+        },
+        {
+            "type": "window",
+            "data": "https://placebear.com/g/1200/400"
         },
         {
             "type": "text",
-            "src": "<h1>Hello!</h1><p>This is a basic example of Johannes</p>"
+            "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p>"
+        },
+        {
+            "type": "text",
+            "data": "<p>left aligned</p>",
+            "options": {
+                "align": "left"
+            }
+        },
+        {
+            "type": "text",
+            "data": "<p>center aligned</p>",
+            "options": {
+                "align": "center"
+            }
+        },
+        {
+            "type": "text",
+            "data": "<p>right aligned</p>",
+            "options": {
+                "align": "right"
+            }
         }
     ],
     "styles": {
