@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+}
+
+#app {
+    margin: 2rem auto;
+    width: 600px;
+}
+
+.text {
+    padding: 0.001rem 1rem;
+}
+
+.window {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 120px;
+}
+
+.window.parallax {
+    background-attachment: fixed;
+}
