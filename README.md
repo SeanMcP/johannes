@@ -19,6 +19,7 @@ Social media icons
 
 Options:
 
+- `mode: enum('light', 'dark')`
 - `size: enum('lg', '2x', '3x', 4x')`
 
 #### Text

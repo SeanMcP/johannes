@@ -69,13 +69,19 @@ function addFontAwesome() {
 
 function printSocialIcons(obj) {
     var social = document.createElement('div')
-    social.classList.add('social')
+    social.classList.add(
+        'social',
+        obj.options && obj.options.mode
+            ? obj.options.mode
+            : ''
+    )
     addFontAwesome()
 
     for (var platform in obj.data) {
         var aTag = createExternalLink(obj.data[platform])
-
+        
         var iTag = document.createElement('i')
+        iTag.title = platform[0].toUpperCase() + platform.slice(1)
         iTag.classList.add(
             'fab',
             `fa-${platform}`,

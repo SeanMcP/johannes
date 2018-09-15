@@ -16,6 +16,22 @@
         },
         {
             "type": "text",
+            "data": "<h1>Colorful divider</h1>",
+            "options": {
+                "color": "white",
+                "backgroundColor": "orange",
+                "textAlign": "center"
+            }
+        },
+        {
+            "type": "text",
+            "data": "<h1>Back to white</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.</p>",
+            "options": {
+                "backgroundColor": "white"
+            }
+        },
+        {
+            "type": "text",
             "data": "<p>Copyright © McPherson Design LLC 2018</p>",
             "options": {
                 "color": "#666",
@@ -26,11 +42,12 @@
             "type": "social",
             "data": {
                 "twitter": "https://twitter.com/mcpcodes",
-                "linkedin": "https://linkedin.com/in/mcpdesign",
+                "linkedin": "https://linkedin.com/company/mcpdesign",
                 "instagram": "https://instagram.com/mcp.design",
                 "facebook": "https://facebook.com/mcpdesignga"
             },
             "options": {
+                "mode": "light",
                 "size": "2x"
             }
         }
