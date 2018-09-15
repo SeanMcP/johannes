@@ -67,6 +67,40 @@ function addFontAwesome() {
     headTag.appendChild(linkTag)
 }
 
+function printHero(obj) {
+    var hero = document.createElement('div')
+    hero.classList.add('hero')
+    hero.style.backgroundImage = `url(${obj.data.background})`
+
+    var title = document.createElement('div')
+    title.classList.add('title')
+    title.innerHTML = obj.data.title
+    hero.appendChild(title)
+
+    var tag = document.createElement('div')
+    tag.classList.add('tag')
+    tag.innerHTML = obj.data.tag
+    hero.appendChild(tag)
+
+    var action = document.createElement('div')
+    action.classList.add('call-to-action')
+    var link = createExternalLink(obj.data.action.href)
+    link.textContent = obj.data.action.text
+    action.appendChild(link)
+    hero.appendChild(action)
+
+    if (obj.options) {
+        if (obj.options.align) {
+            hero.style.textAlign = obj.options.align
+        }
+        if (obj.options.color) {
+            hero.style.color = obj.options.color
+        }
+    }
+
+    appTag.appendChild(hero)
+}
+
 function printSocialIcons(obj) {
     var social = document.createElement('div')
     social.classList.add(
@@ -129,6 +163,7 @@ function printWindow(obj) {
 
 function printContent(content) {
     var functionHash = {
+        hero: printHero,
         social: printSocialIcons,
         text: printText,
         window: printWindow

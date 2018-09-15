@@ -12,6 +12,7 @@
 Background image with text/call-to-action
 
 - `align: enum('center', 'left', 'right')`
+- `color: valid HTML color`
 
 #### Social
 

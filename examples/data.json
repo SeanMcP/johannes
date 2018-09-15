@@ -4,6 +4,22 @@
     },
     "content": [
         {
+            "type": "hero",
+            "data": {
+                "background": "https://placebear.com/g/800/800",
+                "title": "<h1>Making a difference</h1>",
+                "tag": "<p>You can do amazing things; you just need somewhere to begin.</p>",
+                "action": {
+                    "text": "Start here",
+                    "href": "https://github.com"
+                }
+            },
+            "options": {
+                "align": "center",
+                "color": "white"
+            }
+        },
+        {
             "type": "window",
             "data": "https://placebear.com/g/1200/400"
         },
