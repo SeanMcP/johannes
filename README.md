@@ -13,6 +13,14 @@ Background image with text/call-to-action
 
 - `align: enum('center', 'left', 'right')`
 
+#### Social
+
+Social media icons
+
+Options:
+
+- `size: enum('lg', '2x', '3x', 4x')`
+
 #### Text
 
 HTML string containing elements.

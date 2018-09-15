@@ -5,13 +5,6 @@
     "content": [
         {
             "type": "window",
-            "data": "https://placebear.com/g/1200/400",
-            "options": {
-                "parallax": true
-            }
-        },
-        {
-            "type": "window",
             "data": "https://placebear.com/g/1200/400"
         },
         {
@@ -20,23 +13,21 @@
         },
         {
             "type": "text",
-            "data": "<p>left aligned</p>",
-            "options": {
-                "align": "left"
-            }
-        },
-        {
-            "type": "text",
-            "data": "<p>center aligned</p>",
+            "data": "<p>Copyright © McPherson Design LLC 2018</p>",
             "options": {
                 "align": "center"
             }
         },
         {
-            "type": "text",
-            "data": "<p>right aligned</p>",
+            "type": "social",
+            "data": {
+                "twitter": "https://twitter.com/mcpcodes",
+                "linkedin": "https://linkedin.com/in/mcpdesign",
+                "instagram": "https://instagram.com/mcp.design",
+                "facebook": "https://facebook.com/mcpdesignga"
+            },
             "options": {
-                "align": "right"
+                "size": "2x"
             }
         }
     ],
