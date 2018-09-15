@@ -5,11 +5,15 @@
 
 ## Documentation
 
+Johannes prints a valid, mobile-first, and responsive HTML page based on some simple JSON input. All you need is a `data.json` file and an `index.html` referencing Johannes' `index.js` and `styles.css`.
+
 ### Content types
 
 #### Hero
 
 Background image with text/call-to-action
+
+Options:
 
 - `align: enum('center', 'left', 'right')`
 - `color: valid HTML color`
