@@ -1,5 +1,9 @@
 body {
+    background: #333;
     margin: 0;
+    transition: all 0.2s ease-in-out;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #app {
@@ -7,8 +11,37 @@ body {
     width: 600px;
 }
 
+@media screen and (max-width: 600px) {
+    #app {
+        margin: 2rem 0;
+        width: 100%;
+    }
+}
+
 .text {
-    padding: 0.001rem 1rem;
+    padding: 1rem 2rem;
+}
+
+.social {
+    text-align: center;
+}
+
+.social.light a {
+    color: black;
+}
+
+.social.light a {
+    color: white;
+}
+
+.social a {
+    margin: 0 0.25rem;
+    opacity: 0.5;
+    padding: 0 0.25rem;
+}
+
+.social a:hover {
+    opacity: 0.75;
 }
 
 .window {
@@ -20,4 +53,14 @@ body {
 
 .window.parallax {
     background-attachment: fixed;
+}
+
+/* Text styles */
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1rem 0;
+}
+
+p {
+    line-height: 1.5rem;
 }
