@@ -18,7 +18,8 @@
             "type": "text",
             "data": "<p>Copyright © McPherson Design LLC 2018</p>",
             "options": {
-                "align": "center"
+                "color": "#666",
+                "textAlign": "center"
             }
         },
         {
@@ -35,6 +36,7 @@
         }
     ],
     "styles": {
-        "backgroundColor": "#333"
+        "backgroundColor": "#333",
+        "fontFamily": "Helvetica, Arial, sans-serif"
     }
 }

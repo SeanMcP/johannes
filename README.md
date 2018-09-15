@@ -27,8 +27,9 @@ HTML string containing elements.
 
 Options:
 
-- `align: enum('center', 'left', 'right')`
 - `backgroundColor: valid HTML color`
+- `color: valid HTML color`
+- `textAlign: enum('center', 'left', 'right')`
 
 #### Window
 

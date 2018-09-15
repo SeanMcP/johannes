@@ -21,6 +21,18 @@ function fetchData() {
 }
 
 // ========================================
+// Utility functions
+// ========================================
+
+function createExternalLink(href) {
+    var aTag = document.createElement('a')
+    aTag.href = href
+    aTag.target = '_blank'
+    aTag.rel = 'noopener noreferrer'
+    return aTag
+}
+
+// ========================================
 // Add styles
 // ========================================
 
@@ -61,10 +73,7 @@ function printSocialIcons(obj) {
     addFontAwesome()
 
     for (var platform in obj.data) {
-        var aTag = document.createElement('a')
-        aTag.href = obj.data[platform]
-        aTag.target = '_blank'
-        aTag.rel = 'noopener noreferrer'
+        var aTag = createExternalLink(obj.data[platform])
 
         var iTag = document.createElement('i')
         iTag.classList.add(
@@ -86,11 +95,14 @@ function printText(obj) {
     var text = document.createElement('div')
     text.classList.add('text')
     if (obj.options) {
-        if (obj.options.align) {
-            text.style.textAlign = obj.options.align
-        }
         if (obj.options.backgroundColor) {
             text.style.backgroundColor = obj.options.backgroundColor
+        }
+        if (obj.options.color) {
+            text.style.color = obj.options.color
+        }
+        if (obj.options.textAlign) {
+            text.style.textAlign = obj.options.textAlign
         }
     }
     text.innerHTML = obj.data
