@@ -9,7 +9,10 @@
         },
         {
             "type": "text",
-            "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p>"
+            "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p>",
+            "options": {
+                "backgroundColor": "white"
+            }
         },
         {
             "type": "text",
@@ -32,6 +35,6 @@
         }
     ],
     "styles": {
-        "background-color": "#333"
+        "backgroundColor": "#333"
     }
 }

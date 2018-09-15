@@ -28,6 +28,7 @@ HTML string containing elements.
 Options:
 
 - `align: enum('center', 'left', 'right')`
+- `backgroundColor: valid HTML color`
 
 #### Window
 

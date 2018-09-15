@@ -25,18 +25,11 @@ function fetchData() {
 // ========================================
 
 function addGlobalStyles(styles) {
-    var tag = document.createElement('style')
-    var str = 'body{'
-
-    // Check for valid CSS
+    var tag = document.querySelector('body')
 
     for (var prop in styles) {
-        str += `${prop}:${styles[prop]};`
+        tag.style[prop] = styles[prop]
     }
-    str += '}'
-
-    tag.textContent = str
-    headTag.appendChild(tag)
 }
 
 // ========================================
@@ -93,7 +86,12 @@ function printText(obj) {
     var text = document.createElement('div')
     text.classList.add('text')
     if (obj.options) {
-        text.style.textAlign = obj.options.align
+        if (obj.options.align) {
+            text.style.textAlign = obj.options.align
+        }
+        if (obj.options.backgroundColor) {
+            text.style.backgroundColor = obj.options.backgroundColor
+        }
     }
     text.innerHTML = obj.data
     appTag.appendChild(text)
