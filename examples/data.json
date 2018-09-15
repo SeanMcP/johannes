@@ -1,0 +1,18 @@
+{
+    "meta": {
+        "title": "Basic example using Johannes"
+    },
+    "content": [
+        {
+            "type": "window",
+            "src": "http://lorempixel.com/output/abstract-q-g-1210-607-7.jpg"
+        },
+        {
+            "type": "text",
+            "src": "<h1>Hello!</h1><p>This is a basic example of Johannes</p>"
+        }
+    ],
+    "styles": {
+        "background-color": "#333"
+    }
+}
