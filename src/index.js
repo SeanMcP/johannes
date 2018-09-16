@@ -24,6 +24,12 @@ function fetchData() {
 // Utility functions
 // ========================================
 
+function createDivWithClass(htmlClass) {
+    var tag = document.createElement('div')
+    tag.classList.add(htmlClass)
+    return tag
+}
+
 function createExternalLink(href) {
     var aTag = document.createElement('a')
     aTag.href = href
@@ -65,6 +71,45 @@ function addFontAwesome() {
     linkTag.crossOrigin = 'anonymous'
 
     headTag.appendChild(linkTag)
+}
+
+function printAddress(obj) {
+    var address = createDivWithClass('address')
+
+    var heading = document.createElement('h2')
+    heading.textContent = "Address"
+    address.appendChild(heading)
+
+    var pTag = document.createElement('p')
+    var html = obj.data.slice(0, obj.data.indexOf(',')) 
+        + `<br>`
+        + obj.data.slice(obj.data.indexOf(',') + 1)
+    pTag.innerHTML = html
+
+    address.appendChild(pTag)
+
+    if (obj.options) {
+        if (obj.options.backgroundColor) {
+            address.style.backgroundColor = obj.options.backgroundColor
+        }
+        if (obj.options.map) {
+            var map = document.createElement('iframe')
+            map.classList.add('map')
+            map.src = obj.options.map
+            map.allowFullscreen = true
+            map.frameBorder = 0
+            map.height = 300
+            map.style.border = 0
+            map.width = '100%'
+
+            address.appendChild(map)
+        }
+        if (obj.options.textAlign) {
+            address.style.textAlign = obj.options.textAlign
+        }
+    }
+
+    appTag.appendChild(address)
 }
 
 function printHero(obj) {
@@ -110,18 +155,18 @@ function printHours(obj) {
             : ''
     )
 
+    var heading = document.createElement('h2')
+    heading.textContent = "Hours"
+    hours.appendChild(heading)
+
     if (obj.options) {
         if (obj.options.backgroundColor) {
             hours.style.backgroundColor = obj.options.backgroundColor
         }
         if (obj.options.textAlign) {
-            hours.style.textAlign = obj.options.textAlign
+            heading.style.textAlign = obj.options.textAlign
         }
     }
-
-    var heading = document.createElement('h2')
-    heading.textContent = "Hours"
-    hours.appendChild(heading)
 
     var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
     
@@ -211,6 +256,7 @@ function printWindow(obj) {
 
 function printContent(content) {
     var functionHash = {
+        address: printAddress,
         hero: printHero,
         hours: printHours,
         social: printSocialIcons,

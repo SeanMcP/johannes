@@ -9,14 +9,24 @@ Johannes prints a valid, mobile-first, and responsive HTML page based on some si
 
 ### Content types
 
+#### Address
+
+Street address. Note: Make sure `data` value uses commas correctly.
+
+Options:
+
+- `backgroundColor: valid HTML color`
+- `map: embed iframe src from Google Maps`
+- `textAlign: enum('center', 'left', 'right')`
+
 #### Hero
 
 Background image with text/call-to-action
 
 Options:
 
-- `textAlign: enum('center', 'left', 'right')`
 - `color: valid HTML color`
+- `textAlign: enum('center', 'left', 'right')`
 
 #### Hours
 

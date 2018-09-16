@@ -18,6 +18,7 @@ body {
     }
 }
 
+.address,
 .hero,
 .hours,
 .text {
@@ -73,6 +74,10 @@ body {
     border-bottom-width: 1px;
     margin: 0 4px 8px;
     opacity: 0.25;
+}
+
+.map {
+    margin-bottom: 1rem;
 }
 
 .social {
