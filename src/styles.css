@@ -19,13 +19,9 @@ body {
 }
 
 .hero,
+.hours,
 .text {
     padding: 1rem 2rem;
-}
-
-.hero {
-    background-position: center;
-    background-size: cover;
 }
 
 .call-to-action {
@@ -42,6 +38,41 @@ body {
 
 .call-to-action a:hover {
     filter: brightness(1.1);
+}
+
+.hero {
+    background-position: center;
+    background-size: cover;
+}
+
+.hours {
+    padding-bottom: 2rem;
+}
+
+.hours.light {
+    border-color: white;
+    color: white;
+}
+
+.hours.dark {
+    border-color: black;
+    color: black;
+}
+
+.hours .row {
+    display: flex;
+}
+
+.hours .row:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+}
+
+.hours .row .divider {
+    flex: 1;
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+    margin: 0 4px 8px;
+    opacity: 0.25;
 }
 
 .social {

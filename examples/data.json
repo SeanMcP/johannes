@@ -4,6 +4,13 @@
     },
     "content": [
         {
+            "type": "text",
+            "data": "<h1>Johannes Ltd. Co.</h1>",
+            "options": {
+                "backgroundColor": "white"
+            }
+        },
+        {
             "type": "hero",
             "data": {
                 "background": "https://placebear.com/g/800/800",
@@ -15,17 +22,30 @@
                 }
             },
             "options": {
-                "align": "center",
+                "textAlign": "center",
                 "color": "white"
             }
         },
         {
-            "type": "window",
-            "data": "https://placebear.com/g/1200/400"
+            "type": "hours",
+            "data": {
+                "sunday": "Closed",
+                "monday": "9:00-5:00",
+                "tuesday": "9:00-5:00",
+                "wednesday": "11:00-7:00",
+                "thursday": "9:00-5:00",
+                "friday": "9:00-5:00",
+                "saturday": "10:00-2:00"
+            },
+            "options": {
+                "backgroundColor": "orange",
+                "mode": "dark",
+                "textAlign": "center"
+            }
         },
         {
             "type": "text",
-            "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p>",
+            "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit inventore excepturi mollitia eveniet corporis optio, neque provident, debitis porro cupiditate! Doloremque repudiandae sunt dolores ipsa ex voluptatem fuga fugit.</p>",
             "options": {
                 "backgroundColor": "white"
             }

@@ -15,8 +15,18 @@ Background image with text/call-to-action
 
 Options:
 
-- `align: enum('center', 'left', 'right')`
+- `textAlign: enum('center', 'left', 'right')`
 - `color: valid HTML color`
+
+#### Hours
+
+A table of business hours
+
+Options:
+
+- `backgroundColor: valid HTML color`
+- `mode: enum('light', 'dark')`
+- `textAlign: HEADER ONLY - enum('center', 'left', 'right')`
 
 #### Social
 

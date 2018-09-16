@@ -90,8 +90,8 @@ function printHero(obj) {
     hero.appendChild(action)
 
     if (obj.options) {
-        if (obj.options.align) {
-            hero.style.textAlign = obj.options.align
+        if (obj.options.textAlign) {
+            hero.style.textAlign = obj.options.textAlign
         }
         if (obj.options.color) {
             hero.style.color = obj.options.color
@@ -99,6 +99,54 @@ function printHero(obj) {
     }
 
     appTag.appendChild(hero)
+}
+
+function printHours(obj) {
+    var hours = document.createElement('div')
+    hours.classList.add(
+        'hours',
+        obj.options && obj.options.mode
+            ? obj.options.mode
+            : ''
+    )
+
+    if (obj.options) {
+        if (obj.options.backgroundColor) {
+            hours.style.backgroundColor = obj.options.backgroundColor
+        }
+        if (obj.options.textAlign) {
+            hours.style.textAlign = obj.options.textAlign
+        }
+    }
+
+    var heading = document.createElement('h2')
+    heading.textContent = "Hours"
+    hours.appendChild(heading)
+
+    var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+    
+    days.forEach(function(day) {
+        var row = document.createElement('div')
+        row.classList.add('row')
+
+        var daySpan = document.createElement('span')
+        daySpan.classList.add('day')
+        daySpan.textContent = day[0].toUpperCase() + day.slice(1)
+        row.appendChild(daySpan)
+
+        var divider = document.createElement('span')
+        divider.classList.add('divider')
+        row.appendChild(divider)
+
+        var time = document.createElement('span')
+        time.classList.add('time')
+        time.textContent = obj.data[day]
+        row.appendChild(time)
+
+        hours.appendChild(row)
+    })
+
+    appTag.appendChild(hours)
 }
 
 function printSocialIcons(obj) {
@@ -164,6 +212,7 @@ function printWindow(obj) {
 function printContent(content) {
     var functionHash = {
         hero: printHero,
+        hours: printHours,
         social: printSocialIcons,
         text: printText,
         window: printWindow
