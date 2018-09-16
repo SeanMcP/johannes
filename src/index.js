@@ -81,10 +81,7 @@ function printAddress(obj) {
     address.appendChild(heading)
 
     var pTag = document.createElement('p')
-    var html = obj.data.slice(0, obj.data.indexOf(',')) 
-        + `<br>`
-        + obj.data.slice(obj.data.indexOf(',') + 1)
-    pTag.innerHTML = html
+    pTag.innerHTML = obj.data
 
     address.appendChild(pTag)
 

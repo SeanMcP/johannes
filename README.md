@@ -11,7 +11,7 @@ Johannes prints a valid, mobile-first, and responsive HTML page based on some si
 
 #### Address
 
-Street address. Note: Make sure `data` value uses commas correctly.
+Street address. Use `<br>` to format correctly
 
 Options:
 
