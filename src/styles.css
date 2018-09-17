@@ -19,6 +19,7 @@ body {
 }
 
 .address,
+.contact,
 .hero,
 .hours,
 .text {
@@ -39,6 +40,39 @@ body {
 
 .call-to-action a:hover {
     filter: brightness(1.1);
+}
+
+.form {
+    padding-bottom: 2rem;
+}
+
+.form .field {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 1rem;
+}
+
+.form label {
+    margin-bottom: 0.5rem;
+}
+
+.form input, .form textarea {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25);
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+.form input:focus, .form textarea:focus {
+    border-color: orange;
+    box-shadow: 0 0 5px orange;
+    outline: none;
+}
+
+.form textarea {
+    resize: vertical;
 }
 
 .hero {

@@ -109,6 +109,74 @@ function printAddress(obj) {
     appTag.appendChild(address)
 }
 
+function printContactForm(obj) {
+    var contact = createDivWithClass('contact')
+
+    var title = document.createElement('h2')
+    title.textContent = obj.data.title
+    contact.appendChild(title)
+
+    var message = document.createElement('p')
+    message.textContent = obj.data.message
+    contact.appendChild(message)
+
+    var form = createDivWithClass('form')
+
+    var subject = createDivWithClass('subject')
+    subject.classList.add('field')
+    var subjectLabel = document.createElement('label')
+    subjectLabel.htmlFor = 'contact-subject'
+    subjectLabel.textContent = 'Subject'
+    subject.appendChild(subjectLabel)
+
+    var subjectInput = document.createElement('input')
+    subjectInput.id = 'contact-subject'
+    subjectInput.type = 'text'
+    subject.appendChild(subjectInput)
+
+    form.appendChild(subject)
+
+    var body = createDivWithClass('body')
+    body.classList.add('field')
+    var bodyLabel = document.createElement('label')
+    bodyLabel.htmlFor = 'contact-body'
+    bodyLabel.textContent = 'Message'
+    body.appendChild(bodyLabel)
+
+    var bodyInput = document.createElement('textarea')
+    bodyInput.id = 'contact-body'
+    body.appendChild(bodyInput)
+    
+    form.appendChild(body)
+
+    var button = createDivWithClass('button')
+    button.id = 'contact-submit'
+    button.textContent = 'Send email'
+    button.onClick = 'function() { console.log(\'Yo\') }'
+    form.appendChild(button)
+
+    var emailFunction = `
+    function getEmailMessage() {
+        var subject = document.getElementById('contact-subject')
+        
+        if (subject) {
+            return 'mailto:${obj.data.email}?' + encodeURIComponent(subject)
+        } else {
+            alert('Subject is required')
+        }
+    }
+
+document.getElementById('contact-submit').addEventListener('click', getEmailMessage)
+    `
+    var scriptTag = document.createElement('script')
+    scriptTag.innerHTML = emailFunction
+    form.appendChild(scriptTag)
+
+    contact.appendChild(form)
+
+    appTag.appendChild(contact)
+}
+
 function printHero(obj) {
     var hero = document.createElement('div')
     hero.classList.add('hero')
@@ -254,6 +322,7 @@ function printWindow(obj) {
 function printContent(content) {
     var functionHash = {
         address: printAddress,
+        contact: printContactForm,
         hero: printHero,
         hours: printHours,
         social: printSocialIcons,

@@ -27,6 +27,14 @@
             }
         },
         {
+            "type": "contact",
+            "data": {
+                "email": "contact@mcp.design",
+                "title": "Contact us",
+                "message": "Use the form below to send us an email. We'd love to hear from you!"
+            }
+        },
+        {
             "type": "hours",
             "data": {
                 "sunday": "Closed",
