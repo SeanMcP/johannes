@@ -33,6 +33,10 @@ Data:
 }
 ```
 
+Options:
+
+- `backgroundColor: valid HTML color`
+
 #### Hero
 
 Background image with text/call-to-action

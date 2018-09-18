@@ -109,8 +109,11 @@ function printAddress(obj) {
     appTag.appendChild(address)
 }
 
-function printContactForm(obj) {
+function printContactForm(obj, variables) {
     var contact = createDivWithClass('contact')
+    contact.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
 
     var title = document.createElement('h2')
     title.textContent = obj.data.title
@@ -364,7 +367,7 @@ function printWindow(obj) {
     appTag.appendChild(window)
 }
 
-function printContent(content) {
+function printContent(content, variables) {
     var functionHash = {
         address: printAddress,
         contact: printContactForm,
@@ -376,7 +379,7 @@ function printContent(content) {
     }
     content.forEach(function (obj) {
         if (functionHash.hasOwnProperty(obj.type)) {
-            functionHash[obj.type](obj)
+            functionHash[obj.type](obj, variables)
         }
     })
 }
@@ -388,7 +391,7 @@ function printContent(content) {
 function johannes(data) {
     setPageTitle(data.meta.title)
     addGlobalStyles(data.theme.styles)
-    printContent(data.content)
+    printContent(data.content, data.theme.variables)
 }
 
 fetchData()
