@@ -121,6 +121,28 @@ function printContactForm(obj) {
     contact.appendChild(message)
 
     var form = createDivWithClass('form')
+    form.onchange = function() {
+        var subjectVal = document.getElementById('contact-subject').value
+        var bodyVal = document.getElementById('contact-body').value
+        var button = this.querySelector('.button')
+
+        if (subjectVal && bodyVal) {
+            if (button.classList.contains('disabled')) {
+                button.classList.remove('disabled')
+            }
+        } else {
+            if (!button.classList.contains('disabled')) {
+                button.classList.add('disabled')
+            }
+        }
+    }
+
+    function dismissError(e) {
+        if (e.target.value && this.classList.contains('error')) {
+            this.classList.remove('error')
+            document.querySelector('.contact .message').textContent = ''
+        }
+    }
 
     var subject = createDivWithClass('subject')
     subject.classList.add('field')
@@ -132,6 +154,7 @@ function printContactForm(obj) {
     var subjectInput = document.createElement('input')
     subjectInput.id = 'contact-subject'
     subjectInput.type = 'text'
+    subjectInput.onchange = dismissError
     subject.appendChild(subjectInput)
 
     form.appendChild(subject)
@@ -145,32 +168,54 @@ function printContactForm(obj) {
 
     var bodyInput = document.createElement('textarea')
     bodyInput.id = 'contact-body'
+    bodyInput.onchange = dismissError
     body.appendChild(bodyInput)
     
     form.appendChild(body)
 
+    var footer = createDivWithClass('footer')
+
     var button = createDivWithClass('button')
+    button.classList.add('disabled')
     button.id = 'contact-submit'
     button.textContent = 'Send email'
-    button.onClick = 'function() { console.log(\'Yo\') }'
-    form.appendChild(button)
-
-    var emailFunction = `
-    function getEmailMessage() {
+    button.onclick = function() {
         var subject = document.getElementById('contact-subject')
-        
-        if (subject) {
-            return 'mailto:${obj.data.email}?' + encodeURIComponent(subject)
+        var body = document.getElementById('contact-body')
+        var message = document.querySelector('.contact .message')
+
+        if (subject.value && body.value) {
+            var anchor = document.createElement('a')
+            anchor.href = `mailto:${obj.data.email}?subject=${
+                encodeURIComponent(subject.value)
+            }&body=${encodeURIComponent(body.value)}`
+            anchor.click()
+            subject.value = ''
+            body.value = ''
+            message.textContent = 'Details sent to your email client'
+            message.classList.add('success')
         } else {
-            alert('Subject is required')
+            if (!subject.value && !body.value) {
+                return null
+            }
+            if (!subject.value) {
+                message.textContent = 'Subject is required'
+                message.classList.add('error')
+                subject.classList.add('error')
+            }
+            if (!body.value) {
+                message.textContent = 'Body is required'
+                message.classList.add('error')
+                body.classList.add('error')
+            }
         }
     }
+    footer.appendChild(button)
 
-document.getElementById('contact-submit').addEventListener('click', getEmailMessage)
-    `
-    var scriptTag = document.createElement('script')
-    scriptTag.innerHTML = emailFunction
-    form.appendChild(scriptTag)
+    var message = createDivWithClass('message')
+    footer.appendChild(message)
+
+    form.appendChild(footer)
 
     contact.appendChild(form)
 

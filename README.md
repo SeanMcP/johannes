@@ -19,6 +19,20 @@ Options:
 - `map: embed iframe src from Google Maps`
 - `textAlign: enum('center', 'left', 'right')`
 
+#### Contact
+
+A simple contact form that uses `mailto:` to trigger an email.
+
+Data:
+
+```json
+"data": {
+    "email": "your@email.address",
+    "title": "Header",
+    "message": "Message below the header"
+}
+```
+
 #### Hero
 
 Background image with text/call-to-action
