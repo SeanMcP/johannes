@@ -105,8 +105,13 @@
             }
         }
     ],
-    "styles": {
-        "backgroundColor": "#333",
-        "fontFamily": "Helvetica, Arial, sans-serif"
+    "theme": {
+        "styles": {
+            "backgroundColor": "#333",
+            "fontFamily": "Helvetica, Arial, sans-serif"
+        },
+        "variables": {
+            "contentBackground": "white"
+        }
     }
 }

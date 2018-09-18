@@ -387,7 +387,7 @@ function printContent(content) {
 
 function johannes(data) {
     setPageTitle(data.meta.title)
-    addGlobalStyles(data.styles)
+    addGlobalStyles(data.theme.styles)
     printContent(data.content)
 }
 
