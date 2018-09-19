@@ -23,7 +23,7 @@
             },
             "options": {
                 "textAlign": "center",
-                "color": "white"
+                "textColor": "white"
             }
         },
         {

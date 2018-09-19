@@ -47,8 +47,10 @@ Background image with text/call-to-action
 
 Options:
 
-- `color: valid HTML color`
-- `textAlign: enum('center', 'left', 'right')`
+- `buttonColor: valid HTML color (default: primaryColor variable)`
+- `buttonTextColor: valid HTML color (default: white)`
+- `textColor: valid HTML color (default: inherit)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
 
 #### Hours
 

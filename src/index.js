@@ -225,9 +225,10 @@ function printContactForm(obj, variables) {
     appTag.appendChild(contact)
 }
 
-function printHero(obj) {
+function printHero(obj, variables) {
     var hero = document.createElement('div')
     hero.classList.add('hero')
+    hero.style.backgroundColor = variables.contentBackground
     hero.style.backgroundImage = `url(${obj.data.background})`
 
     var title = document.createElement('div')
@@ -243,6 +244,13 @@ function printHero(obj) {
     var action = document.createElement('div')
     action.classList.add('call-to-action')
     var link = createExternalLink(obj.data.action.href)
+    link.classList.add('button')
+    link.style.backgroundColor = obj.options && obj.options.buttonColor
+        ? obj.options.buttonColor
+        : variables.primaryColor
+    link.style.color = obj.options && obj.options.buttonTextColor
+        ? obj.options.buttonTextColor
+        : 'white'
     link.textContent = obj.data.action.text
     action.appendChild(link)
     hero.appendChild(action)
@@ -251,8 +259,8 @@ function printHero(obj) {
         if (obj.options.textAlign) {
             hero.style.textAlign = obj.options.textAlign
         }
-        if (obj.options.color) {
-            hero.style.color = obj.options.color
+        if (obj.options.textColor) {
+            hero.style.color = obj.options.textColor
         }
     }
 

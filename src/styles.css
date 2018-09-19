@@ -30,15 +30,11 @@ body {
     margin: 2rem 0;
 }
 
-.call-to-action a {
-    background: orange;
-    color: white;
-    font-weight: bold;
-    padding: 1rem;
+.call-to-action .button {
     text-decoration: none;
 }
 
-.call-to-action a:hover {
+.call-to-action .button:hover {
     filter: brightness(1.1);
 }
 
@@ -65,11 +61,6 @@ body {
     padding: 0.5rem;
 }
 
-.form input.error,
-.form textarea.error {
-    border-color: red;
-}
-
 .form input:focus, .form textarea:focus {
     border-color: orange;
     box-shadow: 0 0 5px orange;
@@ -83,34 +74,6 @@ body {
 .form .footer {
     align-items: center;
     display: flex;
-}
-
-.form .button {
-    padding: 1rem;
-}
-
-.form .button.disabled {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-.form .message {
-    margin: 0 1rem;
-}
-
-.form .message.error {
-    color: red;
-}
-
-.form .message.success {
-    animation: fade-out 10s forwards;
-    color: green;
-    pointer-events: none;
-}
-
-@keyframes fade-out {
-    from { opacity: 1 }
-    to { opacity: 0 }
 }
 
 .hero {
@@ -198,4 +161,18 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     line-height: 1.5rem;
+}
+
+/* 
+REUSABLE CLASSES
+*/
+
+.button {
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.button.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
