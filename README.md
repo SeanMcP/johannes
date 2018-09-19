@@ -38,7 +38,7 @@ Options:
 - `backgroundColor: valid HTML color (default: contentBackground)`
 - `buttonColor: valid HTML color (default: primaryColor variable)`
 - `buttonTextColor: valid HTML color (default: white)`
-- `textAlign: enum('center', 'left', 'right') (default: left)`
+- `textAlign: HEADER, BUTTON ONLY - enum('center', 'left', 'right') (default: left)`
 
 
 #### Hero
@@ -58,9 +58,9 @@ A table of business hours
 
 Options:
 
-- `backgroundColor: valid HTML color`
+- `backgroundColor: valid HTML color (default: contentBackground)`
 - `mode: enum('light', 'dark')`
-- `textAlign: HEADER ONLY - enum('center', 'left', 'right')`
+- `textAlign: HEADER ONLY - enum('center', 'left', 'right') (default: left)`
 
 #### Social
 

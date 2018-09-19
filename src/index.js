@@ -211,7 +211,7 @@ function printContactForm(obj, variables) {
     if (obj.options) {
         if (obj.options.textAlign) {
             var textAlign = obj.options.textAlign
-            contact.style.textAlign = textAlign
+            title.style.textAlign = textAlign
             var justifyContent
             if (textAlign === 'center') {
                 justifyContent = textAlign
@@ -267,14 +267,14 @@ function printHero(obj, variables) {
     appTag.appendChild(hero)
 }
 
-function printHours(obj) {
-    var hours = document.createElement('div')
-    hours.classList.add(
-        'hours',
-        obj.options && obj.options.mode
-            ? obj.options.mode
-            : ''
-    )
+function printHours(obj, variables) {
+    var hours = createDivWithClass('hours')
+    if (obj.options && obj.options.mode) {
+        hours.classList.add(obj.options.mode)
+    }
+    hours.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
 
     var heading = document.createElement('h2')
     heading.textContent = "Hours"
@@ -292,8 +292,7 @@ function printHours(obj) {
     var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
     
     days.forEach(function(day) {
-        var row = document.createElement('div')
-        row.classList.add('row')
+        var row = createDivWithClass('row')
 
         var daySpan = document.createElement('span')
         daySpan.classList.add('day')
