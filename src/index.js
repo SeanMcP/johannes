@@ -314,6 +314,23 @@ function printHours(obj, variables) {
     appTag.appendChild(hours)
 }
 
+function printHtml(obj, variables) {
+    var html = createDivWithClass('html')
+    html.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
+    if (obj.options) {
+        if (obj.options.textColor) {
+            html.style.color = obj.options.textColor
+        }
+        if (obj.options.textAlign) {
+            html.style.textAlign = obj.options.textAlign
+        }
+    }
+    html.innerHTML = obj.data
+    appTag.appendChild(html)
+}
+
 function printSocialIcons(obj, variables) {
     addFontAwesome()
     var social = createDivWithClass('social')
@@ -380,6 +397,7 @@ function printContent(content, variables) {
         contact: printContactForm,
         hero: printHero,
         hours: printHours,
+        html: printHtml,
         social: printSocialIcons,
         text: printText,
         window: printWindow

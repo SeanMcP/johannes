@@ -62,6 +62,16 @@ Options:
 - `mode: enum('light', 'dark')`
 - `textAlign: HEADER ONLY - enum('center', 'left', 'right') (default: left)`
 
+#### Html
+
+HTML string containing elements.
+
+Options:
+
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `textColor: valid HTML color (default: inherit)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
+
 #### Social
 
 Social media icons
