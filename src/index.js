@@ -314,15 +314,15 @@ function printHours(obj, variables) {
     appTag.appendChild(hours)
 }
 
-function printSocialIcons(obj) {
-    var social = document.createElement('div')
-    social.classList.add(
-        'social',
-        obj.options && obj.options.mode
-            ? obj.options.mode
-            : ''
-    )
+function printSocialIcons(obj, variables) {
     addFontAwesome()
+    var social = createDivWithClass('social')
+    if (obj.options && obj.options.mode) {
+        social.classList.add(obj.options.mode)
+    }
+    social.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
 
     for (var platform in obj.data) {
         var aTag = createExternalLink(obj.data[platform])

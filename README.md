@@ -68,6 +68,7 @@ Social media icons
 
 Options:
 
+- `backgroundColor: valid HTML color (default: contentBackground)`
 - `mode: enum('light', 'dark')`
 - `size: enum('lg', '2x', '3x', 4x')`
 

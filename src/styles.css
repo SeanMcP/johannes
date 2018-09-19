@@ -22,6 +22,7 @@ body {
 .contact,
 .hero,
 .hours,
+.social,
 .text {
     padding: 1rem 2rem;
 }
@@ -39,7 +40,7 @@ body {
 }
 
 .form {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 .form .field {

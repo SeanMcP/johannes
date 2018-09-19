@@ -61,6 +61,13 @@
             }
         },
         {
+            "type": "window",
+            "data": "https://placebear.com/g/800/800",
+            "options": {
+                "parallax": true
+            }
+        },
+        {
             "type": "text",
             "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit inventore excepturi mollitia eveniet corporis optio, neque provident, debitis porro cupiditate! Doloremque repudiandae sunt dolores ipsa ex voluptatem fuga fugit.</p>",
             "options": {
@@ -100,6 +107,7 @@
                 "facebook": "https://facebook.com/mcpdesignga"
             },
             "options": {
+                "backgroundColor": "transparent",
                 "mode": "light",
                 "size": "2x"
             }
