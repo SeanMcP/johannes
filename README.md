@@ -35,7 +35,11 @@ Data:
 
 Options:
 
-- `backgroundColor: valid HTML color`
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `buttonColor: valid HTML color (default: primaryColor variable)`
+- `buttonTextColor: valid HTML color (default: white)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
+
 
 #### Hero
 

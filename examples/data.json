@@ -111,7 +111,8 @@
             "fontFamily": "Helvetica, Arial, sans-serif"
         },
         "variables": {
-            "contentBackground": "white"
+            "contentBackground": "white",
+            "primaryColor": "orange"
         }
     }
 }

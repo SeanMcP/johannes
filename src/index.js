@@ -178,14 +178,19 @@ function printContactForm(obj, variables) {
 
     var footer = createDivWithClass('footer')
 
-    var button = createDivWithClass('button')
-    button.classList.add('disabled')
+    var button = document.createElement('span')
+    button.classList.add('button', 'disabled')
+    button.style.backgroundColor = obj.options && obj.options.buttonColor
+        ? obj.options.buttonColor
+        : variables.primaryColor
+    button.style.color = obj.options && obj.options.buttonTextColor
+        ? obj.options.buttonTextColor
+        : 'white'
     button.id = 'contact-submit'
     button.textContent = 'Send email'
     button.onclick = function() {
         var subject = document.getElementById('contact-subject')
         var body = document.getElementById('contact-body')
-        var message = document.querySelector('.contact .message')
 
         if (subject.value && body.value) {
             var anchor = document.createElement('a')
@@ -195,32 +200,27 @@ function printContactForm(obj, variables) {
             anchor.click()
             subject.value = ''
             body.value = ''
-            message.textContent = 'Details sent to your email client'
-            message.classList.add('success')
-        } else {
-            if (!subject.value && !body.value) {
-                return null
-            }
-            if (!subject.value) {
-                message.textContent = 'Subject is required'
-                message.classList.add('error')
-                subject.classList.add('error')
-            }
-            if (!body.value) {
-                message.textContent = 'Body is required'
-                message.classList.add('error')
-                body.classList.add('error')
-            }
         }
     }
     footer.appendChild(button)
 
-    var message = createDivWithClass('message')
-    footer.appendChild(message)
-
     form.appendChild(footer)
 
     contact.appendChild(form)
+
+    if (obj.options) {
+        if (obj.options.textAlign) {
+            var textAlign = obj.options.textAlign
+            contact.style.textAlign = textAlign
+            var justifyContent
+            if (textAlign === 'center') {
+                justifyContent = textAlign
+            } else if (textAlign === 'right') {
+                justifyContent = 'flex-end'
+            }
+            footer.style.justifyContent = justifyContent
+        }
+    }
 
     appTag.appendChild(contact)
 }
