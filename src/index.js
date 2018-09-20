@@ -327,7 +327,7 @@ function printHtml(obj, variables) {
             html.style.textAlign = obj.options.textAlign
         }
     }
-    html.innerHTML = obj.data
+    html.innerHTML = obj.data.innerHTML
     appTag.appendChild(html)
 }
 
@@ -361,21 +361,35 @@ function printSocialIcons(obj, variables) {
     appTag.appendChild(social)
 }
 
-function printText(obj) {
-    var text = document.createElement('div')
-    text.classList.add('text')
+function printText(obj, variables) {
+    var text = createDivWithClass('text')
+    text.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
+    
+    if (obj.data.heading) {
+        var header = document.createElement('h1')
+        header.textContent = obj.data.heading
+        text.appendChild(header)
+    }
+
+    if (obj.data.paragraphs) {
+        obj.data.paragraphs.forEach(function(paragraph) {
+            var pTag = document.createElement('p')
+            pTag.textContent = paragraph
+            text.appendChild(pTag)
+        })
+    }
+
     if (obj.options) {
-        if (obj.options.backgroundColor) {
-            text.style.backgroundColor = obj.options.backgroundColor
-        }
-        if (obj.options.color) {
-            text.style.color = obj.options.color
+        if (obj.options.textColor) {
+            text.style.color = obj.options.textColor
         }
         if (obj.options.textAlign) {
             text.style.textAlign = obj.options.textAlign
         }
     }
-    text.innerHTML = obj.data
+
     appTag.appendChild(text)
 }
 

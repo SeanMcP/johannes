@@ -4,10 +4,9 @@
     },
     "content": [
         {
-            "type": "html",
-            "data": "<h1>Johannes Ltd. Co.</h1>",
-            "options": {
-                "backgroundColor": "white"
+            "type": "text",
+            "data": {
+                "heading": "Johannes Ltd. Co."
             }
         },
         {
@@ -68,15 +67,20 @@
             }
         },
         {
-            "type": "html",
-            "data": "<h1>Hello!</h1><p>This is a basic example of Johannes</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit inventore excepturi mollitia eveniet corporis optio, neque provident, debitis porro cupiditate! Doloremque repudiandae sunt dolores ipsa ex voluptatem fuga fugit.</p>",
-            "options": {
-                "backgroundColor": "white"
+            "type": "text",
+            "data": {
+                "heading": "Hello!",
+                "paragraphs": [
+                    "This is a basic example of Johannes.",
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit inventore excepturi mollitia eveniet corporis optio, neque provident, debitis porro cupiditate! Doloremque repudiandae sunt dolores ipsa ex voluptatem fuga fugit."
+                ]
             }
         },
         {
-            "type": "html",
-            "data": "<h1>Colorful divider</h1>",
+            "type": "text",
+            "data": {
+                "heading": "Colorful divider"
+            },
             "options": {
                 "textColor": "white",
                 "backgroundColor": "orange",
@@ -84,15 +88,25 @@
             }
         },
         {
-            "type": "html",
-            "data": "<h1>Back to white</h1><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.</p><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.</p>",
+            "type": "text",
+            "data": {
+                "heading": "Back to white",
+                "paragraphs": [
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.",
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque."
+                ]
+            },
             "options": {
                 "backgroundColor": "white"
             }
         },
         {
-            "type": "html",
-            "data": "<p>Copyright © McPherson Design LLC 2018</p>",
+            "type": "text",
+            "data": {
+                "paragraphs": [
+                    "Copyright © McPherson Design LLC 2018"
+                ]
+            },
             "options": {
                 "backgroundColor": "transparent",
                 "textColor": "#666",

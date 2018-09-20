@@ -66,6 +66,14 @@ Options:
 
 HTML string containing elements.
 
+Data:
+
+```json
+"data": {
+    "innerHTML": "<h1>Hello!</h1>"
+}
+```
+
 Options:
 
 - `backgroundColor: valid HTML color (default: contentBackground)`
@@ -84,13 +92,25 @@ Options:
 
 #### Text
 
-HTML string containing elements.
+A heading (h1) followed by a number of paragraphs. Both are optional.
+
+Data:
+
+```json
+"data": {
+    "heading": "Hello!",
+    "paragraphs": [
+        "Each string in the array becomes a paragraph.",
+        "So this text block will have two."
+    ]
+}
+```
 
 Options:
 
-- `backgroundColor: valid HTML color`
-- `color: valid HTML color`
-- `textAlign: enum('center', 'left', 'right')`
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `textColor: valid HTML color (default: inherit)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
 
 #### Window
 
