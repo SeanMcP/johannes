@@ -128,3 +128,9 @@ Options:
 
 - `height: value in pixels (default: 10rem, ~160px)`
 - `parallax: boolean`
+
+### Content options
+
+The following are available for all content types:
+
+- `stacked: boolean (removes padding-top on block)`

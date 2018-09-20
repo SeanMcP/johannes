@@ -98,9 +98,19 @@
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.",
                     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque."
                 ]
+            }
+        },
+        {
+            "type": "text",
+            "data": {
+                "heading": "Stacked",
+                "paragraphs": [
+                    "This is a second text block that has been 'stacked' beneath another; the padding-top has been removed so that it sits nicely beneath the previous block.",
+                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque."
+                ]
             },
             "options": {
-                "backgroundColor": "white"
+                "stacked": true
             }
         },
         {
@@ -127,7 +137,8 @@
             "options": {
                 "backgroundColor": "transparent",
                 "mode": "light",
-                "size": "2x"
+                "size": "2x",
+                "stacked": true
             }
         }
     ],

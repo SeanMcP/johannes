@@ -422,6 +422,10 @@ function printContent(content, variables) {
         if (functionHash.hasOwnProperty(obj.type)) {
             functionHash[obj.type](obj, variables)
         }
+        if (obj.options && obj.options.stacked) {
+            const blocks = document.querySelectorAll('#app > *')
+            blocks[blocks.length - 1].classList.add('stacked')
+        }
     })
 }
 
