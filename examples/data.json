@@ -61,8 +61,11 @@
         },
         {
             "type": "window",
-            "data": "https://placebear.com/g/800/800",
+            "data": {
+                "url": "https://placebear.com/g/800/800"
+            },
             "options": {
+                "height": "200px",
                 "parallax": true
             }
         },

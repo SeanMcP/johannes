@@ -116,6 +116,15 @@ Options:
 
 Image banner, no text
 
+Data:
+
+```json
+"data": {
+    "url": "https://placebear.com/g/800/800"
+}
+```
+
 Options:
 
+- `height: value in pixels (default: 10rem, ~160px)`
 - `parallax: boolean`

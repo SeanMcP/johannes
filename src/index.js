@@ -394,15 +394,17 @@ function printText(obj, variables) {
 }
 
 function printWindow(obj) {
-    var window = document.createElement('div')
-    window.classList.add('window')
+    var win = createDivWithClass('window')
     if (obj.options) {
+        if (obj.options.height) {
+            win.style.height = obj.options.height
+        }
         if (obj.options.parallax) {
-            window.classList.add('parallax')
+            win.classList.add('parallax')
         }
     }
-    window.style.backgroundImage = `url(${obj.data})`
-    appTag.appendChild(window)
+    win.style.backgroundImage = `url(${obj.data.url})`
+    appTag.appendChild(win)
 }
 
 function printContent(content, variables) {
