@@ -5,6 +5,9 @@
 var appTag = document.getElementById('app')
 var headTag = document.querySelector('head')
 
+var galleryImages = []
+var galleryIndex = 0
+
 // ========================================
 // Get data
 // ========================================
@@ -225,9 +228,58 @@ function printContactForm(obj, variables) {
     appTag.appendChild(contact)
 }
 
+function printGallery(obj, variables) {
+    var gallery = createDivWithClass('gallery')
+    if (obj.data.title) {
+        var title = document.createElement('h2')
+        title.textContent = obj.data.title
+        gallery.appendChild(title)
+    }
+    galleryImages = obj.data.images
+
+    var viewer = createDivWithClass('viewer')
+    var currentImage = document.createElement('img')
+    currentImage.classList.add('current-image')
+    currentImage.src = galleryImages[galleryIndex]
+    viewer.appendChild(currentImage)
+    gallery.appendChild(viewer)
+
+    function changeCurrentImage(newIndex, primaryColor) {
+        document.querySelector('.current-image')
+            .src = galleryImages[newIndex]
+        document.querySelectorAll('.thumb')
+            .forEach(function(node) {
+                node.removeAttribute('style')
+                if (node.classList.contains('current')) {
+                    node.classList.remove('current')
+                }
+            })
+        var currentThumb = document.querySelector(`.image-${newIndex}`)
+        currentThumb.classList.add('current')
+        currentThumb.style.borderColor = primaryColor
+    }
+
+    var thumbnails = createDivWithClass('thumbnails')
+    galleryImages.forEach(function(imageSrc, index) {
+        var image = document.createElement('img')
+        image.src = imageSrc
+        image.classList.add('thumb', `image-${index}`)
+        if (index === galleryIndex) {
+            image.classList.add('current')
+            image.style.borderColor = variables.primaryColor
+        }
+        image.onclick = function() {
+            changeCurrentImage(index, variables.primaryColor)
+        }
+        thumbnails.appendChild(image)
+    })
+    gallery.appendChild(thumbnails)
+
+    appTag.appendChild(gallery)
+}
+
 function printHero(obj, variables) {
-    var hero = document.createElement('div')
-    hero.classList.add('hero')
+    var hero = createDivWithClass('hero')
     hero.style.backgroundColor = variables.contentBackground
     hero.style.backgroundImage = `url(${obj.data.background})`
 
@@ -411,6 +463,7 @@ function printContent(content, variables) {
     var functionHash = {
         address: printAddress,
         contact: printContactForm,
+        gallery: printGallery,
         hero: printHero,
         hours: printHours,
         html: printHtml,

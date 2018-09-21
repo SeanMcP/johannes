@@ -40,6 +40,21 @@ Options:
 - `buttonTextColor: valid HTML color (default: white)`
 - `textAlign: HEADER, BUTTON ONLY - enum('center', 'left', 'right') (default: left)`
 
+#### Gallery
+
+A simple photo gallery. Technically the number of images supported is unlimited, but keep it to 5-10.
+
+Data:
+
+```json
+"data": {
+    "title": "Gallery",
+    "images": [
+        "assets/gallery/image1.jpg",
+        "assets/gallery/image2.jpg"
+    ]
+}
+```
 
 #### Hero
 

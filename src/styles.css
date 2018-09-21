@@ -20,6 +20,7 @@ body {
 
 .address,
 .contact,
+.gallery,
 .hero,
 .hours,
 .html,
@@ -84,6 +85,44 @@ body {
 .form .footer {
     align-items: center;
     display: flex;
+}
+
+.gallery {
+    background: #333;
+    padding-bottom: 2rem;
+}
+
+.gallery .viewer img {
+    width: 100%;
+}
+
+.gallery .thumbnails {
+    display: flex;
+    overflow-x: scroll;
+    height: 6rem;
+    margin-top: 0.25rem;
+}
+
+.gallery .thumb {
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    filter: brightness(0.5);
+    height: 100%;
+}
+
+.gallery .thumb:hover {
+    filter: brightness(1);
+}
+
+.gallery .thumb:not(:last-of-type) {
+    margin-right: 0.5rem;
+}
+
+.gallery .thumb.current {
+    filter: brightness(1);
+    pointer-events: none;
 }
 
 .hero {

@@ -26,6 +26,19 @@
             }
         },
         {
+            "type": "gallery",
+            "data": {
+                "title": "Gallery",
+                "images": [
+                    "assets/gallery/bike1.jpg",
+                    "assets/gallery/bugs1.jpg",
+                    "assets/gallery/city1.jpg",
+                    "assets/gallery/food1.jpg",
+                    "assets/gallery/tiger1.jpg"
+                ]
+            }
+        },
+        {
             "type": "contact",
             "data": {
                 "email": "contact@mcp.design",
