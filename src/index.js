@@ -242,6 +242,34 @@ function printGallery(obj, variables) {
     currentImage.classList.add('current-image')
     currentImage.src = galleryImages[galleryIndex]
     viewer.appendChild(currentImage)
+
+    var backButton = createDivWithClass('gallery-button')
+    backButton.classList.add('back')
+    backButton.textContent = '⟨'
+    backButton.onclick = function() {
+        if (galleryIndex - 1 < 0) {
+            galleryIndex = galleryImages.length - 1
+        } else {
+            galleryIndex--
+        }
+        changeCurrentImage(galleryIndex, variables.primaryColor)
+    }
+    viewer.appendChild(backButton)
+
+    var nextButton = createDivWithClass('gallery-button')
+    nextButton.classList.add('next')
+    nextButton.textContent = '⟩'
+    nextButton.onclick = function() {
+        if (galleryIndex + 1 > galleryImages.length - 1) {
+            galleryIndex = 0
+        } else {
+            galleryIndex++
+        }
+        changeCurrentImage(galleryIndex, variables.primaryColor)
+    }
+
+    viewer.appendChild(nextButton)
+
     gallery.appendChild(viewer)
 
     function changeCurrentImage(newIndex, primaryColor) {
