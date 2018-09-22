@@ -8,6 +8,9 @@ body {
 
 #app {
     margin: 2rem auto;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+    transition-delay: 750ms;
     width: 600px;
 }
 
@@ -16,6 +19,10 @@ body {
         margin: 2rem 0;
         width: 100%;
     }
+}
+
+#app.ready {
+    opacity: 1;
 }
 
 .address,
@@ -191,6 +198,38 @@ body {
     border-bottom-width: 1px;
     margin: 0 4px 8px;
     opacity: 0.25;
+}
+
+.loading {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 500ms ease-in-out;
+    transition-delay: 500ms;
+    z-index: 1;
+}
+
+.loading.exit {
+    opacity: 0;
+}
+
+.loading .spinner {
+    animation: spin 1s linear infinite;
+    border: 0.25rem solid rgba(255, 255, 255, 0.25);
+    border-top-color: rgba(255, 255, 255, 0.75);
+    border-radius: 2rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
 }
 
 .map {

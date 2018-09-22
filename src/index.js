@@ -9,6 +9,15 @@ var galleryImages = []
 var galleryIndex = 0
 
 // ========================================
+// Create loader
+// ========================================
+
+var loading = createDivWithClass('loading')
+var spinner = createDivWithClass('spinner')
+loading.appendChild(spinner)
+document.body.appendChild(loading)
+
+// ========================================
 // Get data
 // ========================================
 
@@ -518,6 +527,11 @@ function johannes(data) {
     setPageTitle(data.meta.title)
     addGlobalStyles(data.theme.styles)
     printContent(data.content, data.theme.variables)
+    appTag.classList.add('ready')
+    loading.classList.add('exit')
+    setTimeout(function() {
+        document.body.removeChild(loading)
+    }, 1000)
 }
 
 fetchData()
