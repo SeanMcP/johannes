@@ -255,13 +255,9 @@ function printGallery(obj, variables) {
     galleryImages = obj.data.images
 
     var viewer = createDivWithClass('viewer')
-    var currentImage = document.createElement('img')
-    currentImage.classList.add('current-image')
-    currentImage.src = galleryImages[galleryIndex]
-    viewer.appendChild(currentImage)
+    viewer.style.backgroundImage = `url(${galleryImages[galleryIndex]})`
 
     var backButton = createDivWithClass('gallery-button')
-    backButton.classList.add('back')
     backButton.textContent = '⟨'
     backButton.onclick = function() {
         if (galleryIndex - 1 < 0) {
@@ -274,7 +270,6 @@ function printGallery(obj, variables) {
     viewer.appendChild(backButton)
 
     var nextButton = createDivWithClass('gallery-button')
-    nextButton.classList.add('next')
     nextButton.textContent = '⟩'
     nextButton.onclick = function() {
         if (galleryIndex + 1 > galleryImages.length - 1) {
@@ -290,8 +285,8 @@ function printGallery(obj, variables) {
     gallery.appendChild(viewer)
 
     function changeCurrentImage(newIndex, primaryColor) {
-        document.querySelector('.current-image')
-            .src = galleryImages[newIndex]
+        document.querySelector('.viewer')
+            .style.backgroundImage = `url(${galleryImages[newIndex]})`
         document.querySelectorAll('.thumb')
             .forEach(function(node) {
                 node.removeAttribute('style')

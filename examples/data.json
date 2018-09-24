@@ -31,6 +31,7 @@
                 "title": "Gallery",
                 "images": [
                     "assets/gallery/bike1.jpg",
+                    "assets/gallery/sports1.jpg",
                     "assets/gallery/bugs1.jpg",
                     "assets/gallery/city1.jpg",
                     "assets/gallery/food1.jpg",
@@ -38,7 +39,7 @@
                 ]
             },
             "options": {
-                "backgroundColor": "orange",
+                "backgroundColor": "black",
                 "textAlign": "center",
                 "textColor": "white"
             }
