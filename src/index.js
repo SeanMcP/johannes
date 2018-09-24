@@ -239,11 +239,19 @@ function printContactForm(obj, variables) {
 
 function printGallery(obj, variables) {
     var gallery = createDivWithClass('gallery')
+    gallery.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
+
     if (obj.data.title) {
         var title = document.createElement('h2')
         title.textContent = obj.data.title
+        if (obj.options && obj.options.textAlign) {
+            title.style.textAlign = obj.options.textAlign
+        }
         gallery.appendChild(title)
     }
+
     galleryImages = obj.data.images
 
     var viewer = createDivWithClass('viewer')
@@ -311,6 +319,12 @@ function printGallery(obj, variables) {
         thumbnails.appendChild(image)
     })
     gallery.appendChild(thumbnails)
+
+    if (obj.options) {
+        if (obj.options.textColor) {
+            gallery.style.color = obj.options.textColor
+        }
+    }
 
     appTag.appendChild(gallery)
 }

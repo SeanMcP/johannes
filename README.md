@@ -56,6 +56,12 @@ Data:
 }
 ```
 
+Options:
+
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `textAlign: HEADER ONLY - enum('left', 'center', 'right') (default: left)`
+- `textColor: valid HTML color (default: inherit)`
+
 #### Hero
 
 Background image with text/call-to-action
@@ -64,8 +70,8 @@ Options:
 
 - `buttonColor: valid HTML color (default: primaryColor variable)`
 - `buttonTextColor: valid HTML color (default: white)`
-- `textColor: valid HTML color (default: inherit)`
 - `textAlign: enum('center', 'left', 'right') (default: left)`
+- `textColor: valid HTML color (default: inherit)`
 
 #### Hours
 

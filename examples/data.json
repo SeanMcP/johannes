@@ -36,6 +36,11 @@
                     "assets/gallery/food1.jpg",
                     "assets/gallery/tiger1.jpg"
                 ]
+            },
+            "options": {
+                "backgroundColor": "orange",
+                "textAlign": "center",
+                "textColor": "white"
             }
         },
         {
