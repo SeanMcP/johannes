@@ -50,8 +50,14 @@ Data:
 "data": {
     "title": "Gallery",
     "images": [
-        "assets/gallery/image1.jpg",
-        "assets/gallery/image2.jpg"
+        {
+            "src": "assets/gallery/image1.jpg",
+            "description": "Image 1"
+        },
+        {
+            "src": "assets/gallery/image2.jpg",
+            "description": "Image 2"
+        }
     ]
 }
 ```

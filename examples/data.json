@@ -30,12 +30,30 @@
             "data": {
                 "title": "Gallery",
                 "images": [
-                    "assets/gallery/bike1.jpg",
-                    "assets/gallery/sports1.jpg",
-                    "assets/gallery/bugs1.jpg",
-                    "assets/gallery/city1.jpg",
-                    "assets/gallery/food1.jpg",
-                    "assets/gallery/tiger1.jpg"
+                    {
+                        "src": "assets/gallery/bike1.jpg",
+                        "description": "A family riding a bike"
+                    },
+                    {
+                        "src": "assets/gallery/sports1.jpg",
+                        "description": "A man rock climbing"
+                    },
+                    {
+                        "src": "assets/gallery/bugs1.jpg",
+                        "description": "A line of ants on a leaf"
+                    },
+                    {
+                        "src": "assets/gallery/city1.jpg",
+                        "description": "A city on the riverside"
+                    },
+                    {
+                        "src": "assets/gallery/food1.jpg",
+                        "description": "Cheesy bread with dipping sauce"
+                    },
+                    {
+                        "src": "assets/gallery/tiger1.jpg",
+                        "description": "A siberian tiger lounging"
+                    }
                 ]
             },
             "options": {
