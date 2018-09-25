@@ -31,6 +31,7 @@ body {
 .hero,
 .hours,
 .html,
+.logo,
 .social,
 .text {
     padding: 1rem 2rem;
@@ -221,6 +222,10 @@ body {
 @keyframes spin {
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
+}
+
+.logo {
+    display: flex;
 }
 
 .map {

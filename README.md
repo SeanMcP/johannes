@@ -107,6 +107,26 @@ Options:
 - `textColor: valid HTML color (default: inherit)`
 - `textAlign: enum('center', 'left', 'right') (default: left)`
 
+#### Logo
+
+Displays a logo image, a title, and a tagline.
+
+Data:
+
+```json
+"data": {
+    "src": "url",
+    "title": "Johannes Ltd. Co.",
+    "tagline": "Printing for everyone."
+}
+```
+
+Options:
+
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `textColor: valid HTML color (default: inherit)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
+
 #### Social
 
 Social media icons

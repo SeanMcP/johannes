@@ -432,6 +432,42 @@ function printHtml(obj, variables) {
     appTag.appendChild(html)
 }
 
+function printLogo(obj, variables) {
+    var logo = createDivWithClass('logo')
+    logo.style.backgroundColor = obj.options && obj.options.backgroundColor ?
+        obj.options.backgroundColor :
+        variables.contentBackground
+
+    var image = document.createElement('img')
+    image.src = obj.data.src
+    image.alt = obj.data.title
+    logo.appendChild(image)
+
+    var details = createDivWithClass('details')
+
+    var title = document.createElement('h1')
+    title.textContent = obj.data.title
+    details.appendChild(title)
+
+    var tagline = document.createElement('p')
+    tagline.classList.add('tagline')
+    tagline.textContent = obj.data.tagline
+    details.appendChild(tagline)
+
+    logo.appendChild(details)
+    
+    if (obj.options) {
+        if (obj.options.textColor) {
+            html.style.color = obj.options.textColor
+        }
+        if (obj.options.textAlign) {
+            html.style.textAlign = obj.options.textAlign
+        }
+    }
+
+    appTag.appendChild(logo)
+}
+
 function printSocialIcons(obj, variables) {
     addFontAwesome()
     var social = createDivWithClass('social')
@@ -516,6 +552,7 @@ function printContent(content, variables) {
         hero: printHero,
         hours: printHours,
         html: printHtml,
+        logo: printLogo,
         social: printSocialIcons,
         text: printText,
         window: printWindow

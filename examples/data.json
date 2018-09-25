@@ -4,6 +4,14 @@
     },
     "content": [
         {
+            "type": "logo",
+            "data": {
+                "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/800px-Gutenberg.jpg",
+                "title": "Johannes Ltd. Co.",
+                "tagline": "Printing for everyone."
+            }
+        },
+        {
             "type": "text",
             "data": {
                 "heading": "Johannes Ltd. Co."
