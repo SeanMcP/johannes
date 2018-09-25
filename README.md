@@ -2,6 +2,7 @@
 
 🖨 A simple JSON to HTML printer
 
+[Project Board](https://github.com/SeanMcP/johannes/projects/1)
 
 ## Documentation
 
