@@ -36,10 +36,20 @@ function fetchData() {
 // Utility functions
 // ========================================
 
-function createDivWithClass(htmlClass) {
-    var tag = document.createElement('div')
-    tag.classList.add(htmlClass)
+function createElementWithClass(element, htmlClass) {
+    var tag = document.createElement(element)
+    if (Array.isArray(htmlClass)) {
+        htmlClass.forEach(function(singleClass) {
+            tag.classList.add(singleClass)
+        })
+    } else {
+        tag.classList.add(htmlClass)
+    }
     return tag
+}
+
+function createDivWithClass(htmlClass) {
+    return createElementWithClass('div', htmlClass)
 }
 
 function createExternalLink(href) {
@@ -159,8 +169,7 @@ function printContactForm(obj, variables) {
         }
     }
 
-    var subject = createDivWithClass('subject')
-    subject.classList.add('field')
+    var subject = createDivWithClass(['subject', 'field'])
     var subjectLabel = document.createElement('label')
     subjectLabel.htmlFor = 'contact-subject'
     subjectLabel.textContent = 'Subject'
@@ -174,8 +183,7 @@ function printContactForm(obj, variables) {
 
     form.appendChild(subject)
 
-    var body = createDivWithClass('body')
-    body.classList.add('field')
+    var body = createDivWithClass(['body', 'field'])
     var bodyLabel = document.createElement('label')
     bodyLabel.htmlFor = 'contact-body'
     bodyLabel.textContent = 'Message'
@@ -190,8 +198,7 @@ function printContactForm(obj, variables) {
 
     var footer = createDivWithClass('footer')
 
-    var button = document.createElement('span')
-    button.classList.add('button', 'disabled')
+    var button = createElementWithClass('span', ['button', 'disabled'])
     button.style.backgroundColor = obj.options && obj.options.buttonColor
         ? obj.options.buttonColor
         : variables.primaryColor
@@ -332,18 +339,15 @@ function printHero(obj, variables) {
     hero.style.backgroundColor = variables.contentBackground
     hero.style.backgroundImage = `url(${obj.data.background})`
 
-    var title = document.createElement('div')
-    title.classList.add('title')
+    var title = createDivWithClass('title')
     title.innerHTML = obj.data.title
     hero.appendChild(title)
 
-    var tag = document.createElement('div')
-    tag.classList.add('tag')
+    var tag = createDivWithClass('tag')
     tag.innerHTML = obj.data.tag
     hero.appendChild(tag)
 
-    var action = document.createElement('div')
-    action.classList.add('call-to-action')
+    var action = createDivWithClass('call-to-action')
     var link = createExternalLink(obj.data.action.href)
     link.classList.add('button')
     link.style.backgroundColor = obj.options && obj.options.buttonColor
@@ -395,17 +399,14 @@ function printHours(obj, variables) {
     days.forEach(function(day) {
         var row = createDivWithClass('row')
 
-        var daySpan = document.createElement('span')
-        daySpan.classList.add('day')
+        var daySpan = createElementWithClass('span', 'day')
         daySpan.textContent = day[0].toUpperCase() + day.slice(1)
         row.appendChild(daySpan)
 
-        var divider = document.createElement('span')
-        divider.classList.add('divider')
+        var divider = createElementWithClass('span', 'divider')
         row.appendChild(divider)
 
-        var time = document.createElement('span')
-        time.classList.add('time')
+        var time = createElementWithClass('span', 'time')
         time.textContent = obj.data[day]
         row.appendChild(time)
 
@@ -482,15 +483,14 @@ function printSocialIcons(obj, variables) {
     for (var platform in obj.data) {
         var aTag = createExternalLink(obj.data[platform])
         
-        var iTag = document.createElement('i')
-        iTag.title = platform[0].toUpperCase() + platform.slice(1)
-        iTag.classList.add(
+        var iTag = createElementWithClass('i', [
             'fab',
             `fa-${platform}`,
-            obj.options && obj.options.size
-                ? `fa-${obj.options.size}`
-                : ''
-        )
+            obj.options && obj.options.size ?
+                `fa-${obj.options.size}` :
+                '_'
+        ])
+        iTag.title = platform[0].toUpperCase() + platform.slice(1)
 
         aTag.appendChild(iTag)
         social.appendChild(aTag)
