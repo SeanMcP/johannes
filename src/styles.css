@@ -225,7 +225,27 @@ body {
 }
 
 .logo {
+    align-items: center;
     display: flex;
+    padding: 2rem;
+}
+
+.logo img {
+    max-height: 10rem;
+}
+
+.logo .details {
+    padding: 0 1rem;
+}
+
+.logo .details h1 {
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.logo .details p {
+    font-style: italic;
+    margin: 0;
 }
 
 .map {

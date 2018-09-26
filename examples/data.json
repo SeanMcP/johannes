@@ -12,12 +12,6 @@
             }
         },
         {
-            "type": "text",
-            "data": {
-                "heading": "Johannes Ltd. Co."
-            }
-        },
-        {
             "type": "hero",
             "data": {
                 "background": "https://placebear.com/g/800/800",
@@ -29,7 +23,6 @@
                 }
             },
             "options": {
-                "textAlign": "center",
                 "textColor": "white"
             }
         },

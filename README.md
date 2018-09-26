@@ -125,8 +125,8 @@ Data:
 Options:
 
 - `backgroundColor: valid HTML color (default: contentBackground)`
+- `centerContent: boolean (default: false)`
 - `textColor: valid HTML color (default: inherit)`
-- `textAlign: enum('center', 'left', 'right') (default: left)`
 
 #### Social
 

@@ -450,7 +450,6 @@ function printLogo(obj, variables) {
     details.appendChild(title)
 
     var tagline = document.createElement('p')
-    tagline.classList.add('tagline')
     tagline.textContent = obj.data.tagline
     details.appendChild(tagline)
 
@@ -458,10 +457,12 @@ function printLogo(obj, variables) {
     
     if (obj.options) {
         if (obj.options.textColor) {
-            html.style.color = obj.options.textColor
+            logo.style.color = obj.options.textColor
         }
-        if (obj.options.textAlign) {
-            html.style.textAlign = obj.options.textAlign
+        if (obj.options.centerContent) {
+            logo.style.flexDirection = 'column'
+            details.style.marginTop = '1rem'
+            details.style.textAlign = 'center'
         }
     }
 
