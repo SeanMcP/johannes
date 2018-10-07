@@ -81,6 +81,13 @@ function setPageTitle(title) {
     tag.textContent = title
 }
 
+function addCustomFont(family) {
+    var tag = document.createElement('link')
+    tag.rel = 'stylesheet'
+    tag.href = `https://fonts.googleapis.com/css?family=${family}`
+    document.querySelector('head').appendChild(tag)
+}
+
 // ========================================
 // Print content
 // ========================================
@@ -575,6 +582,9 @@ function printContent(content, variables) {
 
 function johannes(data) {
     setPageTitle(data.meta.title)
+    if (data.theme.customFont) {
+        addCustomFont(data.theme.customFont)
+    }
     addGlobalStyles(data.theme.styles)
     printContent(data.content, data.theme.variables)
     appTag.classList.add('ready')

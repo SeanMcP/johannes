@@ -1,6 +1,6 @@
 {
     "meta": {
-        "company": "Johannes Ltd. Co."
+        "title": "Johannes Ltd. Co."
     },
     "content": [
         {
@@ -181,9 +181,10 @@
         }
     ],
     "theme": {
+        "customFont": "Roboto",
         "styles": {
             "backgroundColor": "#333",
-            "fontFamily": "Helvetica, Arial, sans-serif"
+            "fontFamily": "Roboto, Helvetica, Arial, sans-serif"
         },
         "variables": {
             "contentBackground": "white",
