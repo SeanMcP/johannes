@@ -85,9 +85,21 @@ function addCustomFont(family) {
     var tag = document.createElement('link')
     tag.rel = 'stylesheet'
     tag.href = `https://fonts.googleapis.com/css?family=${family}`
-    document.querySelector('head').appendChild(tag)
+    headTag.appendChild(tag)
 }
 
+function addFavicons() {
+    var sizes = ['16x16', '32x32']
+    sizes.forEach(function(size) {
+        var tag = document.createElement('link')
+        tag.rel = 'icon'
+        tag.type = 'image/png'
+        tag.href = `assets/favicon-${size}.png`
+        sizes = size
+
+        headTag.appendChild(tag)
+    })
+}
 // ========================================
 // Print content
 // ========================================
@@ -585,6 +597,7 @@ function johannes(data) {
     if (data.theme.customFont) {
         addCustomFont(data.theme.customFont)
     }
+    addFavicons()
     addGlobalStyles(data.theme.styles)
     printContent(data.content, data.theme.variables)
     appTag.classList.add('ready')

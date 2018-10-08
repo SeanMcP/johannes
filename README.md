@@ -8,6 +8,18 @@
 
 Johannes prints a valid, mobile-first, and responsive HTML page based on some simple JSON input. All you need is a `data.json` file and an `index.html` referencing Johannes' `index.js` and `styles.css`.
 
+### Requirements
+
+#### Favicons
+
+Johannes looks for two `PNG` favicons in an `assets/` directory: 16x16, and 32x32. They can be [generated here](http://www.favicomatic.com/).
+
+```
+assets/
+ +- favicon-16x16.png
+ +- favicon-32x32.png
+```
+
 ### Content types
 
 #### Address
@@ -186,3 +198,4 @@ The following are available for all content types:
 # Resources
 
 - [Autoprefixer](https://autoprefixer.github.io/)
+- [Favic-o-matic](http://www.favicomatic.com/)
