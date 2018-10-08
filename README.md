@@ -182,3 +182,7 @@ Options:
 The following are available for all content types:
 
 - `stacked: boolean (removes padding-top on block)`
+
+# Resources
+
+- [Autoprefixer](https://autoprefixer.github.io/)

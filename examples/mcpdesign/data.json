@@ -1,13 +1,13 @@
 {
     "meta": {
-        "title": "Johannes Ltd. Co."
+        "title": "McPherson Design"
     },
     "content": [
         {
             "type": "logo",
             "data": {
                 "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/800px-Gutenberg.jpg",
-                "title": "Johannes Ltd. Co.",
+                "title": "McPherson Design",
                 "tagline": "Printing for everyone."
             }
         },
@@ -27,84 +27,11 @@
             }
         },
         {
-            "type": "gallery",
-            "data": {
-                "title": "Gallery",
-                "images": [
-                    {
-                        "src": "assets/gallery/bike1.jpg",
-                        "description": "A family riding a bike"
-                    },
-                    {
-                        "src": "assets/gallery/sports1.jpg",
-                        "description": "A man rock climbing"
-                    },
-                    {
-                        "src": "assets/gallery/bugs1.jpg",
-                        "description": "A line of ants on a leaf"
-                    },
-                    {
-                        "src": "assets/gallery/city1.jpg",
-                        "description": "A city on the riverside"
-                    },
-                    {
-                        "src": "assets/gallery/food1.jpg",
-                        "description": "Cheesy bread with dipping sauce"
-                    },
-                    {
-                        "src": "assets/gallery/tiger1.jpg",
-                        "description": "A siberian tiger lounging"
-                    }
-                ]
-            },
-            "options": {
-                "backgroundColor": "black",
-                "textAlign": "center",
-                "textColor": "white"
-            }
-        },
-        {
             "type": "contact",
             "data": {
                 "email": "contact@mcp.design",
                 "title": "Contact us",
                 "message": "Use the form below to send us an email. We'd love to hear from you!"
-            }
-        },
-        {
-            "type": "hours",
-            "data": {
-                "sunday": "Closed",
-                "monday": "9:00-5:00",
-                "tuesday": "9:00-5:00",
-                "wednesday": "11:00-7:00",
-                "thursday": "9:00-5:00",
-                "friday": "9:00-5:00",
-                "saturday": "10:00-2:00"
-            },
-            "options": {
-                "backgroundColor": "orange",
-                "mode": "dark",
-                "textAlign": "center"
-            }
-        },
-        {
-            "type": "address",
-            "data": "5600 Spalding Dr #921501<br>Peachtree Corners, GA 30010",
-            "options": {
-                "backgroundColor": "white",
-                "map": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.893925900155!2d-84.2254919!3d33.9695658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a101a1690a4f%3A0x67b69573bb2a2a50!2s5600+Spalding+Dr%2C+Norcross%2C+GA+30092!5e0!3m2!1sen!2sus!4v1537063006151",
-                "textAlign": "center"
-            }
-        },
-        {
-            "type": "window",
-            "data": {
-                "url": "https://placebear.com/g/800/800"
-            },
-            "options": {
-                "height": "200px",
-                "parallax": true
             }
         },
         {
@@ -167,10 +94,9 @@
         {
             "type": "social",
             "data": {
-                "twitter": "https://twitter.com/mcpcodes",
                 "linkedin": "https://linkedin.com/company/mcpdesign",
                 "instagram": "https://instagram.com/mcp.design",
-                "facebook": "https://facebook.com/mcpdesignga"
+                "facebook": "https://facebook.com/mcpdesignllc"
             },
             "options": {
                 "backgroundColor": "transparent",
@@ -181,14 +107,14 @@
         }
     ],
     "theme": {
-        "customFont": "Source Sans Pro",
+        "customFont": "Nunito",
         "styles": {
-            "backgroundColor": "#333",
-            "fontFamily": "'Source Sans Pro', Helvetica, Arial, sans-serif"
+            "backgroundColor": "#f1f1f1",
+            "fontFamily": "'Nunito', Helvetica, Arial, sans-serif"
         },
         "variables": {
             "contentBackground": "white",
-            "primaryColor": "orange"
+            "primaryColor": "salmon"
         }
     }
 }
