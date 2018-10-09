@@ -16,8 +16,8 @@ Johannes looks for two `PNG` favicons in an `assets/` directory: 16x16, and 32x3
 
 ```
 assets/
- +- favicon-16x16.png
- +- favicon-32x32.png
+ +-- favicon-16x16.png
+ +-- favicon-32x32.png
 ```
 
 ### Content types
