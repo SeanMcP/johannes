@@ -30,6 +30,43 @@ function fetchData() {
             johannes(res)
         })
         // Handle fetch error
+        .catch(function(err) {
+            printError(err)
+        })
+        .finally(function() {
+            appTag.classList.add('ready')
+            loading.classList.add('exit')
+            setTimeout(function () {
+                document.body.removeChild(loading)
+            }, 1000)
+        })
+}
+
+function printError(errorMessage) {
+    var error = createDivWithClass('error')
+    var heading = document.createElement('h1')
+    heading.textContent = "Uh oh!"
+    error.appendChild(heading)
+
+    var pTag = document.createElement('p')
+    pTag.textContent = "Somewhen went wrong when loading loading the site. Try again later."
+    error.appendChild(pTag)
+
+    var detailsTag = document.createElement('details')
+    var summaryTag = document.createElement('summary')
+    summaryTag.textContent = "Site admin:"
+    detailsTag.appendChild(summaryTag)
+
+    var message = createElementWithClass('p', 'error-message')
+    message.textContent = errorMessage
+    detailsTag.appendChild(message)
+    
+    var suggestion = document.createElement('p')
+    suggestion.innerHTML = "Does this directory have a <code>data.json</code> file?"
+    detailsTag.appendChild(suggestion)
+    
+    error.appendChild(detailsTag)
+    appTag.appendChild(error)
 }
 
 // ========================================
@@ -600,11 +637,11 @@ function johannes(data) {
     addFavicons()
     addGlobalStyles(data.theme.styles)
     printContent(data.content, data.theme.variables)
-    appTag.classList.add('ready')
-    loading.classList.add('exit')
-    setTimeout(function() {
-        document.body.removeChild(loading)
-    }, 1000)
+    // appTag.classList.add('ready')
+    // loading.classList.add('exit')
+    // setTimeout(function() {
+    //     document.body.removeChild(loading)
+    // }, 1000)
 }
 
 fetchData()

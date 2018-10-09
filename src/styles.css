@@ -33,6 +33,7 @@ body {
 
 .address,
 .contact,
+.error,
 .gallery,
 .hero,
 .hours,
@@ -105,6 +106,42 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+}
+
+.error {
+    background: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding-bottom: 2em;
+}
+
+.error h1 {
+    text-align: center;
+}
+
+.error summary {
+    cursor: pointer;
+}
+
+.error details code,
+.error .error-message {
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    font-family: Menlo, Monaco, monospace;
+    font-size: 0.85em;
+}
+
+.error .error-message {
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+.error details code {
+    border-radius: 0.25em;
+    padding: 0.125em 0.25em;
+}
+
+.error details p:last-child {
+    margin-bottom: 0;
 }
 
 .gallery .viewer {
