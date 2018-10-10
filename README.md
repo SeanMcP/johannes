@@ -24,7 +24,13 @@ assets/
 
 #### Address
 
-Street address. Use `<br>` to format correctly
+Street address.
+
+Data:
+
+```json
+"data": ["P. Sherman", "42 Wallaby Way", "Sydney"]
+```
 
 Options:
 

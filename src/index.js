@@ -159,7 +159,14 @@ function printAddress(obj) {
     address.appendChild(heading)
 
     var pTag = document.createElement('p')
-    pTag.innerHTML = obj.data
+    obj.data.forEach(function(line, i) {
+        var tag = document.createElement('span')
+        tag.textContent = line;
+        pTag.appendChild(tag)
+        if (i < obj.data.length - 1) {
+            pTag.appendChild(document.createElement('br'))
+        }
+    })
 
     address.appendChild(pTag)
 
