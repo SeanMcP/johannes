@@ -73,6 +73,14 @@ function printError(errorMessage) {
 // Utility functions
 // ========================================
 
+function createIcon(classes) {
+    var tag = document.createElement('i')
+    classes.split(' ').forEach(function(className) {
+        tag.classList.add(className)
+    })
+    return tag
+}
+
 function createElementWithClass(element, htmlClass) {
     var tag = document.createElement(element)
     if (Array.isArray(htmlClass)) {
@@ -192,6 +200,45 @@ function printAddress(obj) {
     }
 
     appTag.appendChild(address)
+}
+
+function printContact(obj, variables) {
+    var contact = createDivWithClass('contact')
+    contact.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? obj.options.backgroundColor
+        : variables.contentBackground
+    
+    var icons = obj.options.icons
+
+    var title = document.createElement('h2')
+    title.textContent = obj.data.title
+    contact.appendChild(title)
+
+    if (obj.data.phone) {
+        var phone = createDivWithClass('phone')
+        if (icons) {
+            phone.appendChild(createIcon('fas fa-phone'))
+        }
+        var link = document.createElement('a')
+        link.textContent = obj.data.phone
+        link.href = `tel:+1${obj.data.phone.replace(/\D/g, '')}`
+        phone.appendChild(link)
+        contact.appendChild(phone)
+    }
+
+    if (obj.data.email) {
+        var email = createDivWithClass('email')
+        if (icons) {
+            email.appendChild(createIcon('fas fa-envelope'))
+        }
+        var link = document.createElement('a')
+        link.textContent = obj.data.email
+        link.href = `mailto:${obj.data.email}`
+        email.appendChild(link)
+        contact.appendChild(email)
+    }
+
+    appTag.appendChild(contact)
 }
 
 function printForm(obj, variables) {
@@ -604,6 +651,7 @@ function printWindow(obj) {
 function printContent(content, variables) {
     var functionHash = {
         address: printAddress,
+        contact: printContact,
         form: printForm,
         gallery: printGallery,
         hero: printHero,

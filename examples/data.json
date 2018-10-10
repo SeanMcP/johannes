@@ -64,6 +64,19 @@
             }
         },
         {
+            "type": "contact",
+            "data": {
+                "title": "Contact us",
+                "email": "contact@mcp.design",
+                "phone": "(814) 732-0272"
+            },
+            "options": {
+                "backgroundColor": "orange",
+                "icons": true,
+                "textAlign": "center"
+            }
+        },
+        {
             "type": "form",
             "data": {
                 "email": "contact@mcp.design",
