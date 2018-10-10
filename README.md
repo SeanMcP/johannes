@@ -38,7 +38,7 @@ Options:
 - `map: embed iframe src from Google Maps`
 - `textAlign: enum('center', 'left', 'right')`
 
-#### Contact
+#### Form
 
 A simple contact form that uses `mailto:` to trigger an email.
 

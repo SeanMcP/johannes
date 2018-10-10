@@ -27,7 +27,7 @@
             }
         },
         {
-            "type": "contact",
+            "type": "form",
             "data": {
                 "email": "contact@mcp.design",
                 "title": "Contact us",

@@ -194,24 +194,24 @@ function printAddress(obj) {
     appTag.appendChild(address)
 }
 
-function printContactForm(obj, variables) {
-    var contact = createDivWithClass('contact')
-    contact.style.backgroundColor = obj.options && obj.options.backgroundColor
+function printForm(obj, variables) {
+    var form = createDivWithClass('form')
+    form.style.backgroundColor = obj.options && obj.options.backgroundColor
         ? obj.options.backgroundColor
         : variables.contentBackground
 
     var title = document.createElement('h2')
     title.textContent = obj.data.title
-    contact.appendChild(title)
+    form.appendChild(title)
 
     var message = document.createElement('p')
     message.textContent = obj.data.message
-    contact.appendChild(message)
+    form.appendChild(message)
 
-    var form = createDivWithClass('form')
-    form.onchange = function() {
-        var subjectVal = document.getElementById('contact-subject').value
-        var bodyVal = document.getElementById('contact-body').value
+    var formTag = document.createElement('form')
+    formTag.onchange = function() {
+        var subjectVal = document.getElementById('form-subject').value
+        var bodyVal = document.getElementById('form-body').value
         var button = this.querySelector('.button')
 
         if (subjectVal && bodyVal) {
@@ -225,39 +225,30 @@ function printContactForm(obj, variables) {
         }
     }
 
-    function dismissError(e) {
-        if (e.target.value && this.classList.contains('error')) {
-            this.classList.remove('error')
-            document.querySelector('.contact .message').textContent = ''
-        }
-    }
-
     var subject = createDivWithClass(['subject', 'field'])
     var subjectLabel = document.createElement('label')
-    subjectLabel.htmlFor = 'contact-subject'
+    subjectLabel.htmlFor = 'form-subject'
     subjectLabel.textContent = 'Subject'
     subject.appendChild(subjectLabel)
 
     var subjectInput = document.createElement('input')
-    subjectInput.id = 'contact-subject'
+    subjectInput.id = 'form-subject'
     subjectInput.type = 'text'
-    subjectInput.onchange = dismissError
     subject.appendChild(subjectInput)
 
-    form.appendChild(subject)
+    formTag.appendChild(subject)
 
     var body = createDivWithClass(['body', 'field'])
     var bodyLabel = document.createElement('label')
-    bodyLabel.htmlFor = 'contact-body'
+    bodyLabel.htmlFor = 'form-body'
     bodyLabel.textContent = 'Message'
     body.appendChild(bodyLabel)
 
     var bodyInput = document.createElement('textarea')
-    bodyInput.id = 'contact-body'
-    bodyInput.onchange = dismissError
+    bodyInput.id = 'form-body'
     body.appendChild(bodyInput)
     
-    form.appendChild(body)
+    formTag.appendChild(body)
 
     var footer = createDivWithClass('footer')
 
@@ -268,11 +259,11 @@ function printContactForm(obj, variables) {
     button.style.color = obj.options && obj.options.buttonTextColor
         ? obj.options.buttonTextColor
         : 'white'
-    button.id = 'contact-submit'
+    button.id = 'form-submit'
     button.textContent = 'Send email'
     button.onclick = function() {
-        var subject = document.getElementById('contact-subject')
-        var body = document.getElementById('contact-body')
+        var subject = document.getElementById('form-subject')
+        var body = document.getElementById('form-body')
 
         if (subject.value && body.value) {
             var anchor = document.createElement('a')
@@ -286,9 +277,9 @@ function printContactForm(obj, variables) {
     }
     footer.appendChild(button)
 
-    form.appendChild(footer)
+    formTag.appendChild(footer)
 
-    contact.appendChild(form)
+    form.appendChild(formTag)
 
     if (obj.options) {
         if (obj.options.textAlign) {
@@ -304,7 +295,7 @@ function printContactForm(obj, variables) {
         }
     }
 
-    appTag.appendChild(contact)
+    appTag.appendChild(form)
 }
 
 function printGallery(obj, variables) {
@@ -613,7 +604,7 @@ function printWindow(obj) {
 function printContent(content, variables) {
     var functionHash = {
         address: printAddress,
-        contact: printContactForm,
+        form: printForm,
         gallery: printGallery,
         hero: printHero,
         hours: printHours,

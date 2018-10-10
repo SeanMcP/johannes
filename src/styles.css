@@ -32,7 +32,7 @@ body {
 }
 
 .address,
-.contact,
+.form,
 .error,
 .gallery,
 .hero,
@@ -65,11 +65,11 @@ body {
     filter: brightness(1.1);
 }
 
-.form {
+.form form {
     padding-bottom: 1rem;
 }
 
-.form .field {
+.form form .field {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -80,12 +80,12 @@ body {
     margin-bottom: 1rem;
 }
 
-.form label {
+.form form label {
     margin-bottom: 0.5rem;
 }
 
-.form input,
-.form textarea {
+.form form input,
+.form form textarea {
     background: transparent;
     border: 1px solid rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25);
@@ -95,11 +95,11 @@ body {
     padding: 0.5rem;
 }
 
-.form textarea {
+.form form textarea {
     resize: vertical;
 }
 
-.form .footer {
+.form form .footer {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -413,6 +413,7 @@ REUSABLE CLASSES
 */
 
 .button {
+    cursor: pointer;
     font-weight: bold;
     padding: 1rem;
 }
