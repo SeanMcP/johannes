@@ -15,8 +15,8 @@
             "type": "hero",
             "data": {
                 "background": "https://placebear.com/g/800/800",
-                "title": "<h1>Making a difference</h1>",
-                "tag": "<p>You can do amazing things; you just need somewhere to begin.</p>",
+                "title": "Making a difference",
+                "body": ["You can do amazing things; you just need somewhere to begin.", "Lorem ipsum dolor sit amet..."],
                 "action": {
                     "text": "Start here",
                     "href": "https://github.com"

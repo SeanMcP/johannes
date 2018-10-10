@@ -402,13 +402,15 @@ function printHero(obj, variables) {
     hero.style.backgroundColor = variables.contentBackground
     hero.style.backgroundImage = `url(${obj.data.background})`
 
-    var title = createDivWithClass('title')
-    title.innerHTML = obj.data.title
+    var title = document.createElement('h1')
+    title.textContent = obj.data.title
     hero.appendChild(title)
 
-    var tag = createDivWithClass('tag')
-    tag.innerHTML = obj.data.tag
-    hero.appendChild(tag)
+    obj.data.body.forEach(function(sentence) {
+        var tag = document.createElement('p')
+        tag.textContent = sentence
+        hero.appendChild(tag)
+    })
 
     var action = createDivWithClass('call-to-action')
     var link = createExternalLink(obj.data.action.href)

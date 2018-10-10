@@ -89,7 +89,19 @@ Options:
 
 #### Hero
 
-Background image with text/call-to-action
+Background image with text, call-to-action
+
+```json
+"data": {
+    "background": "https://path.to/image",
+    "title": "Heading",
+    "body": ["Paragraph One", "Paragraph Two"],
+    "action": {
+        "text": "Button text",
+        "href": "https://action.button/destination"
+    }
+}
+```
 
 Options:
 
