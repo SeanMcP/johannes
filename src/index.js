@@ -214,28 +214,51 @@ function printContact(obj, variables) {
     title.textContent = obj.data.title
     contact.appendChild(title)
 
-    if (obj.data.phone) {
-        var phone = createDivWithClass('phone')
-        if (icons) {
-            phone.appendChild(createIcon('fas fa-phone'))
+    var options = createDivWithClass('options')
+    function createContactOption(name, href) {
+        const iconHash = {
+            address: 'fa-map-marker-alt',
+            phone: 'fa-phone',
+            email: 'fa-envelope'
         }
-        var link = document.createElement('a')
-        link.textContent = obj.data.phone
-        link.href = `tel:+1${obj.data.phone.replace(/\D/g, '')}`
-        phone.appendChild(link)
-        contact.appendChild(phone)
+        var tag = createDivWithClass('option')
+        if (icons) {
+            tag.appendChild(createIcon(`fas fa-fw ${iconHash[name]}`))
+        }
+        var text = document.createElement(href ? 'a' : 'span')
+        text.textContent = obj.data[name]
+        if (href) {
+            text.href = href
+        }
+        tag.appendChild(text)
+        options.appendChild(tag)
+    }
+
+    if (obj.data.address) {
+        createContactOption('address')
+    }
+
+    if (obj.data.phone) {
+        createContactOption('phone', `tel:+1${obj.data.phone.replace(/\D/g, '')}`)
     }
 
     if (obj.data.email) {
-        var email = createDivWithClass('email')
-        if (icons) {
-            email.appendChild(createIcon('fas fa-envelope'))
+        createContactOption('email', `mailto:${obj.data.email}`)
+    }
+
+    contact.appendChild(options)
+
+    if (obj.options) {
+        if (obj.options.alignment) {
+            var align = obj.options.alignment
+            options.classList.add(align)
+            if (align === 'center' || align === 'inline-center') {
+                contact.style.textAlign = 'center'
+            }
         }
-        var link = document.createElement('a')
-        link.textContent = obj.data.email
-        link.href = `mailto:${obj.data.email}`
-        email.appendChild(link)
-        contact.appendChild(email)
+        if (obj.options.textColor) {
+            contact.style.color = obj.options.textColor
+        }
     }
 
     appTag.appendChild(contact)

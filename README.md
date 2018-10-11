@@ -38,6 +38,28 @@ Options:
 - `map: embed iframe src from Google Maps`
 - `textAlign: enum('center', 'left', 'right')`
 
+#### Contact
+
+A list of contact options
+
+Data:
+
+```json
+"data": {
+    "title": "Contact us",
+    "address": "100 Street Address, City, State 000001",
+    "email": "your@email.address",
+    "phone": "(555) 867-5309"
+}
+```
+
+Options:
+
+- `alignment: enum('center', 'inline', 'inline-center') (default: inline left)`
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `icons: boolean (default: false)`
+- `textColor: valid HTML color (default: contentBackground)`
+
 #### Form
 
 A simple contact form that uses `mailto:` to trigger an email.

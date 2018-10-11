@@ -71,16 +71,16 @@
                 "phone": "(814) 732-0272"
             },
             "options": {
+                "alignment": "inline-center",
                 "backgroundColor": "orange",
-                "icons": true,
-                "textAlign": "center"
+                "icons": true
             }
         },
         {
             "type": "form",
             "data": {
                 "email": "contact@mcp.design",
-                "title": "Contact us",
+                "title": "Send us a note",
                 "message": "Use the form below to send us an email. We'd love to hear from you!"
             }
         },

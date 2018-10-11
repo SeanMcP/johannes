@@ -66,6 +66,53 @@ body {
     filter: brightness(1.1);
 }
 
+.contact {
+    padding-bottom: 2em;
+}
+
+.contact .options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact .options.center {
+    align-items: center;
+}
+
+.contact .options.inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.contact .options.inline-center {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact .options .option {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0.25em 0;
+}
+
+.contact .options .option i {
+    margin-right: 0.5em;
+}
+
+.contact .options.inline .option:not(:last-of-type),
+.contact .options.inline-center .option:not(:last-of-type) {
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+    padding-right: 1em;
+    margin-right: 1em;
+}
+
 .form form {
     padding-bottom: 1rem;
 }
