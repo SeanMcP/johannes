@@ -119,6 +119,10 @@ function createBlock(name, obj, variables) {
         }
         block.appendChild(heading)
     }
+
+    if (obj.options && obj.options.mode) {
+        block.classList.add(obj.options.mode)
+    }
     
     return block
 }
@@ -188,17 +192,10 @@ function addFontAwesome() {
 }
 
 function printAddress(obj, variables) {
-    var address = createDivWithClass('address')
-    address.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-
-    var heading = document.createElement('h2')
-    heading.textContent = "Address"
-    address.appendChild(heading)
+    var address = createBlock('address', obj, variables)
 
     var pTag = document.createElement('p')
-    obj.data.forEach(function(line, i) {
+    obj.data.address.forEach(function(line, i) {
         var tag = document.createElement('span')
         tag.textContent = line;
         pTag.appendChild(tag)
@@ -231,16 +228,9 @@ function printAddress(obj, variables) {
 }
 
 function printContact(obj, variables) {
-    var contact = createDivWithClass('contact')
-    contact.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-    
-    var icons = obj.options.icons
+    var contact = createBlock('contact', obj, variables)
 
-    var title = document.createElement('h2')
-    title.textContent = obj.data.heading
-    contact.appendChild(title)
+    var icons = obj.options.icons
 
     var options = createDivWithClass('options')
     function createContactOption(name, href) {
@@ -286,7 +276,7 @@ function printContact(obj, variables) {
             }
         }
         if (obj.options.textColor) {
-            contact.style.color = obj.options.textColor
+            contact.style.color = getColor(obj.options.textColor, variables)
         }
     }
 
@@ -294,14 +284,7 @@ function printContact(obj, variables) {
 }
 
 function printForm(obj, variables) {
-    var form = createDivWithClass('form')
-    form.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-
-    var title = document.createElement('h2')
-    title.textContent = obj.data.heading
-    form.appendChild(title)
+    var form = createBlock('form', obj, variables)
 
     var message = document.createElement('p')
     message.textContent = obj.data.message
@@ -383,7 +366,6 @@ function printForm(obj, variables) {
     if (obj.options) {
         if (obj.options.textAlign) {
             var textAlign = obj.options.textAlign
-            title.style.textAlign = textAlign
             var justifyContent
             if (textAlign === 'center') {
                 justifyContent = textAlign
@@ -398,19 +380,7 @@ function printForm(obj, variables) {
 }
 
 function printGallery(obj, variables) {
-    var gallery = createDivWithClass('gallery')
-    gallery.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-
-    if (obj.data.heading) {
-        var title = document.createElement('h2')
-        title.textContent = obj.data.heading
-        if (obj.options && obj.options.textAlign) {
-            title.style.textAlign = obj.options.textAlign
-        }
-        gallery.appendChild(title)
-    }
+    var gallery = createBlock('gallery', obj, variables)
 
     galleryImages = obj.data.images
 
@@ -488,15 +458,8 @@ function printGallery(obj, variables) {
 }
 
 function printHero(obj, variables) {
-    var hero = createDivWithClass('hero')
-    hero.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
+    var hero = createBlock('hero', obj, variables)
     hero.style.backgroundImage = `url(${obj.data.background})`
-
-    var title = document.createElement('h1')
-    title.textContent = obj.data.heading
-    hero.appendChild(title)
 
     obj.data.body.forEach(function(sentence) {
         var tag = document.createElement('p')
@@ -530,23 +493,7 @@ function printHero(obj, variables) {
 }
 
 function printHours(obj, variables) {
-    var hours = createDivWithClass('hours')
-    if (obj.options && obj.options.mode) {
-        hours.classList.add(obj.options.mode)
-    }
-    hours.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-
-    var heading = document.createElement('h2')
-    heading.textContent = "Hours"
-    hours.appendChild(heading)
-
-    if (obj.options) {
-        if (obj.options.textAlign) {
-            heading.style.textAlign = obj.options.textAlign
-        }
-    }
+    var hours = createBlock('hours', obj, variables)
 
     var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
     
@@ -571,10 +518,8 @@ function printHours(obj, variables) {
 }
 
 function printHtml(obj, variables) {
-    var html = createDivWithClass('html')
-    html.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
+    var html = createBlock('html', obj, variables)
+
     if (obj.options) {
         if (obj.options.textColor) {
             html.style.color = getColor(obj.options.textColor, variables)
@@ -583,12 +528,13 @@ function printHtml(obj, variables) {
             html.style.textAlign = obj.options.textAlign
         }
     }
+
     html.innerHTML = obj.data.innerHTML
     appTag.appendChild(html)
 }
 
 function printLogo(obj, variables) {
-    var logo = createDivWithClass('logo')
+    var logo = createElementWithClass('section', 'logo')
     logo.style.backgroundColor = obj.options && obj.options.backgroundColor
         ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
@@ -600,9 +546,9 @@ function printLogo(obj, variables) {
 
     var details = createDivWithClass('details')
 
-    var title = document.createElement('h1')
-    title.textContent = obj.data.heading
-    details.appendChild(title)
+    var heading = document.createElement('h1')
+    heading.textContent = obj.data.heading
+    details.appendChild(heading)
 
     var tagline = document.createElement('p')
     tagline.textContent = obj.data.tagline
@@ -626,16 +572,10 @@ function printLogo(obj, variables) {
 
 function printSocialIcons(obj, variables) {
     addFontAwesome()
-    var social = createDivWithClass('social')
-    if (obj.options && obj.options.mode) {
-        social.classList.add(obj.options.mode)
-    }
-    social.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
+    var social = createBlock('social', obj, variables)
 
-    for (var platform in obj.data) {
-        var aTag = createExternalLink(obj.data[platform])
+    for (var platform in obj.data.platforms) {
+        var aTag = createExternalLink(obj.data.platforms[platform])
         
         var iTag = createElementWithClass('i', [
             'fab',
@@ -654,16 +594,7 @@ function printSocialIcons(obj, variables) {
 }
 
 function printText(obj, variables) {
-    var text = createDivWithClass('text')
-    text.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-    
-    if (obj.data.heading) {
-        var header = document.createElement('h1')
-        header.textContent = obj.data.heading
-        text.appendChild(header)
-    }
+    var text = createBlock('text', obj, variables)
 
     if (obj.data.paragraphs) {
         obj.data.paragraphs.forEach(function(paragraph) {
@@ -686,7 +617,7 @@ function printText(obj, variables) {
 }
 
 function printWindow(obj) {
-    var win = createDivWithClass('window')
+    var win = createElementWithClass('section', 'window')
     if (obj.options) {
         if (obj.options.height) {
             win.style.height = obj.options.height

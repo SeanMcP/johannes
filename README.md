@@ -29,7 +29,10 @@ Street address.
 Data:
 
 ```json
-"data": ["P. Sherman", "42 Wallaby Way", "Sydney"]
+"data": {
+    "heading": "Address",
+    "address": ["P. Sherman", "42 Wallaby Way", "Sydney"]
+}
 ```
 
 Options:
@@ -136,6 +139,21 @@ Options:
 
 A table of business hours
 
+Data:
+
+```json
+"data": {
+    "heading": "Hours",
+    "sunday": "Closed",
+    "monday": "9:00-5:00",
+    "tuesday": "9:00-5:00",
+    "wednesday": "11:00-7:00",
+    "thursday": "9:00-5:00",
+    "friday": "9:00-5:00",
+    "saturday": "10:00-2:00"
+}
+```
+
 Options:
 
 - `backgroundColor: valid HTML color (default: contentBackground)`
@@ -183,6 +201,19 @@ Options:
 #### Social
 
 Social media icons
+
+Data:
+
+```json
+"data": {
+    "platforms": {
+        "twitter": "https://twitter.com/mcpcodes",
+        "linkedin": "https://linkedin.com/company/mcpdesign",
+        "instagram": "https://instagram.com/mcp.design",
+        "facebook": "https://facebook.com/mcpdesignga"
+    }
+}
+```
 
 Options:
 
