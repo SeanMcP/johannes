@@ -8,6 +8,19 @@
 
 Johannes prints a valid, mobile-first, and responsive HTML page based on some simple JSON input. All you need is a `data.json` file and an `index.html` referencing Johannes' `index.js` and `styles.css`.
 
+### Overview
+
+Johannes looks for a single `data.json` file from which to build a static site. That file contains basic information for building sections of content, or blocks, of the website. There are only two requirements for adding a new block to a website: `type` and `data`.
+
+```json
+{
+    "type": "blockType",
+    "data": { ...blockData }
+}
+```
+
+To add a new block to a site, simply add a new object like the one above `content` array in `data.json`. See the API below for specific data requirements for each block type.
+
 ### Requirements
 
 #### Favicons
@@ -20,7 +33,7 @@ assets/
  +-- favicon-32x32.png
 ```
 
-### Content types
+### Block types
 
 #### Address
 
