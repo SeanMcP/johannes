@@ -72,7 +72,8 @@
             },
             "options": {
                 "alignment": "inline-center",
-                "backgroundColor": "orange",
+                "backgroundColor": "#333",
+                "linkColor": "@primaryColor",
                 "icons": true
             }
         },
@@ -96,7 +97,7 @@
                 "saturday": "10:00-2:00"
             },
             "options": {
-                "backgroundColor": "orange",
+                "backgroundColor": "@primaryColor",
                 "mode": "dark",
                 "textAlign": "center"
             }

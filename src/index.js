@@ -117,6 +117,16 @@ function addGlobalStyles(styles) {
     }
 }
 
+function getColor(color, variables) {
+    if (color[0] === '@') {
+        var variable = color.slice(1)
+        if (variables[variable]) {
+            return variables[variable]
+        }
+    }
+    return color
+}
+
 // ========================================
 // Add meta data
 // ========================================
@@ -159,8 +169,11 @@ function addFontAwesome() {
     headTag.appendChild(linkTag)
 }
 
-function printAddress(obj) {
+function printAddress(obj, variables) {
     var address = createDivWithClass('address')
+    address.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
+        : variables.contentBackground
 
     var heading = document.createElement('h2')
     heading.textContent = "Address"
@@ -179,9 +192,6 @@ function printAddress(obj) {
     address.appendChild(pTag)
 
     if (obj.options) {
-        if (obj.options.backgroundColor) {
-            address.style.backgroundColor = obj.options.backgroundColor
-        }
         if (obj.options.map) {
             var map = document.createElement('iframe')
             map.classList.add('map')
@@ -205,7 +215,7 @@ function printAddress(obj) {
 function printContact(obj, variables) {
     var contact = createDivWithClass('contact')
     contact.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
     
     var icons = obj.options.icons
@@ -229,6 +239,7 @@ function printContact(obj, variables) {
         text.textContent = obj.data[name]
         if (href) {
             text.href = href
+            text.style.color = getColor(obj.options.linkColor, variables)
         }
         tag.appendChild(text)
         options.appendChild(tag)
@@ -267,7 +278,7 @@ function printContact(obj, variables) {
 function printForm(obj, variables) {
     var form = createDivWithClass('form')
     form.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
 
     var title = document.createElement('h2')
@@ -324,10 +335,10 @@ function printForm(obj, variables) {
 
     var button = createElementWithClass('span', ['button', 'disabled'])
     button.style.backgroundColor = obj.options && obj.options.buttonColor
-        ? obj.options.buttonColor
+        ? getColor(obj.options.buttonColor, variables)
         : variables.primaryColor
     button.style.color = obj.options && obj.options.buttonTextColor
-        ? obj.options.buttonTextColor
+        ? getColor(obj.options.buttonTextColor, variables)
         : 'white'
     button.id = 'form-submit'
     button.textContent = 'Send email'
@@ -371,7 +382,7 @@ function printForm(obj, variables) {
 function printGallery(obj, variables) {
     var gallery = createDivWithClass('gallery')
     gallery.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
 
     if (obj.data.title) {
@@ -460,7 +471,9 @@ function printGallery(obj, variables) {
 
 function printHero(obj, variables) {
     var hero = createDivWithClass('hero')
-    hero.style.backgroundColor = variables.contentBackground
+    hero.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
+        : variables.contentBackground
     hero.style.backgroundImage = `url(${obj.data.background})`
 
     var title = document.createElement('h1')
@@ -477,10 +490,10 @@ function printHero(obj, variables) {
     var link = createExternalLink(obj.data.action.href)
     link.classList.add('button')
     link.style.backgroundColor = obj.options && obj.options.buttonColor
-        ? obj.options.buttonColor
+        ? getColor(obj.options.buttonColor, variables)
         : variables.primaryColor
     link.style.color = obj.options && obj.options.buttonTextColor
-        ? obj.options.buttonTextColor
+        ? getColor(obj.options.buttonTextColor, variables)
         : 'white'
     link.textContent = obj.data.action.text
     action.appendChild(link)
@@ -491,7 +504,7 @@ function printHero(obj, variables) {
             hero.style.textAlign = obj.options.textAlign
         }
         if (obj.options.textColor) {
-            hero.style.color = obj.options.textColor
+            hero.style.color = getColor(obj.options.textColor, variables)
         }
     }
 
@@ -504,7 +517,7 @@ function printHours(obj, variables) {
         hours.classList.add(obj.options.mode)
     }
     hours.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
 
     var heading = document.createElement('h2')
@@ -512,9 +525,6 @@ function printHours(obj, variables) {
     hours.appendChild(heading)
 
     if (obj.options) {
-        if (obj.options.backgroundColor) {
-            hours.style.backgroundColor = obj.options.backgroundColor
-        }
         if (obj.options.textAlign) {
             heading.style.textAlign = obj.options.textAlign
         }
@@ -545,11 +555,11 @@ function printHours(obj, variables) {
 function printHtml(obj, variables) {
     var html = createDivWithClass('html')
     html.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
     if (obj.options) {
         if (obj.options.textColor) {
-            html.style.color = obj.options.textColor
+            html.style.color = getColor(obj.options.textColor, variables)
         }
         if (obj.options.textAlign) {
             html.style.textAlign = obj.options.textAlign
@@ -561,9 +571,9 @@ function printHtml(obj, variables) {
 
 function printLogo(obj, variables) {
     var logo = createDivWithClass('logo')
-    logo.style.backgroundColor = obj.options && obj.options.backgroundColor ?
-        obj.options.backgroundColor :
-        variables.contentBackground
+    logo.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
+        : variables.contentBackground
 
     var image = document.createElement('img')
     image.src = obj.data.src
@@ -584,7 +594,7 @@ function printLogo(obj, variables) {
     
     if (obj.options) {
         if (obj.options.textColor) {
-            logo.style.color = obj.options.textColor
+            logo.style.color = getColor(obj.options.textColor, variables)
         }
         if (obj.options.centerContent) {
             logo.style.flexDirection = 'column'
@@ -603,7 +613,7 @@ function printSocialIcons(obj, variables) {
         social.classList.add(obj.options.mode)
     }
     social.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
 
     for (var platform in obj.data) {
@@ -628,7 +638,7 @@ function printSocialIcons(obj, variables) {
 function printText(obj, variables) {
     var text = createDivWithClass('text')
     text.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
     
     if (obj.data.heading) {
@@ -647,7 +657,7 @@ function printText(obj, variables) {
 
     if (obj.options) {
         if (obj.options.textColor) {
-            text.style.color = obj.options.textColor
+            text.style.color = getColor(obj.options.textColor, variables)
         }
         if (obj.options.textAlign) {
             text.style.textAlign = obj.options.textAlign
@@ -708,11 +718,6 @@ function johannes(data) {
     addFavicons()
     addGlobalStyles(data.theme.styles)
     printContent(data.content, data.theme.variables)
-    // appTag.classList.add('ready')
-    // loading.classList.add('exit')
-    // setTimeout(function() {
-    //     document.body.removeChild(loading)
-    // }, 1000)
 }
 
 fetchData()
