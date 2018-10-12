@@ -7,7 +7,7 @@
             "type": "logo",
             "data": {
                 "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/800px-Gutenberg.jpg",
-                "title": "Johannes Ltd. Co.",
+                "heading": "Johannes Ltd. Co.",
                 "tagline": "Printing for everyone."
             }
         },
@@ -15,7 +15,7 @@
             "type": "hero",
             "data": {
                 "background": "https://placebear.com/g/800/800",
-                "title": "Making a difference",
+                "heading": "Making a difference",
                 "body": ["You can do amazing things; you just need somewhere to begin.", "Lorem ipsum dolor sit amet..."],
                 "action": {
                     "text": "Start here",
@@ -29,7 +29,7 @@
         {
             "type": "gallery",
             "data": {
-                "title": "Gallery",
+                "heading": "Gallery",
                 "images": [
                     {
                         "src": "assets/gallery/bike1.jpg",
@@ -66,7 +66,7 @@
         {
             "type": "contact",
             "data": {
-                "title": "Contact us",
+                "heading": "Contact us",
                 "email": "contact@mcp.design",
                 "phone": "(814) 732-0272"
             },
@@ -81,7 +81,7 @@
             "type": "form",
             "data": {
                 "email": "contact@mcp.design",
-                "title": "Send us a note",
+                "heading": "Send us a note",
                 "message": "Use the form below to send us an email. We'd love to hear from you!"
             }
         },

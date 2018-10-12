@@ -46,7 +46,7 @@ Data:
 
 ```json
 "data": {
-    "title": "Contact us",
+    "heading": "Contact us",
     "address": "100 Street Address, City, State 000001",
     "email": "your@email.address",
     "phone": "(555) 867-5309"
@@ -69,7 +69,7 @@ Data:
 ```json
 "data": {
     "email": "your@email.address",
-    "title": "Header",
+    "heading": "Header",
     "message": "Message below the header"
 }
 ```
@@ -89,7 +89,7 @@ Data:
 
 ```json
 "data": {
-    "title": "Gallery",
+    "heading": "Gallery",
     "images": [
         {
             "src": "assets/gallery/image1.jpg",
@@ -116,7 +116,7 @@ Background image with text, call-to-action
 ```json
 "data": {
     "background": "https://path.to/image",
-    "title": "Heading",
+    "heading": "Heading",
     "body": ["Paragraph One", "Paragraph Two"],
     "action": {
         "text": "Button text",
@@ -169,7 +169,7 @@ Data:
 ```json
 "data": {
     "src": "url",
-    "title": "Johannes Ltd. Co.",
+    "heading": "Johannes Ltd. Co.",
     "tagline": "Printing for everyone."
 }
 ```

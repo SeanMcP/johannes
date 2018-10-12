@@ -105,6 +105,24 @@ function createExternalLink(href) {
     return aTag
 }
 
+function createBlock(name, obj, variables) {
+    var block = createElementWithClass('section', name)
+    block.style.backgroundColor = obj.options && obj.options.backgroundColor
+        ? getColor(obj.options.backgroundColor, variables)
+        : variables.contentBackground
+    
+    if (obj.data.heading) {
+        var heading = document.createElement('h2')
+        heading.textContent = obj.data.heading
+        if (obj.options && obj.options.textAlign) {
+            heading.style.textAlign = obj.options.textAlign
+        }
+        block.appendChild(heading)
+    }
+    
+    return block
+}
+
 // ========================================
 // Add styles
 // ========================================
@@ -221,7 +239,7 @@ function printContact(obj, variables) {
     var icons = obj.options.icons
 
     var title = document.createElement('h2')
-    title.textContent = obj.data.title
+    title.textContent = obj.data.heading
     contact.appendChild(title)
 
     var options = createDivWithClass('options')
@@ -282,7 +300,7 @@ function printForm(obj, variables) {
         : variables.contentBackground
 
     var title = document.createElement('h2')
-    title.textContent = obj.data.title
+    title.textContent = obj.data.heading
     form.appendChild(title)
 
     var message = document.createElement('p')
@@ -385,9 +403,9 @@ function printGallery(obj, variables) {
         ? getColor(obj.options.backgroundColor, variables)
         : variables.contentBackground
 
-    if (obj.data.title) {
+    if (obj.data.heading) {
         var title = document.createElement('h2')
-        title.textContent = obj.data.title
+        title.textContent = obj.data.heading
         if (obj.options && obj.options.textAlign) {
             title.style.textAlign = obj.options.textAlign
         }
@@ -477,7 +495,7 @@ function printHero(obj, variables) {
     hero.style.backgroundImage = `url(${obj.data.background})`
 
     var title = document.createElement('h1')
-    title.textContent = obj.data.title
+    title.textContent = obj.data.heading
     hero.appendChild(title)
 
     obj.data.body.forEach(function(sentence) {
@@ -577,13 +595,13 @@ function printLogo(obj, variables) {
 
     var image = document.createElement('img')
     image.src = obj.data.src
-    image.alt = obj.data.title
+    image.alt = obj.data.heading
     logo.appendChild(image)
 
     var details = createDivWithClass('details')
 
     var title = document.createElement('h1')
-    title.textContent = obj.data.title
+    title.textContent = obj.data.heading
     details.appendChild(title)
 
     var tagline = document.createElement('p')
