@@ -332,9 +332,10 @@ function printForm(obj, variables) {
     
     formTag.appendChild(body)
 
-    var footer = createDivWithClass('footer')
+    var footer = document.createElement('footer')
 
-    var button = createElementWithClass('span', ['button', 'disabled'])
+    var button = createElementWithClass('button', ['disabled'])
+    button.type = 'button'
     button.style.backgroundColor = obj.options && obj.options.buttonColor
         ? getColor(obj.options.buttonColor, variables)
         : variables.primaryColor

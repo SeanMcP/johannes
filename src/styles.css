@@ -147,7 +147,7 @@ body {
     resize: vertical;
 }
 
-.form form .footer {
+.form form footer {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
@@ -460,13 +460,15 @@ p {
 REUSABLE CLASSES
 */
 
-.button {
+.button, button {
+    border: 0;
     cursor: pointer;
+    font-size: 1em;
     font-weight: bold;
     padding: 1rem;
 }
 
-.button.disabled {
+.disabled {
     opacity: 0.5;
     pointer-events: none;
 }
