@@ -32,6 +32,7 @@ body {
 }
 
 .address,
+.button,
 .contact,
 .form,
 .error,
@@ -51,6 +52,12 @@ body {
 
 .stacked>*:first-child {
     margin-top: 0;
+}
+
+.button .container {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
 }
 
 .call-to-action {
@@ -456,16 +463,22 @@ p {
     line-height: 1.5rem;
 }
 
-/* 
+/*
 REUSABLE CLASSES
 */
 
-.button, button {
+.btn, button {
     border: 0;
     cursor: pointer;
+    font-family: inherit;
     font-size: 1em;
     font-weight: bold;
     padding: 1rem;
+    text-decoration: none;
+}
+
+.btn:hover, button:hover {
+    filter: brightness(1.1);
 }
 
 .disabled {

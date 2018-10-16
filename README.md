@@ -54,6 +54,25 @@ Options:
 - `map: embed iframe src from Google Maps`
 - `textAlign: enum('center', 'left', 'right')`
 
+#### Button
+
+A link that looks like a button
+
+```json
+"data": {
+    "heading": "Heading",
+    "text": "Button text",
+    "href": "https://action.button/destination"
+}
+```
+
+Options:
+
+- `buttonColor: valid HTML color (default: primaryColor variable)`
+- `buttonTextColor: valid HTML color (default: white)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
+- `textColor: valid HTML color (default: inherit)`
+
 #### Contact
 
 A list of contact options

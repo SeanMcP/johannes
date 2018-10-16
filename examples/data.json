@@ -173,6 +173,20 @@
             }
         },
         {
+            "type": "button",
+            "data": {
+                "text": "Order now",
+                "href": "https://mcp.design",
+                "heading": "What are you waiting for?"
+            },
+            "options": {
+                "textAlign": "center",
+                "buttonColor": "blue",
+                "buttonTextColor": "aqua",
+                "textColor": "red"
+            }
+        },
+        {
             "type": "text",
             "data": {
                 "paragraphs": [

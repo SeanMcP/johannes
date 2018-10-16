@@ -114,14 +114,19 @@ function createBlock(name, obj, variables) {
     if (obj.data.heading) {
         var heading = document.createElement('h2')
         heading.textContent = obj.data.heading
-        if (obj.options && obj.options.textAlign) {
-            heading.style.textAlign = obj.options.textAlign
-        }
         block.appendChild(heading)
     }
 
-    if (obj.options && obj.options.mode) {
-        block.classList.add(obj.options.mode)
+    if (obj.options) {
+        if (obj.options.mode) {
+            block.classList.add(obj.options.mode)
+        }
+        if (obj.options.textAlign) {
+            block.style.textAlign = obj.options.textAlign
+        }
+        if (obj.options.textColor) {
+            block.style.color = getColor(obj.options.textColor, variables)
+        }
     }
     
     return block
@@ -219,12 +224,42 @@ function printAddress(obj, variables) {
 
             address.appendChild(map)
         }
-        if (obj.options.textAlign) {
-            address.style.textAlign = obj.options.textAlign
-        }
     }
 
     appTag.appendChild(address)
+}
+
+function printButton(obj, variables) {
+    var button = createBlock('button', obj, variables)
+
+    var container = createDivWithClass('container')
+    var anchor = createElementWithClass('a', 'btn')
+    anchor.href = obj.data.href
+    anchor.textContent = obj.data.text
+    anchor.style.backgroundColor = obj.options && obj.options.buttonColor
+        ? obj.options.buttonColor
+        : variables.primaryColor
+    anchor.style.color = obj.options && obj.options.buttonTextColor
+        ? obj.options.buttonTextColor
+        : 'white'
+
+    container.appendChild(anchor)
+    button.appendChild(container)
+
+    if (obj.options) {
+        if (obj.options.textAlign) {
+            var align = obj.options.textAlign
+            var justifyContent = 'center'
+            if (align === 'left') {
+                justifyContent = 'flex-start'
+            } else if (align === 'right') {
+                justifyContent = 'flex-end'
+            }
+            container.style.justifyContent = justifyContent
+        }
+    }
+
+    appTag.appendChild(button)
 }
 
 function printContact(obj, variables) {
@@ -275,9 +310,6 @@ function printContact(obj, variables) {
                 contact.style.textAlign = 'center'
             }
         }
-        if (obj.options.textColor) {
-            contact.style.color = getColor(obj.options.textColor, variables)
-        }
     }
 
     appTag.appendChild(contact)
@@ -294,7 +326,7 @@ function printForm(obj, variables) {
     formTag.onchange = function() {
         var subjectVal = document.getElementById('form-subject').value
         var bodyVal = document.getElementById('form-body').value
-        var button = this.querySelector('.button')
+        var button = this.querySelector('.btn')
 
         if (subjectVal && bodyVal) {
             if (button.classList.contains('disabled')) {
@@ -334,7 +366,7 @@ function printForm(obj, variables) {
 
     var footer = document.createElement('footer')
 
-    var button = createElementWithClass('button', ['disabled'])
+    var button = createElementWithClass('button', 'disabled')
     button.type = 'button'
     button.style.backgroundColor = obj.options && obj.options.buttonColor
         ? getColor(obj.options.buttonColor, variables)
@@ -449,12 +481,6 @@ function printGallery(obj, variables) {
     })
     gallery.appendChild(thumbnails)
 
-    if (obj.options) {
-        if (obj.options.textColor) {
-            gallery.style.color = obj.options.textColor
-        }
-    }
-
     appTag.appendChild(gallery)
 }
 
@@ -470,7 +496,7 @@ function printHero(obj, variables) {
 
     var action = createDivWithClass('call-to-action')
     var link = createExternalLink(obj.data.action.href)
-    link.classList.add('button')
+    link.classList.add('btn')
     link.style.backgroundColor = obj.options && obj.options.buttonColor
         ? getColor(obj.options.buttonColor, variables)
         : variables.primaryColor
@@ -480,15 +506,6 @@ function printHero(obj, variables) {
     link.textContent = obj.data.action.text
     action.appendChild(link)
     hero.appendChild(action)
-
-    if (obj.options) {
-        if (obj.options.textAlign) {
-            hero.style.textAlign = obj.options.textAlign
-        }
-        if (obj.options.textColor) {
-            hero.style.color = getColor(obj.options.textColor, variables)
-        }
-    }
 
     appTag.appendChild(hero)
 }
@@ -521,15 +538,6 @@ function printHours(obj, variables) {
 function printHtml(obj, variables) {
     var html = createBlock('html', obj, variables)
 
-    if (obj.options) {
-        if (obj.options.textColor) {
-            html.style.color = getColor(obj.options.textColor, variables)
-        }
-        if (obj.options.textAlign) {
-            html.style.textAlign = obj.options.textAlign
-        }
-    }
-
     html.innerHTML = obj.data.innerHTML
     appTag.appendChild(html)
 }
@@ -558,9 +566,6 @@ function printLogo(obj, variables) {
     logo.appendChild(details)
     
     if (obj.options) {
-        if (obj.options.textColor) {
-            logo.style.color = getColor(obj.options.textColor, variables)
-        }
         if (obj.options.centerContent) {
             logo.style.flexDirection = 'column'
             details.style.marginTop = '1rem'
@@ -605,15 +610,6 @@ function printText(obj, variables) {
         })
     }
 
-    if (obj.options) {
-        if (obj.options.textColor) {
-            text.style.color = getColor(obj.options.textColor, variables)
-        }
-        if (obj.options.textAlign) {
-            text.style.textAlign = obj.options.textAlign
-        }
-    }
-
     appTag.appendChild(text)
 }
 
@@ -634,6 +630,7 @@ function printWindow(obj) {
 function printContent(content, variables) {
     var functionHash = {
         address: printAddress,
+        button: printButton,
         contact: printContact,
         form: printForm,
         gallery: printGallery,
