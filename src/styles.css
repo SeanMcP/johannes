@@ -54,6 +54,10 @@ body {
     margin-top: 0;
 }
 
+.address p span:not(:last-of-type)::after {
+    content: ', '
+}
+
 .button .container {
     display: flex;
     justify-content: center;
