@@ -6,76 +6,57 @@
         {
             "type": "logo",
             "data": {
-                "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/800px-Gutenberg.jpg",
-                "title": "McPherson Design",
-                "tagline": "Printing for everyone."
+                "src": "./assets/mcpdesign-logo.png",
+                "heading": "McPherson Design"
+            },
+            "options": {
+                "centerContent": true
             }
         },
         {
             "type": "hero",
             "data": {
-                "background": "https://placebear.com/g/800/800",
-                "title": "<h1>Making a difference</h1>",
-                "tag": "<p>You can do amazing things; you just need somewhere to begin.</p>",
+                "background": "./assets/banner.jpg",
+                "heading": "Custom graphics & illustrations",
+                "body": ["You can do amazing things; you just need somewhere to begin."],
                 "action": {
                     "text": "Start here",
                     "href": "https://github.com"
                 }
-            },
-            "options": {
-                "textColor": "white"
-            }
-        },
-        {
-            "type": "form",
-            "data": {
-                "email": "contact@mcp.design",
-                "title": "Contact us",
-                "message": "Use the form below to send us an email. We'd love to hear from you!"
             }
         },
         {
             "type": "text",
             "data": {
-                "heading": "Hello!",
+                "heading": "Personalized design",
                 "paragraphs": [
-                    "This is a basic example of Johannes.",
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit sit inventore excepturi mollitia eveniet corporis optio, neque provident, debitis porro cupiditate! Doloremque repudiandae sunt dolores ipsa ex voluptatem fuga fugit."
+                    "McPherson Design is a 'mom and pop' graphic and web design company based in Peachtree Corners, GA. We specialize in custom graphics, illustrations, hand-lettering, and web design and development."
                 ]
             }
         },
         {
-            "type": "text",
+            "type": "button",
             "data": {
-                "heading": "Colorful divider"
+                "heading": "Call to action",
+                "text": "Order form",
+                "href": "https://mcp.design"
             },
             "options": {
-                "textColor": "white",
-                "backgroundColor": "orange",
+                "stacked": true,
                 "textAlign": "center"
             }
         },
         {
             "type": "text",
             "data": {
-                "heading": "Back to white",
+                "heading": "About Us",
                 "paragraphs": [
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque.",
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque."
-                ]
-            }
-        },
-        {
-            "type": "text",
-            "data": {
-                "heading": "Stacked",
-                "paragraphs": [
-                    "This is a second text block that has been 'stacked' beneath another; the padding-top has been removed so that it sits nicely beneath the previous block.",
-                    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus natus odit quia pariatur aspernatur a, repudiandae nobis ex eius repellat necessitatibus quisquam autem, provident minus illo odio nulla omnis doloremque."
+                    "McPherson Design is Anne and Sean McPherson. They live in Peachtree Corners with their son and three-legged dog."
                 ]
             },
             "options": {
-                "stacked": true
+                "stacked": true,
+                "textColor": "#666"
             }
         },
         {
@@ -94,13 +75,15 @@
         {
             "type": "social",
             "data": {
-                "linkedin": "https://linkedin.com/company/mcpdesign",
-                "instagram": "https://instagram.com/mcp.design",
-                "facebook": "https://facebook.com/mcpdesignllc"
+                "platforms": {
+                    "linkedin": "https://linkedin.com/company/mcpdesign",
+                    "instagram": "https://instagram.com/mcp.design",
+                    "facebook": "https://facebook.com/mcpdesignllc"
+                }
             },
             "options": {
                 "backgroundColor": "transparent",
-                "mode": "light",
+                "mode": "dark",
                 "size": "2x",
                 "stacked": true
             }
@@ -114,7 +97,7 @@
         },
         "variables": {
             "contentBackground": "white",
-            "primaryColor": "salmon"
+            "primaryColor": "#ef9a9a"
         }
     }
 }
