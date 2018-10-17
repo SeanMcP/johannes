@@ -437,6 +437,10 @@ body {
     margin: 0;
 }
 
+.logo .details>*:last-child {
+    margin-bottom: 0;
+}
+
 .map {
     margin-bottom: 1rem;
 }

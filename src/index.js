@@ -590,9 +590,11 @@ function printLogo(obj, variables) {
     heading.textContent = obj.data.heading
     details.appendChild(heading)
 
-    var tagline = document.createElement('p')
-    tagline.textContent = obj.data.tagline
-    details.appendChild(tagline)
+    if (obj.data.tagline) {
+        var tagline = document.createElement('p')
+        tagline.textContent = obj.data.tagline
+        details.appendChild(tagline)
+    }
 
     logo.appendChild(details)
     
