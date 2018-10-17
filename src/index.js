@@ -611,21 +611,21 @@ function printSocialIcons(obj, variables) {
     addFontAwesome()
     var social = createBlock('social', obj, variables)
 
-    for (var platform in obj.data.platforms) {
+    Object.keys(obj.data.platforms).sort().forEach(function (platform) {
         var aTag = createExternalLink(obj.data.platforms[platform])
-        
+
         var iTag = createElementWithClass('i', [
             'fab',
             `fa-${platform}`,
             obj.options && obj.options.size ?
-                `fa-${obj.options.size}` :
-                '_'
+            `fa-${obj.options.size}` :
+            '_'
         ])
         iTag.title = platform[0].toUpperCase() + platform.slice(1)
 
         aTag.appendChild(iTag)
         social.appendChild(aTag)
-    }
+    })
 
     appTag.appendChild(social)
 }
