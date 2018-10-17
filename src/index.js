@@ -542,6 +542,37 @@ function printHtml(obj, variables) {
     appTag.appendChild(html)
 }
 
+function printImage(obj, variables) {
+    var image = createBlock('image', obj, variables)
+
+    var figure = document.createElement('figure')
+    var imgTag = document.createElement('img')
+    imgTag.src = obj.data.src
+    imgTag.alt = obj.data.description
+
+    if (obj.data.href) {
+        var link = createExternalLink(obj.data.href)
+        link.appendChild(imgTag)
+        figure.appendChild(link)
+    } else {
+        figure.appendChild(imgTag)
+    }
+
+    if (obj.options) {
+        if (obj.options.polaroid) {
+            figure.classList.add('polaroid')
+        }
+        if (obj.options.caption) {
+            var figcaption = document.createElement('figcaption')
+            figcaption.textContent = obj.data.description
+            figure.appendChild(figcaption)
+        }
+    }
+
+    image.appendChild(figure)
+    appTag.appendChild(image)
+}
+
 function printLogo(obj, variables) {
     var logo = createElementWithClass('section', 'logo')
     logo.style.backgroundColor = obj.options && obj.options.backgroundColor
@@ -637,6 +668,7 @@ function printContent(content, variables) {
         hero: printHero,
         hours: printHours,
         html: printHtml,
+        image: printImage,
         logo: printLogo,
         social: printSocialIcons,
         text: printText,

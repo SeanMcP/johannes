@@ -40,6 +40,7 @@ body {
 .hero,
 .hours,
 .html,
+.image,
 .logo,
 .social,
 .text {
@@ -317,6 +318,33 @@ body {
     border-bottom-width: 1px;
     margin: 0 4px 8px;
     opacity: 0.25;
+}
+
+.image figure {
+    margin: 0 0 1em;
+    transition: all 200ms ease-in-out;
+}
+
+.image figure.polaroid {
+    background: white;
+    border: 1px solid #f1f1f1;
+    box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.25);
+    margin-bottom: 1em;
+    padding: 1em;
+    width: calc(100% - 2em);
+}
+
+.image figure.polaroid figcaption {
+    margin-bottom: 0;
+}
+
+.image img {
+    width: 100%;
+}
+
+.image figcaption {
+    text-align: center;
+    margin-top: 0.5em;
 }
 
 .loading {

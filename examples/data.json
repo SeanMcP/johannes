@@ -27,6 +27,19 @@
             }
         },
         {
+            "type": "image",
+            "data": {
+                "heading": "Bear",
+                "src": "https://placebear.com/g/800/400",
+                "description": "A bear doing bear things"
+            },
+            "options": {
+                "polaroid": true,
+                "caption": true,
+                "textAlign": "center"
+            }
+        },
+        {
             "type": "gallery",
             "data": {
                 "heading": "Gallery",

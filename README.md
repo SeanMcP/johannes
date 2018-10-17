@@ -210,6 +210,29 @@ Options:
 - `textColor: valid HTML color (default: inherit)`
 - `textAlign: enum('center', 'left', 'right') (default: left)`
 
+#### Image
+
+A full-width image that optionally links externally.
+
+Data:
+
+```json
+"data": {
+    "heading": "Bear",
+    "src": "https://placebear.com/g/800/400",
+    "description": "A bear doing bear things",
+    "href": "https://path.to/destination"
+}
+```
+
+Options:
+
+- `backgroundColor: valid HTML color (default: contentBackground)`
+- `caption: boolean (default: false)`
+- `polaroid: boolean (default: false)`
+- `textColor: valid HTML color (default: inherit)`
+- `textAlign: enum('center', 'left', 'right') (default: left)`
+
 #### Logo
 
 Displays a logo image, a title, and a tagline.
