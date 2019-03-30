@@ -19,20 +19,20 @@ function buildBlockCSS(id, styles, theme) {
     return output
 }
 
-function buildGlobalCSS(theme) {
+function buildGlobalCSS(data) {
     var output = ''
-    if (theme.styles_v2) {
+    if (data.theme.styles_v2) {
         var global = 'body {'
-        for (var key in theme.styles_v2) {
-            global += `${key}: ${theme.styles_v2[key]};`
+        for (var key in data.theme.styles_v2) {
+            global += `${key}: ${data.theme.styles_v2[key]};`
         }
         global += '}'
         output += global
     }
-    if (theme.variables) {
+    if (data.theme.variables) {
         var global = '.Block {'
-        if (theme.variables.contentBackground)
-            global += `background-color: ${theme.variables.contentBackground};`
+        if (data.theme.variables.contentBackground)
+            global += `background-color: ${data.theme.variables.contentBackground};`
         global += '}'
         output += global
     }

@@ -1,14 +1,10 @@
 var fs = require('fs')
-var data = require('../examples/data.json')
-var getId = require('./utils').getId
 var pretty = require('pretty')
-var STYLES = require('./styles')
-var buildBlockCSS = STYLES.buildBlockCSS
-var buildGlobalCSS = STYLES.buildGlobalCSS
+var data = require('../examples/data.json')
+var buildContent = require('./blocks').buildContent
+var buildGlobalCSS = require('./styles').buildGlobalCSS
 
-var CSS = ''
-
-function buildHead(data) {
+function buildHead(data, CSS) {
     return `
     <head>
         <meta charset="utf-8">
@@ -21,44 +17,10 @@ function buildHead(data) {
     </head>`
 }
 
-function isStacked(block) {
-    if (block.options && block.options.stacked)
-        return 'Block--stacked'
-    return ''
-}
-
-function buildContent(content) {
-    return content.reduce(function (accumulator, block) {
-        var id = getId(block.type)
-        CSS += buildBlockCSS(id, block.styles, data.theme)
-        // buildBlockCSS(id, block.styles)
-        accumulator += `<section id="${id}" class="Block Block--${block.type} ${block.type} ${isStacked(block)}">`
-        switch (block.type) {
-            case 'text':
-                {
-                    accumulator += buildTextBlock(block)
-                }
-        }
-        accumulator += `</section>`
-        return accumulator
-    }, '')
-}
-
 function addCustomFont(family) {
     if (family)
         return `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${family}" />`
     return ''
-}
-
-function buildTextBlock(block) {
-    var output = ''
-    if (block.data.heading) output += `<h2>${block.data.heading}</h2>`
-    if (block.data.paragraphs) {
-        block.data.paragraphs.forEach(function (paragraph) {
-            output += `<p>${paragraph}</p>`
-        })
-    }
-    return output
 }
 
 function a11yTopLevelHeading() {
@@ -71,56 +33,22 @@ function a11yTopLevelHeading() {
     return ''
 }
 
-// function buildBlockCSS(id, styles) {
-//     if (styles) {
-//         var output = `#${id} {`
-//         for (var key in styles) {
-//             var value = styles[key]
-//             if (value[0] === '@') {
-//                 var variable = value.slice(1)
-//                 if (data.theme.variables.hasOwnProperty(variable)) {
-//                     value = data.theme.variables[variable];
-//                 } else {
-//                     throw new Error(`Block "${id}" referenced variable "${variable}" but no variable by name exists in theme variables.`)
-//                 }
-//             }
-//             output += `${key}:${value};`
-//         }
-//         output += '}'
-//         CSS += output;
-//     }
-// }
-
-// function buildGlobalCSS() {
-//     if (data.theme.styles_v2) {
-//         var global = 'body {'
-//         for (var key in data.theme.styles_v2) {
-//             global += `${key}: ${data.theme.styles_v2[key]};`
-//         }
-//         global += '}'
-//         CSS += global
-//     }
-//     if (data.theme.variables) {
-//         var global = '.Block {'
-//         if (data.theme.variables.contentBackground)
-//             global += `background-color: ${data.theme.variables.contentBackground};`
-//         global += '}'
-//         CSS += global
-//     }
-// }
-
 function generateHTML() {
-    CSS += buildGlobalCSS(data.theme)
-    var content = buildContent(data.content)
-    var head = buildHead(data)
+    var {
+        elements,
+        styles
+    } = buildContent(data)
+    // Remember: order matters here
+    var CSS = ''.concat(buildGlobalCSS(data), styles)
+
     return pretty(`<!DOCTYPE html>
 <html lang="en">
-    ${head}
+    ${buildHead(data, CSS)}
     <body>
         <div class="___johannes">
             ${a11yTopLevelHeading()}
             <main id="main" role="main">
-                ${content}
+                ${elements}
             </main>
         </div>
     </body>
