@@ -6,7 +6,8 @@
   "files": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/app.js"
+    "build": "node src/app.js",
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/SeanMcP/johannes/issues"
   },
-  "homepage": "https://github.com/SeanMcP/johannes#readme"
+  "homepage": "https://github.com/SeanMcP/johannes#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
 }
