@@ -1,11 +1,9 @@
 {
   "name": "johannes",
-  "version": "2.0.0",
+  "version": "0.0.0",
   "description": "🖨 A simple JSON to HTML printer",
   "main": "src/app.js",
-  "directories": {
-    "example": "examples"
-  },
+  "files": [],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js"
