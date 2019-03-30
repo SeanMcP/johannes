@@ -36,7 +36,7 @@ function fetchData() {
         .finally(function() {
             appTag.classList.add('ready')
             loading.classList.add('exit')
-            setTimeout(function () {
+            setTimeout(function() {
                 document.body.removeChild(loading)
             }, 1000)
         })
@@ -45,26 +45,28 @@ function fetchData() {
 function printError(errorMessage) {
     var error = createDivWithClass('error')
     var heading = document.createElement('h1')
-    heading.textContent = "Uh oh!"
+    heading.textContent = 'Uh oh!'
     error.appendChild(heading)
 
     var pTag = document.createElement('p')
-    pTag.textContent = "Somewhen went wrong when loading loading the site. Try again later."
+    pTag.textContent =
+        'Somewhen went wrong when loading loading the site. Try again later.'
     error.appendChild(pTag)
 
     var detailsTag = document.createElement('details')
     var summaryTag = document.createElement('summary')
-    summaryTag.textContent = "Site admin:"
+    summaryTag.textContent = 'Site admin:'
     detailsTag.appendChild(summaryTag)
 
     var message = createElementWithClass('p', 'error-message')
     message.textContent = errorMessage
     detailsTag.appendChild(message)
-    
+
     var suggestion = document.createElement('p')
-    suggestion.innerHTML = "Does this directory have a <code>data.json</code> file?"
+    suggestion.innerHTML =
+        'Does this directory have a <code>data.json</code> file?'
     detailsTag.appendChild(suggestion)
-    
+
     error.appendChild(detailsTag)
     appTag.appendChild(error)
 }
@@ -107,10 +109,11 @@ function createExternalLink(href) {
 
 function createBlock(name, obj, variables) {
     var block = createElementWithClass('section', name)
-    block.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
-    
+    block.style.backgroundColor =
+        obj.options && obj.options.backgroundColor
+            ? getColor(obj.options.backgroundColor, variables)
+            : variables.contentBackground
+
     if (obj.data.heading) {
         var heading = document.createElement('h2')
         heading.textContent = obj.data.heading
@@ -128,7 +131,7 @@ function createBlock(name, obj, variables) {
             block.style.color = getColor(obj.options.textColor, variables)
         }
     }
-    
+
     return block
 }
 
@@ -190,7 +193,8 @@ function addFontAwesome() {
     var linkTag = document.createElement('link')
     linkTag.rel = 'stylesheet'
     linkTag.href = 'https://use.fontawesome.com/releases/v5.3.1/css/all.css'
-    linkTag.integrity = 'sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU'
+    linkTag.integrity =
+        'sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU'
     linkTag.crossOrigin = 'anonymous'
 
     headTag.appendChild(linkTag)
@@ -202,7 +206,7 @@ function printAddress(obj, variables) {
     var pTag = document.createElement('p')
     obj.data.address.forEach(function(line, i) {
         var tag = document.createElement('span')
-        tag.textContent = line;
+        tag.textContent = line
         pTag.appendChild(tag)
         if (i < obj.data.length - 1) {
             pTag.appendChild(document.createElement('br'))
@@ -236,12 +240,14 @@ function printButton(obj, variables) {
     var anchor = createElementWithClass('a', 'btn')
     anchor.href = obj.data.href
     anchor.textContent = obj.data.text
-    anchor.style.backgroundColor = obj.options && obj.options.buttonColor
-        ? obj.options.buttonColor
-        : variables.primaryColor
-    anchor.style.color = obj.options && obj.options.buttonTextColor
-        ? obj.options.buttonTextColor
-        : 'white'
+    anchor.style.backgroundColor =
+        obj.options && obj.options.buttonColor
+            ? obj.options.buttonColor
+            : variables.primaryColor
+    anchor.style.color =
+        obj.options && obj.options.buttonTextColor
+            ? obj.options.buttonTextColor
+            : 'white'
 
     container.appendChild(anchor)
     button.appendChild(container)
@@ -293,7 +299,10 @@ function printContact(obj, variables) {
     }
 
     if (obj.data.phone) {
-        createContactOption('phone', `tel:+1${obj.data.phone.replace(/\D/g, '')}`)
+        createContactOption(
+            'phone',
+            `tel:+1${obj.data.phone.replace(/\D/g, '')}`
+        )
     }
 
     if (obj.data.email) {
@@ -361,19 +370,21 @@ function printForm(obj, variables) {
     var bodyInput = document.createElement('textarea')
     bodyInput.id = 'form-body'
     body.appendChild(bodyInput)
-    
+
     formTag.appendChild(body)
 
     var footer = document.createElement('footer')
 
     var button = createElementWithClass('button', 'disabled')
     button.type = 'button'
-    button.style.backgroundColor = obj.options && obj.options.buttonColor
-        ? getColor(obj.options.buttonColor, variables)
-        : variables.primaryColor
-    button.style.color = obj.options && obj.options.buttonTextColor
-        ? getColor(obj.options.buttonTextColor, variables)
-        : 'white'
+    button.style.backgroundColor =
+        obj.options && obj.options.buttonColor
+            ? getColor(obj.options.buttonColor, variables)
+            : variables.primaryColor
+    button.style.color =
+        obj.options && obj.options.buttonTextColor
+            ? getColor(obj.options.buttonTextColor, variables)
+            : 'white'
     button.id = 'form-submit'
     button.textContent = 'Send email'
     button.onclick = function() {
@@ -382,9 +393,11 @@ function printForm(obj, variables) {
 
         if (subject.value && body.value) {
             var anchor = document.createElement('a')
-            anchor.href = `mailto:${obj.data.email}?subject=${
-                encodeURIComponent(subject.value)
-            }&body=${encodeURIComponent(body.value)}`
+            anchor.href = `mailto:${
+                obj.data.email
+            }?subject=${encodeURIComponent(
+                subject.value
+            )}&body=${encodeURIComponent(body.value)}`
             anchor.click()
             subject.value = ''
             body.value = ''
@@ -452,13 +465,12 @@ function printGallery(obj, variables) {
         var viewer = document.querySelector('.viewer')
         viewer.style.backgroundImage = `url(${galleryImages[newIndex].src})`
         viewer.title = galleryImages[newIndex].description
-        document.querySelectorAll('.thumb')
-            .forEach(function(node) {
-                node.removeAttribute('style')
-                if (node.classList.contains('current')) {
-                    node.classList.remove('current')
-                }
-            })
+        document.querySelectorAll('.thumb').forEach(function(node) {
+            node.removeAttribute('style')
+            if (node.classList.contains('current')) {
+                node.classList.remove('current')
+            }
+        })
         var currentThumb = document.querySelector(`.image-${newIndex}`)
         currentThumb.classList.add('current')
         currentThumb.style.borderColor = primaryColor
@@ -497,12 +509,14 @@ function printHero(obj, variables) {
     var action = createDivWithClass('call-to-action')
     var link = createExternalLink(obj.data.action.href)
     link.classList.add('btn')
-    link.style.backgroundColor = obj.options && obj.options.buttonColor
-        ? getColor(obj.options.buttonColor, variables)
-        : variables.primaryColor
-    link.style.color = obj.options && obj.options.buttonTextColor
-        ? getColor(obj.options.buttonTextColor, variables)
-        : 'white'
+    link.style.backgroundColor =
+        obj.options && obj.options.buttonColor
+            ? getColor(obj.options.buttonColor, variables)
+            : variables.primaryColor
+    link.style.color =
+        obj.options && obj.options.buttonTextColor
+            ? getColor(obj.options.buttonTextColor, variables)
+            : 'white'
     link.textContent = obj.data.action.text
     action.appendChild(link)
     hero.appendChild(action)
@@ -513,8 +527,16 @@ function printHero(obj, variables) {
 function printHours(obj, variables) {
     var hours = createBlock('hours', obj, variables)
 
-    var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-    
+    var days = [
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday'
+    ]
+
     days.forEach(function(day) {
         var row = createDivWithClass('row')
 
@@ -575,9 +597,10 @@ function printImage(obj, variables) {
 
 function printLogo(obj, variables) {
     var logo = createElementWithClass('section', 'logo')
-    logo.style.backgroundColor = obj.options && obj.options.backgroundColor
-        ? getColor(obj.options.backgroundColor, variables)
-        : variables.contentBackground
+    logo.style.backgroundColor =
+        obj.options && obj.options.backgroundColor
+            ? getColor(obj.options.backgroundColor, variables)
+            : variables.contentBackground
 
     var image = document.createElement('img')
     image.src = obj.data.src
@@ -597,7 +620,7 @@ function printLogo(obj, variables) {
     }
 
     logo.appendChild(details)
-    
+
     if (obj.options) {
         if (obj.options.centerContent) {
             logo.style.flexDirection = 'column'
@@ -613,21 +636,21 @@ function printSocialIcons(obj, variables) {
     addFontAwesome()
     var social = createBlock('social', obj, variables)
 
-    Object.keys(obj.data.platforms).sort().forEach(function (platform) {
-        var aTag = createExternalLink(obj.data.platforms[platform])
+    Object.keys(obj.data.platforms)
+        .sort()
+        .forEach(function(platform) {
+            var aTag = createExternalLink(obj.data.platforms[platform])
 
-        var iTag = createElementWithClass('i', [
-            'fab',
-            `fa-${platform}`,
-            obj.options && obj.options.size ?
-            `fa-${obj.options.size}` :
-            '_'
-        ])
-        iTag.title = platform[0].toUpperCase() + platform.slice(1)
+            var iTag = createElementWithClass('i', [
+                'fab',
+                `fa-${platform}`,
+                obj.options && obj.options.size ? `fa-${obj.options.size}` : '_'
+            ])
+            iTag.title = platform[0].toUpperCase() + platform.slice(1)
 
-        aTag.appendChild(iTag)
-        social.appendChild(aTag)
-    })
+            aTag.appendChild(iTag)
+            social.appendChild(aTag)
+        })
 
     appTag.appendChild(social)
 }
@@ -676,7 +699,7 @@ function printContent(content, variables) {
         text: printText,
         window: printWindow
     }
-    content.forEach(function (obj) {
+    content.forEach(function(obj) {
         if (functionHash.hasOwnProperty(obj.type)) {
             functionHash[obj.type](obj, variables)
         }

@@ -13,8 +13,10 @@ function buildHeadTag(metaData) {
 }
 
 function buildContent(content) {
-    return content.reduce(function (accumulator, block) {
-        accumulator += `\n<section id="${getId(block.type)}" class="Block Block--${block.type} ${block.type}">\n`
+    return content.reduce(function(accumulator, block) {
+        accumulator += `\n<section id="${getId(
+            block.type
+        )}" class="Block Block--${block.type} ${block.type}">\n`
         switch (block.type) {
             case 'text': {
                 accumulator += buildTextBlock(block)
@@ -29,15 +31,14 @@ function buildTextBlock(block) {
     var output = ''
     if (block.data.heading) output += `<h2>${block.data.heading}</h2>\n`
     if (block.data.paragraphs) {
-        block.data.paragraphs.forEach(function (paragraph) {
+        block.data.paragraphs.forEach(function(paragraph) {
             output += `<p>${paragraph}</p>\n`
         })
     }
     return output
 }
 
-var site =
-    `<!DOCTYPE html>
+var site = `<!DOCTYPE html>
 <html lang="en">
     ${buildHeadTag(data.meta)}
     <body>
