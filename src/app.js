@@ -2,6 +2,9 @@ var fs = require('fs')
 var data = require('../examples/data.json')
 var getId = require('./utils').getId
 var pretty = require('pretty')
+var STYLES = require('./styles')
+var buildBlockCSS = STYLES.buildBlockCSS
+var buildGlobalCSS = STYLES.buildGlobalCSS
 
 var CSS = ''
 
@@ -27,7 +30,8 @@ function isStacked(block) {
 function buildContent(content) {
     return content.reduce(function (accumulator, block) {
         var id = getId(block.type)
-        buildBlockCSS(id, block.styles)
+        CSS += buildBlockCSS(id, block.styles, data.theme)
+        // buildBlockCSS(id, block.styles)
         accumulator += `<section id="${id}" class="Block Block--${block.type} ${block.type} ${isStacked(block)}">`
         switch (block.type) {
             case 'text':
@@ -67,46 +71,46 @@ function a11yTopLevelHeading() {
     return ''
 }
 
-function buildBlockCSS(id, styles) {
-    if (styles) {
-        var output = `#${id} {`
-        for (var key in styles) {
-            var value = styles[key]
-            if (value[0] === '@') {
-                var variable = value.slice(1)
-                if (data.theme.variables.hasOwnProperty(variable)) {
-                    value = data.theme.variables[variable];
-                } else {
-                    throw new Error(`Block "${id}" referenced variable "${variable}" but no variable by name exists in theme variables.`)
-                }
-            }
-            output += `${key}:${value};`
-        }
-        output += '}'
-        CSS += output;
-    }
-}
+// function buildBlockCSS(id, styles) {
+//     if (styles) {
+//         var output = `#${id} {`
+//         for (var key in styles) {
+//             var value = styles[key]
+//             if (value[0] === '@') {
+//                 var variable = value.slice(1)
+//                 if (data.theme.variables.hasOwnProperty(variable)) {
+//                     value = data.theme.variables[variable];
+//                 } else {
+//                     throw new Error(`Block "${id}" referenced variable "${variable}" but no variable by name exists in theme variables.`)
+//                 }
+//             }
+//             output += `${key}:${value};`
+//         }
+//         output += '}'
+//         CSS += output;
+//     }
+// }
 
-function buildGlobalCSS() {
-    if (data.theme.styles_v2) {
-        var global = 'body {'
-        for (var key in data.theme.styles_v2) {
-            global += `${key}: ${data.theme.styles_v2[key]};`
-        }
-        global += '}'
-        CSS += global
-    }
-    if (data.theme.variables) {
-        var global = '.Block {'
-        if (data.theme.variables.contentBackground)
-            global += `background-color: ${data.theme.variables.contentBackground};`
-        global += '}'
-        CSS += global
-    }
-}
+// function buildGlobalCSS() {
+//     if (data.theme.styles_v2) {
+//         var global = 'body {'
+//         for (var key in data.theme.styles_v2) {
+//             global += `${key}: ${data.theme.styles_v2[key]};`
+//         }
+//         global += '}'
+//         CSS += global
+//     }
+//     if (data.theme.variables) {
+//         var global = '.Block {'
+//         if (data.theme.variables.contentBackground)
+//             global += `background-color: ${data.theme.variables.contentBackground};`
+//         global += '}'
+//         CSS += global
+//     }
+// }
 
 function generateHTML() {
-    buildGlobalCSS()
+    CSS += buildGlobalCSS(data.theme)
     var content = buildContent(data.content)
     var head = buildHead(data)
     return pretty(`<!DOCTYPE html>
