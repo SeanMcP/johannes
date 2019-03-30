@@ -1,5 +1,6 @@
 var fs = require('fs')
 var data = require('../examples/data.json')
+var getId = require('./utils').getId
 
 function buildHeadTag(metaData) {
     return `
@@ -13,7 +14,7 @@ function buildHeadTag(metaData) {
 
 function buildContent(content) {
     return content.reduce(function (accumulator, block) {
-        accumulator += `\n<section class="Block Block--${block.type} ${block.type}">\n`
+        accumulator += `\n<section id="${getId(block.type)}" class="Block Block--${block.type} ${block.type}">\n`
         switch (block.type) {
             case 'text': {
                 accumulator += buildTextBlock(block)
