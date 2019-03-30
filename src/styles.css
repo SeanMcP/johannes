@@ -1,36 +1,34 @@
 body {
     background: #333;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
-    -webkit-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-#app {
+#app,
+.___johannes {
     margin: 2rem auto;
-    opacity: 0;
-    -webkit-transition: opacity 500ms ease-in-out;
-    -o-transition: opacity 500ms ease-in-out;
+    /* opacity: 0; */
     transition: opacity 500ms ease-in-out;
-    -webkit-transition-delay: 750ms;
-    -o-transition-delay: 750ms;
     transition-delay: 750ms;
     width: 600px;
 }
 
 @media screen and (max-width: 600px) {
-    #app {
+
+    #app,
+    .___johannes {
         margin: 2rem 0;
         width: 100%;
     }
 }
 
-#app.ready {
+#app.ready,
+.___johannes.ready {
     opacity: 1;
 }
 
+.Block,
 .address,
 .button,
 .contact,
@@ -42,8 +40,7 @@ body {
 .html,
 .image,
 .logo,
-.social,
-.text {
+.social {
     padding: 1rem 2rem;
 }
 
@@ -74,7 +71,6 @@ body {
 }
 
 .call-to-action .button:hover {
-    -webkit-filter: brightness(1.1);
     filter: brightness(1.1);
 }
 
@@ -83,8 +79,6 @@ body {
 }
 
 .contact .options {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     flex-direction: column;
 }
@@ -105,11 +99,7 @@ body {
 }
 
 .contact .options .option {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 0.25em 0;
 }
@@ -130,12 +120,7 @@ body {
 }
 
 .form form .field {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: column nowrap;
     flex-flow: column nowrap;
     margin-bottom: 1rem;
 }
@@ -148,7 +133,6 @@ body {
 .form form textarea {
     background: transparent;
     border: 1px solid rgba(0, 0, 0, 0.25);
-    -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25);
     box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25);
     font-family: inherit;
     font-size: 1rem;
@@ -160,17 +144,12 @@ body {
 }
 
 .form form footer {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
 }
 
 .error {
     background: white;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding-bottom: 2em;
 }
 
@@ -209,12 +188,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     height: 20rem;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
     justify-content: space-between;
 }
 
@@ -223,19 +198,13 @@ body {
 }
 
 .gallery .viewer .gallery-button {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     color: rgba(255, 255, 255, 0.75);
     cursor: pointer;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     font-family: sans-serif;
     font-size: 2rem;
     font-weight: bold;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     opacity: 0;
     padding: 0 2rem;
@@ -246,8 +215,6 @@ body {
 }
 
 .gallery .thumbnails {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     overflow-x: scroll;
     height: 6rem;
@@ -258,16 +225,12 @@ body {
 .gallery .thumb {
     border: 1px solid transparent;
     box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
     cursor: pointer;
-    -webkit-filter: brightness(0.5);
     filter: brightness(0.5);
     height: 100%;
 }
 
 .gallery .thumb:hover {
-    -webkit-filter: brightness(1);
     filter: brightness(1);
 }
 
@@ -276,7 +239,6 @@ body {
 }
 
 .gallery .thumb.current {
-    -webkit-filter: brightness(1);
     filter: brightness(1);
     pointer-events: none;
 }
@@ -301,8 +263,6 @@ body {
 }
 
 .hours .row {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
 }
 
@@ -311,8 +271,6 @@ body {
 }
 
 .hours .row .divider {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
     flex: 1;
     border-bottom-style: dotted;
     border-bottom-width: 1px;
@@ -348,25 +306,15 @@ body {
 }
 
 .loading {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     bottom: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
     left: 0;
     position: absolute;
     right: 0;
     top: 0;
-    -webkit-transition: opacity 500ms ease-in-out;
-    -o-transition: opacity 500ms ease-in-out;
     transition: opacity 500ms ease-in-out;
-    -webkit-transition-delay: 500ms;
-    -o-transition-delay: 500ms;
     transition-delay: 500ms;
     z-index: 1;
 }
@@ -376,7 +324,6 @@ body {
 }
 
 .loading .spinner {
-    -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
     border: 0.25rem solid rgba(255, 255, 255, 0.25);
     border-top-color: rgba(255, 255, 255, 0.75);
@@ -385,36 +332,18 @@ body {
     width: 2rem;
 }
 
-@-webkit-keyframes spin {
-    from {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg)
-    }
-
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
-    }
-}
-
 @keyframes spin {
     from {
-        -webkit-transform: rotate(0deg);
         transform: rotate(0deg)
     }
 
     to {
-        -webkit-transform: rotate(360deg);
         transform: rotate(360deg)
     }
 }
 
 .logo {
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     padding: 2rem;
 }
@@ -480,12 +409,6 @@ body {
 
 /* Text styles */
 
-body,
-* {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 h1,
 h2,
 h3,
@@ -503,7 +426,8 @@ p {
 REUSABLE CLASSES
 */
 
-.btn, button {
+.btn,
+button {
     border: 0;
     cursor: pointer;
     font-family: inherit;
@@ -513,11 +437,21 @@ REUSABLE CLASSES
     text-decoration: none;
 }
 
-.btn:hover, button:hover {
+.btn:hover,
+button:hover {
     filter: brightness(1.1);
 }
 
 .disabled {
     opacity: 0.5;
     pointer-events: none;
+}
+
+.--visually-hidden {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
+    position: absolute;
+    top: auto;
+    width: 1px;
 }
