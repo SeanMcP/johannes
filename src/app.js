@@ -12,21 +12,27 @@ function buildHeadTag(metaData) {
 }
 
 function buildContent(content) {
-    return content.reduce((string, block) => {
-        string += `\n<section class="Block Block--${block.type} ${block.type}">\n`
+    return content.reduce(function (accumulator, block) {
+        accumulator += `\n<section class="Block Block--${block.type} ${block.type}">\n`
         switch (block.type) {
             case 'text': {
-                if (block.data.heading) string += `<h2>${block.data.heading}</h2>`
-                if (block.data.paragraphs) {
-                    block.data.paragraphs.forEach(function(paragraph) {
-                        string += `<p>${paragraph}</p>`
-                    })
-                }
+                accumulator += buildTextBlock(block)
             }
         }
-        string += `\n</section>`
-        return string
+        accumulator += `</section>`
+        return accumulator
     }, '')
+}
+
+function buildTextBlock(block) {
+    var output = ''
+    if (block.data.heading) output += `<h2>${block.data.heading}</h2>\n`
+    if (block.data.paragraphs) {
+        block.data.paragraphs.forEach(function (paragraph) {
+            output += `<p>${paragraph}</p>\n`
+        })
+    }
+    return output
 }
 
 var site =
@@ -35,8 +41,9 @@ var site =
     ${buildHeadTag(data.meta)}
     <body>
         <div class="___johannes">
-            Hello world!
-            ${buildContent(data.content)}
+            <main id="main" role="main">
+                ${buildContent(data.content)}
+            </main>
         </div>
     </body>
 </html>`
