@@ -1,6 +1,7 @@
 var fs = require('fs')
 var data = require('../examples/data.json')
 var getId = require('./utils').getId
+var pretty = require('pretty')
 
 function buildHeadTag(metaData) {
     return `
@@ -14,9 +15,9 @@ function buildHeadTag(metaData) {
 
 function buildContent(content) {
     return content.reduce(function(accumulator, block) {
-        accumulator += `\n<section id="${getId(
+        accumulator += `<section id="${getId(
             block.type
-        )}" class="Block Block--${block.type} ${block.type}">\n`
+        )}" class="Block Block--${block.type} ${block.type}">`
         switch (block.type) {
             case 'text': {
                 accumulator += buildTextBlock(block)
@@ -29,16 +30,16 @@ function buildContent(content) {
 
 function buildTextBlock(block) {
     var output = ''
-    if (block.data.heading) output += `<h2>${block.data.heading}</h2>\n`
+    if (block.data.heading) output += `<h2>${block.data.heading}</h2>`
     if (block.data.paragraphs) {
         block.data.paragraphs.forEach(function(paragraph) {
-            output += `<p>${paragraph}</p>\n`
+            output += `<p>${paragraph}</p>`
         })
     }
     return output
 }
 
-var site = `<!DOCTYPE html>
+var HTML = `<!DOCTYPE html>
 <html lang="en">
     ${buildHeadTag(data.meta)}
     <body>
@@ -50,4 +51,4 @@ var site = `<!DOCTYPE html>
     </body>
 </html>`
 
-fs.writeFileSync('___dev.html', site)
+fs.writeFileSync('___dev.html', pretty(HTML))
