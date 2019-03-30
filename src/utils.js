@@ -7,6 +7,11 @@ function getId(tag) {
     return output
 }
 
+function camelToKabob(string) {
+    return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
 module.exports = {
+    camelToKabob,
     getId
 }
