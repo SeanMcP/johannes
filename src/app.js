@@ -5,12 +5,13 @@ var pretty = require('pretty')
 
 var CSS = ''
 
-function buildHead(metaData) {
+function buildHead(meta) {
     return `
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${metaData.title}</title>
+        <title>${meta.title}</title>
+        ${meta.description && `<meta name="description" content="${meta.description}">`}
         <link rel="stylesheet" type="text/css" href="src/styles.css" />
         <style>${CSS}</style>
     </head>`
@@ -43,6 +44,16 @@ function buildTextBlock(block) {
     return output
 }
 
+function a11yTopLevelHeading() {
+    var isLogoBlock = data.content.some(function (block) {
+        return block.type === "logo"
+    })
+    if (!isLogoBlock) {
+        return `<header><h1 class="--visually-hidden">${data.meta.title}</h1></header>`
+    }
+    return ''
+}
+
 function buildBlockCSS(id, styles) {
     if (styles) {
         var output = `#${id} {`
@@ -71,6 +82,7 @@ function generateHTML() {
     ${head}
     <body>
         <div class="___johannes">
+            ${a11yTopLevelHeading()}
             <main id="main" role="main">
                 ${content}
             </main>
