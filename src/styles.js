@@ -7,9 +7,11 @@ function buildBlockCSS(id, styles, theme) {
             if (value[0] === '@') {
                 var variable = value.slice(1)
                 if (theme.variables.hasOwnProperty(variable)) {
-                    value = theme.variables[variable];
+                    value = theme.variables[variable]
                 } else {
-                    throw new Error(`Block "${id}" referenced variable "${variable}" but no variable by name exists in theme variables.`)
+                    throw new Error(
+                        `Block "${id}" referenced variable "${variable}" but no variable by name exists in theme variables.`
+                    )
                 }
             }
             output += `${key}:${value};`
@@ -32,7 +34,9 @@ function buildGlobalCSS(data) {
     if (data.theme.variables) {
         var global = '.Block {'
         if (data.theme.variables.contentBackground)
-            global += `background-color: ${data.theme.variables.contentBackground};`
+            global += `background-color: ${
+                data.theme.variables.contentBackground
+            };`
         global += '}'
         output += global
     }

@@ -9,7 +9,7 @@ function getId(tag) {
 
 function camelToKabob(string) {
     // From: https://gist.github.com/nblackburn/875e6ff75bc8ce171c758bf75f304707
-    return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    return string.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()
 }
 
 module.exports = {

@@ -6,17 +6,18 @@ var buildGlobalCSS = require('./styles').buildGlobalCSS
 var buildHead = require('./meta').buildHead
 
 function a11yTopLevelHeading() {
-    var isLogoBlock = data.content.some(function (block) {
-        return block.type === "logo"
+    var isLogoBlock = data.content.some(function(block) {
+        return block.type === 'logo'
     })
-    return !isLogoBlock ? `<header><h1 class="--visually-hidden">${data.meta.title}</h1></header>` : ''
+    return !isLogoBlock
+        ? `<header><h1 class="--visually-hidden">${
+              data.meta.title
+          }</h1></header>`
+        : ''
 }
 
 function generateHTML() {
-    var {
-        elements,
-        styles
-    } = buildContent(data)
+    var { elements, styles } = buildContent(data)
     // Remember: order matters here ⤵️
     var css = ''.concat(buildGlobalCSS(data), styles)
 
