@@ -1,6 +1,7 @@
 {
     "meta": {
-        "title": "Johannes Ltd. Co."
+        "title": "Johannes Ltd. Co.",
+        "description": "Your friendly neighborhood printing press since 1440"
     },
     "content": [{
             "type": "logo",
