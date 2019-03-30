@@ -4,33 +4,31 @@ var data = require('../examples/data.json')
 var buildContent = require('./blocks').buildContent
 var buildGlobalCSS = require('./styles').buildGlobalCSS
 
-function buildHead(data, CSS) {
+function buildHead({
+    meta,
+    theme
+}, css) {
     return `
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${data.meta.title}</title>
-        ${data.meta.description && `<meta name="description" content="${data.meta.description}">`}
-        ${addCustomFont(data.theme.customFont)}
+        <title>${meta.title}</title>
+        ${meta.description && `<meta name="description" content="${meta.description}">`}
+        ${addCustomFont(theme.customFont)}
         <link rel="stylesheet" type="text/css" href="src/styles.css" />
-        <style>${CSS}</style>
+        <style type="text/css">${css}</style>
     </head>`
 }
 
 function addCustomFont(family) {
-    if (family)
-        return `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${family}" />`
-    return ''
+    return family ? `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${family}" />` : ''
 }
 
 function a11yTopLevelHeading() {
     var isLogoBlock = data.content.some(function (block) {
         return block.type === "logo"
     })
-    if (!isLogoBlock) {
-        return `<header><h1 class="--visually-hidden">${data.meta.title}</h1></header>`
-    }
-    return ''
+    return !isLogoBlock ? `<header><h1 class="--visually-hidden">${data.meta.title}</h1></header>` : ''
 }
 
 function generateHTML() {
@@ -38,12 +36,12 @@ function generateHTML() {
         elements,
         styles
     } = buildContent(data)
-    // Remember: order matters here
-    var CSS = ''.concat(buildGlobalCSS(data), styles)
+    // Remember: order matters here ⤵️
+    var css = ''.concat(buildGlobalCSS(data), styles)
 
     return pretty(`<!DOCTYPE html>
 <html lang="en">
-    ${buildHead(data, CSS)}
+    ${buildHead(data, css)}
     <body>
         <div class="___johannes">
             ${a11yTopLevelHeading()}

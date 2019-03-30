@@ -1,14 +1,18 @@
 var getId = require('./utils').getId
 var buildBlockCSS = require('./styles').buildBlockCSS
+var BLOCK_TYPE = require('./constants').BLOCK_TYPE
 
-function buildContent(data) {
+function buildContent({
+    content,
+    theme
+}) {
     var styles = ''
-    var elements = data.content.reduce(function (accumulator, block) {
+    var elements = content.reduce(function (accumulator, block) {
         var id = getId(block.type)
-        styles += buildBlockCSS(id, block.styles, data.theme)
+        styles += buildBlockCSS(id, block.styles, theme)
         accumulator += `<section id="${id}" class="Block Block--${block.type} ${block.type} ${isStacked(block)}">`
         switch (block.type) {
-            case 'text':
+            case BLOCK_TYPE.text:
                 {
                     accumulator += buildTextBlock(block)
                 }
@@ -22,17 +26,21 @@ function buildContent(data) {
     }
 }
 
-function isStacked(block) {
-    if (block.options && block.options.stacked)
+function isStacked({
+    options
+}) {
+    if (options && options.stacked)
         return 'Block--stacked'
     return ''
 }
 
-function buildTextBlock(block) {
+function buildTextBlock({
+    data
+}) {
     var output = ''
-    if (block.data.heading) output += `<h2>${block.data.heading}</h2>`
-    if (block.data.paragraphs) {
-        block.data.paragraphs.forEach(function (paragraph) {
+    if (data.heading) output += `<h2>${data.heading}</h2>`
+    if (data.paragraphs) {
+        data.paragraphs.forEach(function (paragraph) {
             output += `<p>${paragraph}</p>`
         })
     }
