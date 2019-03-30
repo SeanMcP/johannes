@@ -280,6 +280,10 @@
             "backgroundColor": "#333",
             "fontFamily": "'Source Sans Pro', Helvetica, Arial, sans-serif"
         },
+        "styles_v2": {
+            "background-color": "#333",
+            "font-family": "'Source Sans Pro', Helvetica, Arial, sans-serif"
+        },
         "variables": {
             "contentBackground": "white",
             "primaryColor": "orange"

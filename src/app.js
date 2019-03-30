@@ -5,23 +5,30 @@ var pretty = require('pretty')
 
 var CSS = ''
 
-function buildHead(meta) {
+function buildHead(data) {
     return `
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${meta.title}</title>
-        ${meta.description && `<meta name="description" content="${meta.description}">`}
+        <title>${data.meta.title}</title>
+        ${data.meta.description && `<meta name="description" content="${data.meta.description}">`}
+        ${addCustomFont(data.theme.customFont)}
         <link rel="stylesheet" type="text/css" href="src/styles.css" />
         <style>${CSS}</style>
     </head>`
+}
+
+function isStacked(block) {
+    if (block.options && block.options.stacked)
+        return 'Block--stacked'
+    return ''
 }
 
 function buildContent(content) {
     return content.reduce(function (accumulator, block) {
         var id = getId(block.type)
         buildBlockCSS(id, block.styles)
-        accumulator += `<section id="${id}" class="Block Block--${block.type} ${block.type}">`
+        accumulator += `<section id="${id}" class="Block Block--${block.type} ${block.type} ${isStacked(block)}">`
         switch (block.type) {
             case 'text':
                 {
@@ -31,6 +38,12 @@ function buildContent(content) {
         accumulator += `</section>`
         return accumulator
     }, '')
+}
+
+function addCustomFont(family) {
+    if (family)
+        return `<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=${family}" />`
+    return ''
 }
 
 function buildTextBlock(block) {
@@ -74,9 +87,28 @@ function buildBlockCSS(id, styles) {
     }
 }
 
+function buildGlobalCSS() {
+    if (data.theme.styles_v2) {
+        var global = 'body {'
+        for (var key in data.theme.styles_v2) {
+            global += `${key}: ${data.theme.styles_v2[key]};`
+        }
+        global += '}'
+        CSS += global
+    }
+    if (data.theme.variables) {
+        var global = '.Block {'
+        if (data.theme.variables.contentBackground)
+            global += `background-color: ${data.theme.variables.contentBackground};`
+        global += '}'
+        CSS += global
+    }
+}
+
 function generateHTML() {
+    buildGlobalCSS()
     var content = buildContent(data.content)
-    var head = buildHead(data.meta)
+    var head = buildHead(data)
     return pretty(`<!DOCTYPE html>
 <html lang="en">
     ${head}

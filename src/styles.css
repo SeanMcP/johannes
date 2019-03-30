@@ -44,11 +44,13 @@ body {
     padding: 1rem 2rem;
 }
 
-.stacked {
+.stacked,
+.Block--stacked {
     padding-top: 0;
 }
 
-.stacked>*:first-child {
+.stacked>*:first-child,
+.Block--stacked>*:first-child {
     margin-top: 0;
 }
 
