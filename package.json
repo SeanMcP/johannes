@@ -1,31 +1,33 @@
 {
-  "name": "johannes",
-  "version": "0.0.0",
-  "description": "🖨 A simple JSON to HTML printer",
-  "main": "src/app.js",
-  "files": [],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node src/app.js",
-    "format": "prettier --write '**/*.js'",
-    "start": "nodemon src/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SeanMcP/johannes.git"
-  },
-  "keywords": [],
-  "author": "Sean McPherson",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/SeanMcP/johannes/issues"
-  },
-  "homepage": "https://github.com/SeanMcP/johannes#readme",
-  "devDependencies": {
-    "nodemon": "^1.18.10",
-    "prettier": "1.16.4"
-  },
-  "dependencies": {
-    "pretty": "^2.0.0"
-  }
+    "name": "johannes",
+    "version": "0.0.0",
+    "description": "🖨 A simple JSON to HTML printer",
+    "main": "src/app.js",
+    "files": [],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "node src/app.js",
+        "format": "prettier --write '**/*.js'",
+        "lint": "eslint --fix '**/*.js'",
+        "start": "nodemon src/app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SeanMcP/johannes.git"
+    },
+    "keywords": [],
+    "author": "Sean McPherson",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/SeanMcP/johannes/issues"
+    },
+    "homepage": "https://github.com/SeanMcP/johannes#readme",
+    "devDependencies": {
+        "eslint": "^5.16.0",
+        "nodemon": "^1.18.10",
+        "prettier": "1.16.4"
+    },
+    "dependencies": {
+        "pretty": "^2.0.0"
+    }
 }
