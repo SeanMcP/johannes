@@ -11,7 +11,8 @@ var BLOCK_TYPE = {
     image: 'image',
     logo: 'logo',
     social: 'social',
-    text: 'text'
+    text: 'text',
+    window: 'window'
 }
 
 module.exports = {
