@@ -26,21 +26,21 @@ function buildBlockCSS(id, styles, theme) {
 function buildGlobalCSS(data) {
     var output = ''
     if (data.theme.styles_v2) {
-        var global = 'body {'
+        var stylesString = 'body {'
         for (var key in data.theme.styles_v2) {
-            global += `${key}: ${data.theme.styles_v2[key]};`
+            stylesString += `${key}: ${data.theme.styles_v2[key]};`
         }
-        global += '}'
-        output += global
+        stylesString += '}'
+        output += stylesString
     }
     if (data.theme.variables) {
-        var global = '.Block {'
+        var variablesString = '.Block {'
         if (data.theme.variables.contentBackground)
-            global += `background-color: ${
+            variablesString += `background-color: ${
                 data.theme.variables.contentBackground
             };`
-        global += '}'
-        output += global
+        variablesString += '}'
+        output += variablesString
     }
     return output
 }
