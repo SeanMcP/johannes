@@ -1,4 +1,6 @@
 function buildBlockCSS(id, styles, theme) {
+    // It would be cool if this function could check for and create classes
+    // based on common styles.
     var output = ''
     if (styles) {
         output += `#${id} {`
