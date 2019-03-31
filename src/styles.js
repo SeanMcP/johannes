@@ -25,6 +25,7 @@ function buildBlockCSS(id, styles, theme) {
 
 function buildGlobalCSS(data) {
     var output = ''
+    // TODO: Change this ⤵️ when data structure changes
     if (data.theme.styles_v2) {
         var stylesString = 'body {'
         for (var key in data.theme.styles_v2) {
