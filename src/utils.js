@@ -7,6 +7,13 @@ function capitalize(string) {
     return string[0].toUpperCase() + string.slice(1)
 }
 
+function getClass(condition, className, defaultValue = undefined) {
+    if (condition) {
+        return className
+    }
+    return defaultValue
+}
+
 function getId(tag) {
     // From: https://gist.github.com/gordonbrander/2230317
     var output = tag ? `${tag}-` : ''
@@ -17,5 +24,6 @@ function getId(tag) {
 module.exports = {
     camelToKabob,
     capitalize,
+    getClass,
     getId
 }
