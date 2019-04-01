@@ -28,6 +28,7 @@
         "prettier": "1.16.4"
     },
     "dependencies": {
+        "app-root-path": "^2.2.1",
         "pretty": "^2.0.0"
     }
 }
