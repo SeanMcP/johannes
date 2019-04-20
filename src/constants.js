@@ -15,6 +15,12 @@ var BLOCK_TYPE = {
     window: 'window'
 }
 
+var ENV = {
+    dev: 'development',
+    prod: 'production'
+}
+
 module.exports = {
-    BLOCK_TYPE
+    BLOCK_TYPE,
+    ENV
 }
