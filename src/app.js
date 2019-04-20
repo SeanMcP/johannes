@@ -1,16 +1,28 @@
 var fs = require('fs')
+var path = require('path')
+var mkdirp = require('mkdirp')
 var pretty = require('pretty')
-var data = require('../examples/data.json')
 var buildContent = require('./blocks').buildContent
 var buildGlobalCSS = require('./styles').buildGlobalCSS
 var buildHead = require('./meta').buildHead
+var ifDev = require('./utils').ifDev
 
-// function getData() {
-//     var appRoot = require('app-root-path')
-//     return require(appRoot + '/data.json')
-// }
+var config = require('./setup').getConfig()
 
-// var data = getData();
+process.env.NODE_ENV = config.env
+
+ifDev(() => console.log('Build configs:', config))
+
+console.log('Start time:', new Date())
+
+var data
+
+try {
+    data = require(path.join(config.cwd, config.input))
+} catch (ex) {
+    console.log(ex)
+    process.exit(1)
+}
 
 function a11yTopLevelHeading() {
     var isLogoBlock = data.content.some(function(block) {
@@ -44,11 +56,16 @@ function generateHTML() {
 }
 
 function johannes() {
-    fs.writeFileSync('___dev.html', generateHTML())
-}
-
-if (process.env.NODE_ENV === 'development') {
-    johannes()
+    var output = path.join(config.cwd, config.output)
+    mkdirp(output, function(err) {
+        if (err) {
+            console.error(err)
+            process.exit(1)
+        } else {
+            fs.writeFileSync(path.join(output, config.filename), generateHTML())
+            console.log('End time:', new Date())
+        }
+    })
 }
 
 module.exports = johannes
