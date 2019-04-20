@@ -16,44 +16,44 @@ function getConfig() {
     for (const arg in args) {
         switch (arg) {
             case 'dev':
-            case 'D': {
+            case 'd': {
                 config.env = ENV.dev
                 break
             }
             case 'filename':
-            case 'F': {
+            case 'f': {
                 config.filename = args[arg]
                 break
             }
             case 'input':
-            case 'I': {
+            case 'i': {
                 config.input = args[arg]
                 break
             }
-            case 'help':
-            case 'H': {
-                console.log(`Usage: johannes [options]
-
-Options:
-  --dev, -D ............... Set environment to 'development' 
-  --input, -I ............. Input file [default: ${defaultConfig.input}]
-  --output, -O ............ Build directory [default: ${defaultConfig.output}]
-  --filename, -F .......... Build file in directory [default: ${
-      defaultConfig.filename
-  }]
-  --help, -H .............. Output usage information
-  --version, -V ........... Output the version number
-                `)
-                process.exit(0)
-            }
             case 'output':
-            case 'O': {
+            case 'o': {
                 config.output = args[arg]
                 break
             }
             case 'version':
-            case 'V': {
+            case 'v': {
                 console.log(require('../package.json').version)
+                process.exit(0)
+            }
+            case 'help':
+            case 'h': {
+                console.log(`Usage: johannes [options]
+
+Options:
+  --dev, -d ............... Set environment to 'development' 
+  --input, -i ............. Input file [default: ${defaultConfig.input}]
+  --output, -o ............ Build directory [default: ${defaultConfig.output}]
+  --filename, -f .......... Build file in directory [default: ${
+      defaultConfig.filename
+  }]
+  --help, -h .............. Output usage information
+  --version, -v ........... Output the version number
+                `)
                 process.exit(0)
             }
         }
