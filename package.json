@@ -11,6 +11,9 @@
         "lint": "eslint --fix '**/*.js'",
         "start": "NODE_ENV=development nodemon src/app.js"
     },
+    "bin": {
+        "outside": "bin/outside"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/SeanMcP/johannes.git"
