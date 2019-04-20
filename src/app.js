@@ -21,7 +21,7 @@ try {
     data = require(path.join(config.cwd, config.input))
     global.data = require(path.join(config.cwd, config.input))
 } catch (ex) {
-    console.log(ex)
+    console.error(ex)
     process.exit(1)
 }
 

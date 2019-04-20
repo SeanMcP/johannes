@@ -3,7 +3,8 @@
         "title": "Johannes Ltd. Co.",
         "description": "Your friendly neighborhood printing press since 1440"
     },
-    "content": [{
+    "content": [
+        {
             "type": "logo",
             "data": {
                 "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Gutenberg.jpg/800px-Gutenberg.jpg",
@@ -16,7 +17,10 @@
             "data": {
                 "background": "https://placebear.com/g/800/800",
                 "heading": "Making a difference",
-                "body": ["You can do amazing things; you just need somewhere to begin.", "Lorem ipsum dolor sit amet..."],
+                "body": [
+                    "You can do amazing things; you just need somewhere to begin.",
+                    "Lorem ipsum dolor sit amet..."
+                ],
                 "action": {
                     "text": "Start here",
                     "href": "https://github.com"
@@ -49,7 +53,8 @@
             "type": "gallery",
             "data": {
                 "heading": "Gallery",
-                "images": [{
+                "images": [
+                    {
                         "src": "assets/gallery/bike1.jpg",
                         "description": "A family riding a bike"
                     },
@@ -238,9 +243,7 @@
         {
             "type": "text",
             "data": {
-                "paragraphs": [
-                    "Copyright © McPherson Design LLC 2018"
-                ]
+                "paragraphs": ["Copyright © McPherson Design LLC 2018"]
             },
             "options": {
                 "backgroundColor": "transparent",

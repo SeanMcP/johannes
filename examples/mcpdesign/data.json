@@ -18,7 +18,9 @@
             "data": {
                 "background": "./assets/banner.jpg",
                 "heading": "Custom graphics & illustrations",
-                "body": ["You can do amazing things; you just need somewhere to begin."],
+                "body": [
+                    "You can do amazing things; you just need somewhere to begin."
+                ],
                 "action": {
                     "text": "Start here",
                     "href": "https://github.com"
@@ -62,9 +64,7 @@
         {
             "type": "text",
             "data": {
-                "paragraphs": [
-                    "Copyright © McPherson Design LLC 2018"
-                ]
+                "paragraphs": ["Copyright © McPherson Design LLC 2018"]
             },
             "options": {
                 "backgroundColor": "transparent",

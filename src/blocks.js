@@ -76,7 +76,7 @@ function buildMarkdownBlock(block) {
                 elements += htmlString
             })
     } catch (ex) {
-        console.log(ex)
+        console.error(ex)
         process.exit(1)
     }
 
