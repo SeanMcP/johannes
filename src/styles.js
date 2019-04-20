@@ -1,13 +1,14 @@
-function buildBlockCSS(id, styles, theme) {
+function buildBlockCSS(id, styles) {
+    const { theme } = global.data
     // It would be cool if this function could check for and create classes
     // based on common styles.
-    var output = ''
+    let output = ''
     if (styles) {
         output += `#${id} {`
-        for (var key in styles) {
-            var value = styles[key]
+        for (const key in styles) {
+            let value = styles[key]
             if (value[0] === '@') {
-                var variable = value.slice(1)
+                const variable = value.slice(1)
                 if (theme.variables.hasOwnProperty(variable)) {
                     value = theme.variables[variable]
                 } else {
@@ -24,18 +25,18 @@ function buildBlockCSS(id, styles, theme) {
 }
 
 function buildGlobalCSS(data) {
-    var output = ''
+    let output = ''
     // TODO: Change this ⤵️ when data structure changes
     if (data.theme.styles_v2) {
-        var stylesString = 'body {'
-        for (var key in data.theme.styles_v2) {
+        let stylesString = 'body {'
+        for (const key in data.theme.styles_v2) {
             stylesString += `${key}: ${data.theme.styles_v2[key]};`
         }
         stylesString += '}'
         output += stylesString
     }
     if (data.theme.variables) {
-        var variablesString = '.Block {'
+        let variablesString = '.Block {'
         if (data.theme.variables.contentBackground)
             variablesString += `background-color: ${
                 data.theme.variables.contentBackground

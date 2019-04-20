@@ -19,6 +19,7 @@ var data
 
 try {
     data = require(path.join(config.cwd, config.input))
+    global.data = require(path.join(config.cwd, config.input))
 } catch (ex) {
     console.log(ex)
     process.exit(1)
@@ -36,7 +37,7 @@ function a11yTopLevelHeading() {
 }
 
 function generateHTML() {
-    var { elements, styles } = buildContent(data)
+    var { elements, styles } = buildContent()
     // Remember: order matters here ⤵️
     var css = buildGlobalCSS(data) + styles
 

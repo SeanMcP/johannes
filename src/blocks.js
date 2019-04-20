@@ -1,19 +1,20 @@
-var fs = require('fs')
-var path = require('path')
-var remark = require('remark')
-var html = require('remark-html')
-var highlight = require('remark-highlight.js')
-var { capitalize, getClass, getId } = require('./utils')
-var buildBlockCSS = require('./styles').buildBlockCSS
-var BLOCK_TYPE = require('./constants').BLOCK_TYPE
+const fs = require('fs')
+const path = require('path')
+const remark = require('remark')
+const html = require('remark-html')
+const highlight = require('remark-highlight.js')
+const { capitalize, getClass, getId } = require('./utils')
+const buildBlockCSS = require('./styles').buildBlockCSS
+const BLOCK_TYPE = require('./constants').BLOCK_TYPE
 
-function openBlockTag({ block, className = '', id, style = '' }) {
-    var classList = ['Block', capitalize(block.type), block.type]
+function openBlockTag({ block, className = '', style = '' }) {
+    // TODO: Remove lowercase block.type
+    const classList = ['Block', capitalize(block.type), block.type]
     if (block.options && block.options.stacked) classList.push('Block--stacked')
     if (className) classList.push(className)
     return `
     <section
-        id="${id}"
+        id="${block.id}"
         class="${classList.join(' ')}"
         ${style ? `style="${style}"` : ''}
     >`
@@ -23,47 +24,45 @@ function closeBlockTag() {
     return `</section>`
 }
 
-var buildFunctionMap = {
+const buildFunctionMap = {
     [BLOCK_TYPE.text]: buildTextBlock,
     [BLOCK_TYPE.markdown]: buildMarkdownBlock,
     [BLOCK_TYPE.window]: buildWindowBlock
 }
 
-function buildContent({ content, theme }) {
-    var styles = ''
-    var elements = content.reduce(function(accumulator, block) {
-        var id = getId(block.type)
+function buildContent() {
+    const { content } = global.data
+    let styles = ''
+    let elements = ''
+    for (const block of content) {
+        block.id = getId(block.type)
 
+        // TODO: Replace this with try/catch once
+        // all builder functions are completed
         if (buildFunctionMap.hasOwnProperty(block.type)) {
-            var output = buildFunctionMap[block.type]({
-                block,
-                id,
-                theme
-            })
-            if (output.elements) accumulator += output.elements
+            const output = buildFunctionMap[block.type](block)
+            if (output.elements) elements += output.elements
             if (output.styles) styles += output.styles
         }
-
-        return accumulator
-    }, '')
+    }
     return {
         elements,
         styles
     }
 }
 
-function buildMarkdownBlock({ block, id, theme }) {
-    var {
-        data: { source }
-    } = block
-    var styles = buildBlockCSS(id, block.styles, theme)
-    var elements = openBlockTag({
-        block,
+function buildMarkdownBlock(block) {
+    const {
+        data: { source },
         id
+    } = block
+    const styles = buildBlockCSS(id, block.styles)
+    let elements = openBlockTag({
+        block
     })
 
     try {
-        var buffer = fs.readFileSync(path.join(global.config.cwd, source), {
+        const buffer = fs.readFileSync(path.join(global.config.cwd, source), {
             encoding: 'utf8'
         })
         remark()
@@ -89,14 +88,14 @@ function buildMarkdownBlock({ block, id, theme }) {
     }
 }
 
-function buildTextBlock({ block, id, theme }) {
-    var {
-        data: { heading, paragraphs }
-    } = block
-    var styles = buildBlockCSS(id, block.styles, theme)
-    var elements = openBlockTag({
-        block,
+function buildTextBlock(block) {
+    const {
+        data: { heading, paragraphs },
         id
+    } = block
+    const styles = buildBlockCSS(id, block.styles)
+    let elements = openBlockTag({
+        block
     })
     if (heading) elements += `<h2>${heading}</h2>`
     if (paragraphs) {
@@ -111,20 +110,15 @@ function buildTextBlock({ block, id, theme }) {
     }
 }
 
-function buildWindowBlock({ block, id, theme }) {
-    var { options } = block
-    var styles = buildBlockCSS(
-        id,
-        {
-            ...block.styles,
-            'background-image': `url(${block.data.url})`
-        },
-        theme
-    )
-    var elements = openBlockTag({
+function buildWindowBlock(block) {
+    const { id, options } = block
+    const styles = buildBlockCSS(id, {
+        ...block.styles,
+        'background-image': `url(${block.data.url})`
+    })
+    let elements = openBlockTag({
         block,
-        className: getClass(options && options.parallax, 'Window--parallax'),
-        id
+        className: getClass(options && options.parallax, 'Window--parallax')
     })
     elements += closeBlockTag()
     return {
