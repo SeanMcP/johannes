@@ -1,4 +1,5 @@
-function buildHead({ meta, theme }, css) {
+function buildHead(css) {
+    const { meta, theme } = global.data
     return `
     <head>
         <meta charset="utf-8">

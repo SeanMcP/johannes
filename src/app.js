@@ -1,24 +1,21 @@
-var fs = require('fs')
-var path = require('path')
-var mkdirp = require('mkdirp')
-var pretty = require('pretty')
-var CleanCSS = require('clean-css')
-var buildContent = require('./blocks').buildContent
-var buildGlobalCSS = require('./styles').buildGlobalCSS
-var buildHead = require('./meta').buildHead
-var ifDev = require('./utils').ifDev
+const fs = require('fs')
+const path = require('path')
+const mkdirp = require('mkdirp')
+const pretty = require('pretty')
+const CleanCSS = require('clean-css')
+const buildContent = require('./blocks').buildContent
+const buildGlobalCSS = require('./styles').buildGlobalCSS
+const buildHead = require('./meta').buildHead
+const ifDev = require('./utils').ifDev
 
-var config = require('./setup').getConfig()
+const config = require('./setup').getConfig()
 global.config = config
 
 ifDev(() => console.log('Build configs:', config))
 
 console.log('Start time:', new Date())
 
-var data
-
 try {
-    data = require(path.join(config.cwd, config.input))
     global.data = require(path.join(config.cwd, config.input))
 } catch (ex) {
     console.error(ex)
@@ -26,25 +23,26 @@ try {
 }
 
 function a11yTopLevelHeading() {
-    var isLogoBlock = data.content.some(function(block) {
+    const {
+        data: { content, meta }
+    } = global
+    const isLogoBlock = content.some(function(block) {
         return block.type === 'logo'
     })
     return !isLogoBlock
-        ? `<header><h1 class="--visually-hidden">${
-              data.meta.title
-          }</h1></header>`
+        ? `<header><h1 class="--visually-hidden">${meta.title}</h1></header>`
         : ''
 }
 
 function generateHTML() {
-    var { elements, styles } = buildContent()
+    const { elements, styles } = buildContent()
     // Remember: order matters here ⤵️
-    var css = buildGlobalCSS(data) + styles
+    const css = buildGlobalCSS() + styles
 
     return pretty(`<!DOCTYPE html>
 <!-- Johannes build: ${new Date()} -->
 <html lang="en">
-    ${buildHead(data, css)}
+    ${buildHead(css)}
     <body>
         <div class="___johannes">
             ${a11yTopLevelHeading()}
@@ -57,19 +55,21 @@ function generateHTML() {
 }
 
 function johannes() {
-    var output = path.join(config.cwd, config.output)
+    const output = path.join(config.cwd, config.output)
     mkdirp(output, function(err) {
         if (err) {
             console.error(err)
             process.exit(1)
         } else {
-            var stylesBuffer = fs.readFileSync(
+            console.log('Gathering base styles...')
+            const stylesBuffer = fs.readFileSync(
                 path.join(__dirname, './styles.css'),
                 {
                     encoding: 'utf-8'
                 }
             )
-            var gutenbergBuffer = fs.readFileSync(
+            console.log('Gathering Gutenberg styles...')
+            const gutenbergBuffer = fs.readFileSync(
                 path.join(
                     __dirname,
                     '../node_modules/gutenberg-web-type/src/style/gutenberg.css'
@@ -78,7 +78,8 @@ function johannes() {
                     encoding: 'utf-8'
                 }
             )
-            var highlightBuffer = fs.readFileSync(
+            console.log('Gathering Highlight.js theme...')
+            const highlightBuffer = fs.readFileSync(
                 path.join(
                     __dirname,
                     '../node_modules/highlight.js/styles/a11y-light.css'
@@ -87,18 +88,20 @@ function johannes() {
                     encoding: 'utf-8'
                 }
             )
-            var combindedStyles = new CleanCSS().minify(
+            const combindedStyles = new CleanCSS().minify(
                 // highlight first so that styles can be
                 // overwritten
                 highlightBuffer.toString() +
                     gutenbergBuffer.toString() +
                     stylesBuffer.toString()
             ).styles
+            console.log('Creating CSS file...')
             fs.writeFileSync(
                 path.join(output, config.stylesFilename),
                 combindedStyles
             )
             // Create HTML
+            console.log('Creating HTML file...')
             fs.writeFileSync(path.join(output, config.filename), generateHTML())
             console.log('End time:', new Date())
         }

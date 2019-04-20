@@ -24,7 +24,8 @@ function buildBlockCSS(id, styles) {
     return output
 }
 
-function buildGlobalCSS(data) {
+function buildGlobalCSS() {
+    const { data } = global
     let output = ''
     // TODO: Change this ⤵️ when data structure changes
     if (data.theme.styles_v2) {
