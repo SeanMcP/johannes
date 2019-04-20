@@ -462,3 +462,8 @@ button:hover {
 pre > code.hljs {
     margin-bottom: 0;
 }
+
+:not(pre) > code {
+    display: inline;
+    padding: 0;
+}
