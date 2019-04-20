@@ -8,6 +8,7 @@ var buildHead = require('./meta').buildHead
 var ifDev = require('./utils').ifDev
 
 var config = require('./setup').getConfig()
+global.config = config
 
 ifDev(() => console.log('Build configs:', config))
 

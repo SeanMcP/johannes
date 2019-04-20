@@ -10,6 +10,7 @@ var BLOCK_TYPE = {
     html: 'html',
     image: 'image',
     logo: 'logo',
+    markdown: 'markdown',
     social: 'social',
     text: 'text',
     window: 'window'
