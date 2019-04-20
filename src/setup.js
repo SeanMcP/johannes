@@ -1,64 +1,29 @@
-var minimist = require('minimist')
+var program = require('commander')
 var ENV = require('./constants').ENV
 
 var defaultConfig = {
     cwd: process.cwd(),
-    env: ENV.prod,
     input: './data.json',
     output: './site',
     filename: 'index.html'
 }
 
 function getConfig() {
-    var config = { ...defaultConfig }
-    var args = minimist(process.argv.slice(2))
+    program
+        .version(require('../package.json').version)
+        .option('-d, --dev', `set environment to 'development'`)
+        .option('-i, --input <path>', 'input data file', defaultConfig.input)
+        .option('-o, --output <path>', 'build directory', defaultConfig.output)
+        .option(
+            '-f, --filename <name>',
+            'build file in directory',
+            defaultConfig.filename
+        )
+        .parse(process.argv)
 
-    for (const arg in args) {
-        switch (arg) {
-            case 'dev':
-            case 'd': {
-                config.env = ENV.dev
-                break
-            }
-            case 'filename':
-            case 'f': {
-                config.filename = args[arg]
-                break
-            }
-            case 'input':
-            case 'i': {
-                config.input = args[arg]
-                break
-            }
-            case 'output':
-            case 'o': {
-                config.output = args[arg]
-                break
-            }
-            case 'version':
-            case 'v': {
-                console.log(require('../package.json').version)
-                process.exit(0)
-            }
-            case 'help':
-            case 'h': {
-                console.log(`Usage: johannes [options]
+    process.env.NODE_ENV = program.dev ? ENV.dev : ENV.prod
 
-Options:
-  --dev, -d ............... Set environment to 'development' 
-  --input, -i ............. Input file [default: ${defaultConfig.input}]
-  --output, -o ............ Build directory [default: ${defaultConfig.output}]
-  --filename, -f .......... Build file in directory [default: ${
-      defaultConfig.filename
-  }]
-  --help, -h .............. Output usage information
-  --version, -v ........... Output the version number
-                `)
-                process.exit(0)
-            }
-        }
-    }
-    return config
+    return { ...defaultConfig, ...program }
 }
 
 module.exports = {

@@ -9,8 +9,6 @@ var ifDev = require('./utils').ifDev
 
 var config = require('./setup').getConfig()
 
-process.env.NODE_ENV = config.env
-
 ifDev(() => console.log('Build configs:', config))
 
 console.log('Start time:', new Date())

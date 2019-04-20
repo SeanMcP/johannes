@@ -31,7 +31,7 @@
         "prettier": "1.16.4"
     },
     "dependencies": {
-        "minimist": "^1.2.0",
+        "commander": "^2.20.0",
         "mkdirp": "^0.5.1",
         "pretty": "^2.0.0"
     }
