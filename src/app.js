@@ -38,7 +38,7 @@ function a11yTopLevelHeading() {
 function generateHTML() {
     var { elements, styles } = buildContent(data)
     // Remember: order matters here ⤵️
-    var css = ''.concat(buildGlobalCSS(data), styles)
+    var css = buildGlobalCSS(data) + styles
 
     return pretty(`<!DOCTYPE html>
 <!-- Johannes build: ${new Date()} -->
@@ -68,6 +68,15 @@ function johannes() {
                     encoding: 'utf-8'
                 }
             )
+            var gutenbergBuffer = fs.readFileSync(
+                path.join(
+                    __dirname,
+                    '../node_modules/gutenberg-web-type/src/style/gutenberg.css'
+                ),
+                {
+                    encoding: 'utf-8'
+                }
+            )
             var highlightBuffer = fs.readFileSync(
                 path.join(
                     __dirname,
@@ -80,7 +89,9 @@ function johannes() {
             var combindedStyles = new CleanCSS().minify(
                 // highlight first so that styles can be
                 // overwritten
-                highlightBuffer.toString() + stylesBuffer.toString()
+                highlightBuffer.toString() +
+                    gutenbergBuffer.toString() +
+                    stylesBuffer.toString()
             ).styles
             fs.writeFileSync(
                 path.join(output, config.stylesFilename),
