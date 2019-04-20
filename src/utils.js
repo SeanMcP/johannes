@@ -31,10 +31,28 @@ function ifDev(fn) {
     }
 }
 
+function startProcess(message) {
+    const startTime = new Date().getTime()
+    process.stdout.write(message)
+    return startTime
+}
+
+function finishProcess(startTime) {
+    process.stdout.write(` (${new Date().getTime() - startTime}ms)\n`)
+}
+
+function logProcess(message, blockingAction) {
+    const start = startProcess(message)
+    const output = blockingAction()
+    finishProcess(start)
+    return output
+}
+
 module.exports = {
     camelToKabob,
     capitalize,
     getClass,
     getId,
-    ifDev
+    ifDev,
+    logProcess
 }

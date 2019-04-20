@@ -6,7 +6,7 @@ const CleanCSS = require('clean-css')
 const buildContent = require('./blocks').buildContent
 const buildGlobalCSS = require('./styles').buildGlobalCSS
 const buildHead = require('./meta').buildHead
-const ifDev = require('./utils').ifDev
+const { ifDev, logProcess } = require('./utils')
 
 const config = require('./setup').getConfig()
 global.config = config
@@ -16,7 +16,9 @@ ifDev(() => console.log('Build configs:', config))
 console.log('Start time:', new Date())
 
 try {
-    global.data = require(path.join(config.cwd, config.input))
+    global.data = logProcess('Reading data', () =>
+        require(path.join(config.cwd, config.input))
+    )
 } catch (ex) {
     console.error(ex)
     process.exit(1)
@@ -61,33 +63,40 @@ function johannes() {
             console.error(err)
             process.exit(1)
         } else {
-            console.log('Gathering base styles...')
-            const stylesBuffer = fs.readFileSync(
-                path.join(__dirname, './styles.css'),
-                {
+            const stylesBuffer = logProcess('Gathering base styles', () =>
+                fs.readFileSync(path.join(__dirname, './styles.css'), {
                     encoding: 'utf-8'
-                }
+                })
             )
-            console.log('Gathering Gutenberg styles...')
-            const gutenbergBuffer = fs.readFileSync(
-                path.join(
-                    __dirname,
-                    '../node_modules/gutenberg-web-type/src/style/gutenberg.css'
-                ),
-                {
-                    encoding: 'utf-8'
-                }
+
+            const gutenbergBuffer = logProcess(
+                'Gathering Gutenberg styles',
+                () =>
+                    fs.readFileSync(
+                        path.join(
+                            __dirname,
+                            '../node_modules/gutenberg-web-type/src/style/gutenberg.css'
+                        ),
+                        {
+                            encoding: 'utf-8'
+                        }
+                    )
             )
-            console.log('Gathering Highlight.js theme...')
-            const highlightBuffer = fs.readFileSync(
-                path.join(
-                    __dirname,
-                    '../node_modules/highlight.js/styles/a11y-light.css'
-                ),
-                {
-                    encoding: 'utf-8'
-                }
+
+            const highlightBuffer = logProcess(
+                'Gathering Highlight theme',
+                () =>
+                    fs.readFileSync(
+                        path.join(
+                            __dirname,
+                            '../node_modules/highlight.js/styles/a11y-light.css'
+                        ),
+                        {
+                            encoding: 'utf-8'
+                        }
+                    )
             )
+
             const combindedStyles = new CleanCSS().minify(
                 // highlight first so that styles can be
                 // overwritten
@@ -95,14 +104,19 @@ function johannes() {
                     gutenbergBuffer.toString() +
                     stylesBuffer.toString()
             ).styles
-            console.log('Creating CSS file...')
-            fs.writeFileSync(
-                path.join(output, config.stylesFilename),
-                combindedStyles
+            logProcess('Creating CSS file', () =>
+                fs.writeFileSync(
+                    path.join(output, config.stylesFilename),
+                    combindedStyles
+                )
             )
             // Create HTML
-            console.log('Creating HTML file...')
-            fs.writeFileSync(path.join(output, config.filename), generateHTML())
+            logProcess('Creating HTML file', () =>
+                fs.writeFileSync(
+                    path.join(output, config.filename),
+                    generateHTML()
+                )
+            )
             console.log('End time:', new Date())
         }
     })
