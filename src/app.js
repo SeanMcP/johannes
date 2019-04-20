@@ -118,6 +118,7 @@ function johannes() {
                 )
             )
             console.log('End time:', new Date())
+            console.log(`Done in ${process.uptime()}s`)
         }
     })
 }
