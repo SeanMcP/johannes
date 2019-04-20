@@ -3,14 +3,13 @@ var buildBlockCSS = require('./styles').buildBlockCSS
 var BLOCK_TYPE = require('./constants').BLOCK_TYPE
 
 function openBlockTag({ block, className = '', id, style = '' }) {
-    var classes = `Block ${capitalize(block.type)} ${block.type} ${isStacked(
-        block.optons
-    )}`
-    if (className) classes += ` ${className}`
+    var classList = ['Block', capitalize(block.type), block.type]
+    if (block.options && block.options.stacked) classList.push('Block--stacked')
+    if (className) classList.push(className)
     return `
     <section
         id="${id}"
-        class="${classes}"
+        class="${classList.join(' ')}"
         ${style ? `style="${style}"` : ''}
     >`
 }
@@ -45,11 +44,6 @@ function buildContent({ content, theme }) {
         elements,
         styles
     }
-}
-
-function isStacked(options) {
-    if (options && options.stacked) return 'Block--stacked'
-    return ''
 }
 
 function buildTextBlock({ block, id, theme }) {
