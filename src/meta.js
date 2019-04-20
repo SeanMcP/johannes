@@ -7,8 +7,9 @@ function buildHead({ meta, theme }, css) {
         ${meta.description &&
             `<meta name="description" content="${meta.description}">`}
         ${addCustomFont(theme.customFont)}
-        <link rel="stylesheet" type="text/css" href="/node_modules/johannes/src/styles.css" />
-        <link rel="stylesheet" type="text/css" href="/node_modules/johannes/highlight.js/styles/a11y-light.css" />
+        <link rel="stylesheet" type="text/css" href="./${
+            global.config.stylesFilename
+        }" />
         <style type="text/css">${css}</style>
     </head>`
 }

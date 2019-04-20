@@ -5,7 +5,8 @@ var defaultConfig = {
     cwd: process.cwd(),
     input: './data.json',
     output: './site',
-    filename: 'index.html'
+    filename: 'index.html',
+    stylesFilename: 'styles.min.css'
 }
 
 function getConfig() {

@@ -2,6 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var mkdirp = require('mkdirp')
 var pretty = require('pretty')
+var CleanCSS = require('clean-css')
 var buildContent = require('./blocks').buildContent
 var buildGlobalCSS = require('./styles').buildGlobalCSS
 var buildHead = require('./meta').buildHead
@@ -61,6 +62,31 @@ function johannes() {
             console.error(err)
             process.exit(1)
         } else {
+            var stylesBuffer = fs.readFileSync(
+                path.join(__dirname, './styles.css'),
+                {
+                    encoding: 'utf-8'
+                }
+            )
+            var highlightBuffer = fs.readFileSync(
+                path.join(
+                    __dirname,
+                    '../node_modules/highlight.js/styles/a11y-light.css'
+                ),
+                {
+                    encoding: 'utf-8'
+                }
+            )
+            var combindedStyles = new CleanCSS().minify(
+                // highlight first so that styles can be
+                // overwritten
+                highlightBuffer.toString() + stylesBuffer.toString()
+            ).styles
+            fs.writeFileSync(
+                path.join(output, config.stylesFilename),
+                combindedStyles
+            )
+            // Create HTML
             fs.writeFileSync(path.join(output, config.filename), generateHTML())
             console.log('End time:', new Date())
         }
