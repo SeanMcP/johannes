@@ -25,6 +25,7 @@ function closeBlockTag() {
 }
 
 const buildFunctionMap = {
+    [BLOCK_TYPE.button]: buildButtonBlock,
     [BLOCK_TYPE.text]: buildTextBlock,
     [BLOCK_TYPE.markdown]: buildMarkdownBlock,
     [BLOCK_TYPE.window]: buildWindowBlock
@@ -45,6 +46,26 @@ function buildContent() {
             if (output.styles) styles += output.styles
         }
     }
+    return {
+        elements,
+        styles
+    }
+}
+
+function buildButtonBlock(block) {
+    const {
+        data: { href, text },
+        id,
+        // options
+    } = block
+    const styles = buildBlockCSS(id, block.styles)
+    let elements = openBlockTag({ block })
+    
+    elements += `
+        <a href=${href}>${text}</a>
+    `
+    elements += closeBlockTag()
+
     return {
         elements,
         styles
