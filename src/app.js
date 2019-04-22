@@ -13,7 +13,7 @@ global.config = config
 
 ifDev(() => console.log('Build configs:', config))
 
-console.log('Start time:', new Date())
+console.log('Start at', new Date())
 
 try {
     global.data = logProcess('Reading data', () =>
@@ -117,7 +117,7 @@ function johannes() {
                     generateHTML()
                 )
             )
-            console.log('End time:', new Date())
+            console.log('End at', new Date())
             console.log(`Done in ${process.uptime()}s`)
         }
     })
