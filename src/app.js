@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const chalk = require('chalk')
 const mkdirp = require('mkdirp')
 const pretty = require('pretty')
 const CleanCSS = require('clean-css')
@@ -118,7 +119,7 @@ function johannes() {
                 )
             )
             console.log('End at', new Date())
-            console.log(`Done in ${process.uptime()}s`)
+            console.log(`Done in ${chalk.green(process.uptime() + 's')}`)
         }
     })
 }
