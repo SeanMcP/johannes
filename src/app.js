@@ -17,7 +17,7 @@ ifDev(() => console.log('Build configs:', config))
 console.log('Start at', new Date())
 
 try {
-    global.data = logProcess('Reading data', () =>
+    global.data = logProcess(`Reading from ${config.input}`, () =>
         require(path.join(config.cwd, config.input))
     )
 } catch (ex) {
