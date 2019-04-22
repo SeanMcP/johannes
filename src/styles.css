@@ -427,6 +427,7 @@ body {
 REUSABLE CLASSES
 */
 
+.Button__button,
 .btn,
 button {
     border: 0;
@@ -438,6 +439,7 @@ button {
     text-decoration: none;
 }
 
+.Button__button,
 .btn:hover,
 button:hover {
     filter: brightness(1.1);
