@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 var ENV = require('./constants').ENV
 
 function camelToKabob(string) {
@@ -31,14 +32,31 @@ function ifDev(fn) {
     }
 }
 
+function forceTwoDigits(num) {
+    const str = String(num)
+    return str.length === 1 ? `0${str}` : str
+}
+
+function formatDateTime(date) {
+    const hours = forceTwoDigits(date.getHours()),
+        minutes = forceTwoDigits(date.getMinutes()),
+        seconds = forceTwoDigits(date.getSeconds())
+
+    return `${hours}:${minutes}:${seconds}`
+}
+
 function startProcess(message) {
-    const startTime = new Date().getTime()
-    process.stdout.write(message)
-    return startTime
+    const startTime = new Date()
+    process.stdout.write(
+        `[${chalk.gray(formatDateTime(startTime))}] ${chalk.blue(message)}`
+    )
+    return startTime.getTime()
 }
 
 function finishProcess(startTime) {
-    process.stdout.write(` (${new Date().getTime() - startTime}ms)\n`)
+    process.stdout.write(
+        ` (${chalk.gray((new Date().getTime() - startTime) + 'ms')})\n`
+    )
 }
 
 function logProcess(message, blockingAction) {
