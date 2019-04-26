@@ -7,8 +7,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "NODE_ENV=production node src/app.js",
-        "format": "prettier --write '**/*.{js,css,json}'",
-        "lint": "eslint --fix '**/*.js'",
+        "format": "prettier --write \"**/*.{js,css,json}\"",
+        "lint": "eslint --fix \"**/*.js\"",
         "start": "NODE_ENV=development nodemon src/app.js"
     },
     "bin": {

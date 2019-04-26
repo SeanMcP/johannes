@@ -55,7 +55,7 @@ function startProcess(message) {
 
 function finishProcess(startTime) {
     process.stdout.write(
-        ` (${chalk.gray((new Date().getTime() - startTime) + 'ms')})\n`
+        ` (${chalk.gray(new Date().getTime() - startTime + 'ms')})\n`
     )
 }
 

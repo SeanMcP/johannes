@@ -60,15 +60,15 @@ function buildButtonBlock(block) {
     } = block
     const styles = buildBlockCSS(id, block.styles)
     let elements = openBlockTag({ block })
-    
-    const buttonClass = "Button__button"
+
+    const buttonClass = 'Button__button'
     const buttonStyles = `
     #${id} a.${buttonClass} {
         background: ${options.buttonColor || global.theme.primaryColor};
         color: ${options.buttonTextColor || white};
     }
     `
-    
+
     elements += `
         <a class=${buttonClass} href=${href}>${text}</a>
     `
