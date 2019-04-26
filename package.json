@@ -1,15 +1,14 @@
 {
     "name": "johannes",
     "version": "0.0.0",
-    "description": "🖨 A simple JSON to HTML printer",
+    "description": "A simple JSON-based static-site generator",
     "main": "src/app.js",
     "files": [],
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "NODE_ENV=production node src/app.js",
         "format": "prettier --write \"**/*.{js,css,json}\"",
-        "lint": "eslint --fix \"**/*.js\"",
-        "start": "NODE_ENV=development nodemon src/app.js"
+        "lint": "eslint --fix \"**/*.js\""
     },
     "bin": {
         "johannes": "bin/johannes"
@@ -27,7 +26,6 @@
     "homepage": "https://github.com/SeanMcP/johannes#readme",
     "devDependencies": {
         "eslint": "^5.16.0",
-        "nodemon": "^1.18.10",
         "prettier": "1.16.4"
     },
     "dependencies": {
