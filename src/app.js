@@ -8,6 +8,7 @@ const buildContent = require('./blocks').buildContent
 const buildGlobalCSS = require('./styles').buildGlobalCSS
 const buildHead = require('./meta').buildHead
 const { ifDev, logProcess } = require('./utils')
+const { preprocessData } = require('./preprocess')
 
 const config = require('./setup').getConfig()
 global.config = config
@@ -98,12 +99,18 @@ function johannes() {
                     )
             )
 
+            const cssClasses = logProcess(
+                'Processing data',
+                preprocessData
+            )
+
             const combindedStyles = new CleanCSS().minify(
                 // highlight first so that styles can be
                 // overwritten
                 highlightBuffer.toString() +
                     gutenbergBuffer.toString() +
-                    stylesBuffer.toString()
+                    stylesBuffer.toString() +
+                    cssClasses
             ).styles
             logProcess('Creating CSS file', () =>
                 fs.writeFileSync(
