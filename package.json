@@ -5,7 +5,7 @@
     "main": "src/app.js",
     "files": [],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "jest --coverage",
         "build": "NODE_ENV=production node src/app.js",
         "format": "prettier --write \"**/*.{js,css,json}\"",
         "lint": "eslint --fix \"**/*.js\""
@@ -26,6 +26,7 @@
     "homepage": "https://github.com/SeanMcP/johannes#readme",
     "devDependencies": {
         "eslint": "^5.16.0",
+        "jest": "^24.7.1",
         "prettier": "1.16.4"
     },
     "dependencies": {

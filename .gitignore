@@ -1,3 +1,5 @@
 node_modules/
+coverage/
+examples/site/
 ___dev.html
 package-lock.json
