@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-var ENV = require('./constants').ENV
+const { ENV } = require('./constants')
 
 function camelToKabob(string) {
     // From: https://gist.github.com/nblackburn/875e6ff75bc8ce171c758bf75f304707
@@ -19,7 +19,7 @@ function getClass(condition, className, defaultValue = undefined) {
 
 function getId(tag) {
     // From: https://gist.github.com/gordonbrander/2230317
-    var output = tag ? `${tag}-` : ''
+    let output = tag ? `${tag}-` : ''
     output += Math.random()
         .toString(36)
         .substr(2, 5)
