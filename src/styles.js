@@ -48,7 +48,20 @@ function buildGlobalCSS() {
     return output
 }
 
+function checkThemeVariable(value, theme) {
+    if (value[0] === '@') {
+        const variable = value.slice(1)
+        if (theme.variables.hasOwnProperty(variable)) {
+            return theme.variables[variable]
+        } else {
+            throw new Error(`Invalid variable reference: "${value}"`)
+        }
+    }
+    return value
+}
+
 module.exports = {
     buildBlockCSS,
-    buildGlobalCSS
+    buildGlobalCSS,
+    checkThemeVariable
 }

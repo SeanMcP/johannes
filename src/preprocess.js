@@ -1,4 +1,5 @@
 const { getId } = require('./utils')
+const { checkThemeVariable } = require('./styles')
 
 function preprocessData() {
     const styleCounter = {}
@@ -19,16 +20,8 @@ function preprocessData() {
     let css = ''
     for (const className in styleCounter) {
         const obj = styleCounter[className]
-        // TODO: Check if value is variable, substitute
-        // from global.data.theme
-        css += `
-            ${className} {
-                ${obj.property}: ${obj.value};
-            }
-        `
+        css += `\n${className} { ${obj.property}: ${checkThemeVariable(obj.value, data.theme)}; }`
     }
-
-    console.log(css)
 
     return css
 }
